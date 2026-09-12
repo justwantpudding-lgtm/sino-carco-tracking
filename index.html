@@ -14,29 +14,36 @@
 <style>
 
 :root{
-    --primary:#1769d1;
-    --primary-dark:#0b2850;
-    --primary-soft:#edf5ff;
+    --navy:#081d36;
+    --navy-2:#0d315a;
+    --blue:#1769d1;
+    --blue-light:#eef5ff;
 
-    --bg:#f5f7fb;
-    --surface:#ffffff;
-    --text:#10233f;
-    --muted:#738197;
-    --border:#e5ebf2;
+    --bg:#f4f7fb;
+    --white:#ffffff;
 
-    --success:#15966a;
-    --success-soft:#eaf8f2;
+    --text:#13243a;
+    --muted:#7d8999;
+    --muted-2:#9aa5b4;
 
-    --warning:#b27a00;
-    --warning-soft:#fff7df;
+    --border:#e7edf4;
 
-    --danger:#d93644;
-    --danger-soft:#fff0f1;
+    --green:#15966a;
+    --green-bg:#eaf8f2;
+
+    --yellow:#a87500;
+    --yellow-bg:#fff7df;
+
+    --red:#d93644;
+    --red-bg:#fff0f1;
 
     --radius:18px;
 
-    --shadow:0 10px 30px rgba(16,35,63,.06);
-    --shadow-lg:0 20px 55px rgba(16,35,63,.10);
+    --shadow:
+        0 10px 35px rgba(8,29,54,.055);
+
+    --shadow-lg:
+        0 22px 60px rgba(8,29,54,.09);
 }
 
 *{
@@ -51,24 +58,26 @@ body{
     margin:0;
     min-height:100vh;
 
+    color:var(--text);
+
     background:
         radial-gradient(
-            circle at 10% -10%,
-            rgba(23,105,209,.10),
-            transparent 30%
+            circle at 5% -10%,
+            rgba(23,105,209,.08),
+            transparent 28%
         ),
         linear-gradient(
             180deg,
-            #f7f9fc 0%,
-            #f4f7fb 100%
+            #f8fafc 0%,
+            #f3f6fa 100%
         );
-
-    color:var(--text);
 
     font-family:
         "Inter",
         "Kanit",
         sans-serif;
+
+    -webkit-font-smoothing:antialiased;
 }
 
 button,
@@ -77,12 +86,12 @@ input{
 }
 
 
-/* =========================
+/* =================================
    HEADER
-========================= */
+================================= */
 
 .topbar{
-    height:72px;
+    height:74px;
 
     position:sticky;
     top:0;
@@ -92,13 +101,21 @@ input{
     align-items:center;
     justify-content:space-between;
 
-    padding:0 max(24px,calc((100vw - 1180px)/2));
+    padding:
+        0 max(
+            24px,
+            calc((100vw - 1180px) / 2)
+        );
 
-    background:rgba(255,255,255,.92);
+    background:
+        rgba(255,255,255,.92);
 
-    border-bottom:1px solid rgba(229,235,242,.9);
+    border-bottom:
+        1px solid
+        rgba(225,232,240,.85);
 
-    backdrop-filter:blur(18px);
+    backdrop-filter:
+        blur(18px);
 }
 
 .brand{
@@ -108,48 +125,53 @@ input{
 }
 
 .brand-logo{
-    width:42px;
-    height:42px;
+    width:40px;
+    height:40px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    border-radius:13px;
+    border-radius:12px;
 
     color:#fff;
 
-    font-size:20px;
+    font-size:18px;
 
     background:
         linear-gradient(
             135deg,
-            #0b2850,
+            #081d36,
             #1769d1
         );
 
     box-shadow:
-        0 8px 22px rgba(23,105,209,.25);
+        0 7px 20px
+        rgba(23,105,209,.22);
 }
 
 .brand-name{
-    color:var(--primary-dark);
+    color:var(--navy);
 
-    font-size:17px;
+    font-size:16px;
+    line-height:1.1;
+
     font-weight:800;
 
-    letter-spacing:-.4px;
+    letter-spacing:-.3px;
 }
 
 .brand-sub{
-    margin-top:1px;
+    margin-top:3px;
 
-    color:#8b98aa;
+    color:#99a5b4;
 
-    font-size:9px;
-    font-weight:600;
+    font-size:8px;
+    line-height:1;
 
-    letter-spacing:1.6px;
+    font-weight:700;
+
+    letter-spacing:1.8px;
 }
 
 .system-status{
@@ -157,48 +179,59 @@ input{
     align-items:center;
     gap:9px;
 
-    color:#6f7d90;
+    color:#788698;
 
-    font-size:12px;
+    font-size:11px;
     font-weight:500;
 }
 
 .status-dot{
-    width:8px;
-    height:8px;
+    width:7px;
+    height:7px;
 
     border-radius:50%;
 
-    background:#1baa72;
+    background:#18a96f;
 
     box-shadow:
-        0 0 0 5px rgba(27,170,114,.10);
+        0 0 0 5px
+        rgba(24,169,111,.09);
 }
 
 
-/* =========================
+/* =================================
    CONTAINER
-========================= */
+================================= */
 
 .container{
-    width:min(1180px,calc(100% - 40px));
+    width:
+        min(
+            1160px,
+            calc(100% - 40px)
+        );
+
     margin:auto;
 }
 
 
-/* =========================
+/* =================================
    HERO
-========================= */
+================================= */
 
 .hero{
-    padding:58px 0 28px;
+    padding:
+        66px 0 35px;
 }
 
 .hero-grid{
     display:grid;
-    grid-template-columns:1.2fr .8fr;
+
+    grid-template-columns:
+        1.15fr .85fr;
+
     align-items:center;
-    gap:50px;
+
+    gap:70px;
 }
 
 .eyebrow{
@@ -206,64 +239,88 @@ input{
     align-items:center;
     gap:8px;
 
-    padding:7px 11px;
+    padding:
+        7px 11px;
+
+    border:
+        1px solid
+        #dceaff;
 
     border-radius:999px;
 
-    color:var(--primary);
-    background:var(--primary-soft);
+    color:var(--blue);
 
-    font-size:11px;
-    font-weight:700;
+    background:
+        rgba(238,245,255,.8);
 
-    letter-spacing:.7px;
+    font-size:9px;
+    font-weight:800;
+
+    letter-spacing:1px;
 }
 
 .eyebrow span{
-    width:6px;
-    height:6px;
+    width:5px;
+    height:5px;
 
     border-radius:50%;
-    background:var(--primary);
+
+    background:var(--blue);
 }
 
 .hero h1{
-    margin:17px 0 0;
+    margin:
+        17px 0 0;
 
-    color:var(--primary-dark);
+    color:var(--navy);
 
-    font-size:clamp(38px,5vw,58px);
+    font-size:
+        clamp(38px,5vw,54px);
 
-    line-height:1.04;
-    letter-spacing:-2.8px;
+    line-height:1.05;
+
+    letter-spacing:-2.6px;
+
     font-weight:800;
 }
 
 .hero h1 span{
-    color:var(--primary);
+    color:var(--blue);
 }
 
 .hero-description{
-    max-width:610px;
+    max-width:570px;
 
-    margin:17px 0 0;
+    margin:
+        17px 0 0;
 
     color:var(--muted);
 
-    font-size:15px;
-    line-height:1.8;
+    font-family:
+        "Kanit",
+        "Inter",
+        sans-serif;
+
+    font-size:14px;
+
+    line-height:1.9;
+
+    font-weight:300;
 }
 
 
-/* =========================
+/* =================================
    HERO PANEL
-========================= */
+================================= */
 
 .hero-panel{
     padding:25px;
 
-    border:1px solid var(--border);
-    border-radius:22px;
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:20px;
 
     background:
         linear-gradient(
@@ -272,21 +329,45 @@ input{
             #f8fbff
         );
 
-    box-shadow:var(--shadow);
+    box-shadow:
+        var(--shadow);
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.hero-panel::before{
+    content:"";
+
+    position:absolute;
+
+    width:160px;
+    height:160px;
+
+    right:-80px;
+    top:-80px;
+
+    border-radius:50%;
+
+    background:
+        rgba(23,105,209,.045);
 }
 
 .hero-panel-top{
+    position:relative;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
 
-    margin-bottom:22px;
+    margin-bottom:20px;
 }
 
 .hero-panel-title{
-    color:var(--primary-dark);
+    color:var(--navy);
 
-    font-size:13px;
+    font-size:12px;
     font-weight:700;
 }
 
@@ -295,68 +376,87 @@ input{
     align-items:center;
     gap:6px;
 
-    color:var(--success);
+    color:var(--green);
 
-    font-size:11px;
-    font-weight:700;
+    font-size:9px;
+    font-weight:800;
+
+    letter-spacing:.7px;
 }
 
 .live::before{
     content:"";
 
-    width:6px;
-    height:6px;
+    width:5px;
+    height:5px;
 
     border-radius:50%;
+
     background:currentColor;
 }
 
 .hero-stats{
+    position:relative;
+
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+
+    grid-template-columns:
+        repeat(2,1fr);
+
     gap:10px;
 }
 
 .mini-stat{
     padding:15px;
 
-    border:1px solid var(--border);
-    border-radius:14px;
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:13px;
 
     background:#fff;
 }
 
 .mini-stat-label{
-    color:var(--muted);
-    font-size:10px;
+    color:var(--muted-2);
+
+    font-size:9px;
+
+    font-weight:500;
 }
 
 .mini-stat-value{
     margin-top:5px;
 
-    color:var(--primary-dark);
+    color:var(--navy);
 
-    font-size:19px;
+    font-size:17px;
+
     font-weight:800;
 }
 
 
-/* =========================
+/* =================================
    SEARCH
-========================= */
+================================= */
 
 .search-card{
-    position:relative;
+    margin-bottom:50px;
 
-    margin-bottom:40px;
     padding:24px;
 
-    border:1px solid var(--border);
-    border-radius:20px;
+    border:
+        1px solid
+        rgba(220,228,237,.9);
 
-    background:rgba(255,255,255,.96);
+    border-radius:19px;
 
-    box-shadow:var(--shadow-lg);
+    background:
+        rgba(255,255,255,.97);
+
+    box-shadow:
+        var(--shadow-lg);
 }
 
 .search-header{
@@ -364,28 +464,39 @@ input{
     align-items:center;
     justify-content:space-between;
 
-    margin-bottom:14px;
+    margin-bottom:13px;
 }
 
 .search-title{
-    color:var(--primary-dark);
+    color:var(--navy);
 
-    font-size:14px;
-    font-weight:700;
+    font-family:
+        "Kanit",
+        "Inter",
+        sans-serif;
+
+    font-size:13px;
+    font-weight:500;
 }
 
 .search-hint{
-    color:#9aa6b6;
-    font-size:11px;
+    color:#a0aaba;
+
+    font-size:10px;
+    font-weight:500;
+
+    letter-spacing:.2px;
 }
 
 .search-box{
     display:flex;
+
     gap:10px;
 }
 
 .input-wrap{
     position:relative;
+
     flex:1;
 }
 
@@ -395,122 +506,153 @@ input{
     left:17px;
     top:50%;
 
-    transform:translateY(-50%);
+    transform:
+        translateY(-50%);
 
-    color:#8a98aa;
+    color:#91a0b1;
 
-    font-size:18px;
+    font-size:17px;
+
+    pointer-events:none;
 }
 
 .search-box input{
     width:100%;
-    height:58px;
+    height:55px;
 
-    padding:0 18px 0 47px;
+    padding:
+        0 17px 0 45px;
 
-    border:1px solid #d9e2ec;
-    border-radius:13px;
+    border:
+        1px solid
+        #dce4ed;
+
+    border-radius:12px;
 
     outline:none;
 
     color:var(--text);
-    background:#fbfcfe;
 
-    font-size:15px;
+    background:#fafbfd;
 
-    transition:.2s;
+    font-size:14px;
+
+    transition:
+        border-color .2s,
+        box-shadow .2s,
+        background .2s;
 }
 
 .search-box input::placeholder{
-    color:#9aa6b6;
+    color:#a0aaba;
 }
 
 .search-box input:focus{
-    border-color:var(--primary);
-    background:white;
+    border-color:var(--blue);
+
+    background:#fff;
 
     box-shadow:
-        0 0 0 4px rgba(23,105,209,.08);
+        0 0 0 4px
+        rgba(23,105,209,.07);
 }
 
 .search-box button{
-    width:150px;
+    width:145px;
 
     border:0;
-    border-radius:13px;
+
+    border-radius:12px;
 
     color:#fff;
 
     background:
         linear-gradient(
             135deg,
-            #0b2850,
-            #1769d1
+            var(--navy),
+            var(--blue)
         );
 
-    font-size:14px;
+    font-size:12px;
+
     font-weight:700;
 
     cursor:pointer;
 
     box-shadow:
-        0 8px 20px rgba(23,105,209,.22);
+        0 8px 20px
+        rgba(23,105,209,.19);
 
-    transition:.25s;
+    transition:
+        transform .2s,
+        box-shadow .2s;
 }
 
 .search-box button:hover{
-    transform:translateY(-2px);
+    transform:
+        translateY(-1px);
 
     box-shadow:
-        0 13px 28px rgba(23,105,209,.28);
+        0 12px 26px
+        rgba(23,105,209,.25);
 }
 
 .search-box button:disabled{
     opacity:.65;
+
     cursor:wait;
+
     transform:none;
 }
 
 
-/* =========================
+/* =================================
    MESSAGE
-========================= */
+================================= */
 
 .message{
     display:none;
 
-    margin-top:13px;
-    padding:12px 15px;
+    margin-top:12px;
+
+    padding:
+        11px 14px;
 
     border-radius:10px;
 
-    font-size:13px;
+    font-size:12px;
+
     text-align:center;
 }
 
 .message.error{
     display:block;
 
-    color:var(--danger);
-    background:var(--danger-soft);
+    color:var(--red);
 
-    border:1px solid #ffd2d6;
+    background:var(--red-bg);
+
+    border:
+        1px solid
+        #ffd4d8;
 }
 
 .message.success{
     display:block;
 
-    color:var(--success);
-    background:var(--success-soft);
+    color:var(--green);
 
-    border:1px solid #cceede;
+    background:var(--green-bg);
+
+    border:
+        1px solid
+        #cceede;
 }
 
 
-/* =========================
+/* =================================
    LOADING
-========================= */
+================================= */
 
 .loading{
     display:none;
@@ -518,52 +660,64 @@ input{
     align-items:center;
     justify-content:center;
 
-    gap:10px;
+    gap:9px;
 
-    padding:30px;
+    padding:25px;
 
     color:var(--muted);
 
-    font-size:13px;
+    font-family:
+        "Kanit",
+        "Inter",
+        sans-serif;
+
+    font-size:12px;
 }
 
 .spinner{
-    width:19px;
-    height:19px;
+    width:18px;
+    height:18px;
 
-    border:3px solid #dce5ef;
-    border-top-color:var(--primary);
+    border:
+        3px solid
+        #e0e7ef;
+
+    border-top-color:
+        var(--blue);
 
     border-radius:50%;
 
-    animation:spin .7s linear infinite;
+    animation:
+        spin .7s linear infinite;
 }
 
 
-/* =========================
+/* =================================
    RESULT
-========================= */
+================================= */
 
 #result{
     margin-bottom:80px;
 }
 
 .result-header{
-    margin-bottom:20px;
+    margin-bottom:19px;
 }
 
 .result-label{
-    color:var(--primary);
+    color:var(--blue);
 
-    font-size:10px;
+    font-size:9px;
     font-weight:800;
 
-    letter-spacing:1.5px;
+    letter-spacing:1.7px;
+
     text-transform:uppercase;
 }
 
 .result-header-row{
     display:flex;
+
     align-items:flex-end;
     justify-content:space-between;
 
@@ -575,29 +729,56 @@ input{
 .result-header h2{
     margin:0;
 
-    color:var(--primary-dark);
+    color:var(--navy);
 
-    font-size:27px;
-    letter-spacing:-.8px;
+    font-family:
+        "Kanit",
+        "Inter",
+        sans-serif;
+
+    font-size:25px;
+
+    font-weight:500;
+
+    letter-spacing:-.4px;
 }
 
 .result-header p{
-    margin:5px 0 0;
+    margin:
+        2px 0 0;
 
     color:var(--muted);
 
-    font-size:13px;
+    font-family:
+        "Kanit",
+        "Inter",
+        sans-serif;
+
+    font-size:11px;
+
+    font-weight:300;
 }
 
 .last-updated{
-    color:#8996a8;
-    font-size:11px;
+    display:flex;
+    align-items:center;
+    gap:5px;
+
+    color:#7f8c9d;
+
+    font-size:10px;
+
+    white-space:nowrap;
+}
+
+.last-updated::first-letter{
+    color:var(--green);
 }
 
 
-/* =========================
+/* =================================
    SHIPMENT SUMMARY
-========================= */
+================================= */
 
 .shipment-card{
     display:grid;
@@ -610,30 +791,49 @@ input{
 
     overflow:hidden;
 
-    margin-bottom:24px;
+    margin-bottom:27px;
 
-    border-radius:20px;
+    border-radius:19px;
 
     color:#fff;
 
     background:
         linear-gradient(
-            125deg,
-            #091f3e,
-            #0f3970 65%,
-            #1769d1
+            120deg,
+            #071b33 0%,
+            #0c315a 58%,
+            #1769d1 100%
         );
 
     box-shadow:
-        0 18px 45px rgba(11,40,80,.18);
+        0 18px 45px
+        rgba(8,29,54,.18);
 }
 
 .shipment-main{
     position:relative;
 
-    padding:26px;
+    padding:25px;
 
     overflow:hidden;
+}
+
+.shipment-main::before{
+    content:"";
+
+    position:absolute;
+
+    width:190px;
+    height:190px;
+
+    right:-95px;
+    top:-95px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
 }
 
 .shipment-main::after{
@@ -641,41 +841,58 @@ input{
 
     position:absolute;
 
-    width:180px;
-    height:180px;
+    width:80px;
+    height:80px;
 
-    right:-80px;
-    top:-80px;
+    right:35px;
+    bottom:-55px;
 
     border-radius:50%;
 
-    background:rgba(255,255,255,.05);
+    background:
+        rgba(255,255,255,.035);
 }
 
 .shipment-label{
-    opacity:.6;
+    position:relative;
 
-    font-size:10px;
-    letter-spacing:1.3px;
+    color:
+        rgba(255,255,255,.55);
+
+    font-size:9px;
+
+    font-weight:600;
+
+    letter-spacing:1.4px;
+
     text-transform:uppercase;
 }
 
 .shipment-hbl{
+    position:relative;
+
     margin-top:6px;
 
-    font-size:25px;
+    font-size:23px;
+
+    line-height:1.25;
+
     font-weight:800;
-    letter-spacing:.4px;
+
+    letter-spacing:.2px;
 
     word-break:break-word;
 }
 
 .shipment-caption{
+    position:relative;
+
     margin-top:5px;
 
-    color:rgba(255,255,255,.62);
+    color:
+        rgba(255,255,255,.55);
 
-    font-size:11px;
+    font-size:10px;
 }
 
 .shipment-item{
@@ -683,80 +900,119 @@ input{
 
     border-left:
         1px solid
-        rgba(255,255,255,.10);
+        rgba(255,255,255,.09);
 }
 
 .shipment-item-label{
-    color:rgba(255,255,255,.58);
+    color:
+        rgba(255,255,255,.52);
 
-    font-size:10px;
+    font-size:9px;
+
+    font-weight:500;
+
     text-transform:uppercase;
+
     letter-spacing:1px;
 }
 
 .shipment-item-value{
     margin-top:8px;
 
-    font-size:15px;
-    font-weight:700;
+    color:#fff;
+
+    font-family:
+        "Kanit",
+        "Inter",
+        sans-serif;
+
+    font-size:13px;
+
+    line-height:1.45;
+
+    font-weight:500;
 
     word-break:break-word;
 }
 
 
-/* =========================
+/* =================================
    SECTION
-========================= */
+================================= */
 
 .section{
-    margin-top:28px;
+    margin-top:31px;
 }
 
 .section-heading{
     display:flex;
     align-items:center;
 
-    gap:11px;
+    gap:10px;
 
-    margin-bottom:13px;
+    margin-bottom:12px;
 }
 
 .section-icon{
-    width:34px;
-    height:34px;
+    width:32px;
+    height:32px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    border-radius:10px;
+    border-radius:9px;
 
-    color:var(--primary);
-    background:var(--primary-soft);
+    color:var(--blue);
 
-    font-size:14px;
+    background:
+        var(--blue-light);
+
+    font-size:13px;
+
+    border:
+        1px solid
+        #e0ebfb;
 }
 
 .section-heading h3{
     margin:0;
 
-    color:var(--primary-dark);
+    color:var(--navy);
 
-    font-size:16px;
+    font-family:
+        "Kanit",
+        "Inter",
+        sans-serif;
+
+    font-size:15px;
+
+    line-height:1.2;
+
+    font-weight:500;
 }
 
 .section-heading p{
     margin:2px 0 0;
 
-    color:var(--muted);
+    color:var(--muted-2);
 
-    font-size:11px;
+    font-family:
+        "Kanit",
+        "Inter",
+        sans-serif;
+
+    font-size:10px;
+
+    line-height:1.2;
+
+    font-weight:300;
 }
 
 
-/* =========================
+/* =================================
    INFO
-========================= */
+================================= */
 
 .info-grid{
     display:grid;
@@ -764,47 +1020,71 @@ input{
     grid-template-columns:
         repeat(3,1fr);
 
-    gap:12px;
+    gap:11px;
 }
 
 .info-card{
-    min-height:92px;
+    min-height:88px;
 
-    padding:17px;
+    padding:16px;
 
-    border:1px solid var(--border);
-    border-radius:15px;
+    border:
+        1px solid
+        var(--border);
 
-    background:#fff;
+    border-radius:14px;
+
+    background:
+        rgba(255,255,255,.98);
 
     box-shadow:
-        0 4px 18px rgba(16,35,63,.035);
+        0 4px 17px
+        rgba(8,29,54,.035);
 
-    transition:.2s;
+    transition:
+        transform .2s,
+        box-shadow .2s,
+        border-color .2s;
 }
 
 .info-card:hover{
-    transform:translateY(-2px);
+    transform:
+        translateY(-2px);
 
-    border-color:#d5e0ec;
+    border-color:
+        #d8e3ef;
 
-    box-shadow:var(--shadow);
+    box-shadow:
+        var(--shadow);
 }
 
 .info-label{
-    color:#8996a8;
+    color:#8d99a8;
 
-    font-size:10px;
+    font-size:9px;
+
+    line-height:1.2;
+
     font-weight:500;
+
+    letter-spacing:.15px;
 }
 
 .info-value{
     margin-top:7px;
 
-    color:var(--primary-dark);
+    color:var(--navy);
 
-    font-size:14px;
-    font-weight:700;
+    font-family:
+        "Kanit",
+        "Inter",
+        sans-serif;
+
+    font-size:13px;
+
+    line-height:1.5;
+
+    font-weight:500;
 
     word-break:break-word;
 
@@ -812,50 +1092,68 @@ input{
 }
 
 
-/* =========================
+/* =================================
    STATUS
-========================= */
+================================= */
 
 .status-badge{
     display:inline-flex;
-    align-items:center;
-    gap:7px;
 
-    padding:6px 10px;
+    align-items:center;
+
+    gap:6px;
+
+    padding:
+        5px 9px;
 
     border-radius:999px;
 
-    font-size:11px;
-    font-weight:700;
+    font-family:
+        "Kanit",
+        "Inter",
+        sans-serif;
+
+    font-size:10px;
+
+    line-height:1.2;
+
+    font-weight:500;
 }
 
 .status-badge .dot{
-    width:6px;
-    height:6px;
+    width:5px;
+    height:5px;
 
     border-radius:50%;
+
     background:currentColor;
 }
 
 .status-badge.pending{
-    color:var(--warning);
-    background:var(--warning-soft);
+    color:var(--yellow);
+
+    background:
+        var(--yellow-bg);
 }
 
 .status-badge.success{
-    color:var(--success);
-    background:var(--success-soft);
+    color:var(--green);
+
+    background:
+        var(--green-bg);
 }
 
 .status-badge.danger{
-    color:var(--danger);
-    background:var(--danger-soft);
+    color:var(--red);
+
+    background:
+        var(--red-bg);
 }
 
 
-/* =========================
+/* =================================
    ADDITIONAL
-========================= */
+================================= */
 
 #additionalSection{
     display:none;
@@ -867,47 +1165,62 @@ input{
     grid-template-columns:
         repeat(3,1fr);
 
-    gap:12px;
+    gap:11px;
 }
 
 .additional-card{
-    min-height:92px;
+    min-height:88px;
 
-    padding:17px;
+    padding:16px;
 
-    border:1px solid var(--border);
-    border-radius:15px;
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:14px;
 
     background:#fff;
 
     box-shadow:
-        0 4px 18px rgba(16,35,63,.035);
+        0 4px 17px
+        rgba(8,29,54,.035);
 
-    transition:.2s;
+    transition:
+        transform .2s,
+        box-shadow .2s;
 }
 
 .additional-card:hover{
-    transform:translateY(-2px);
+    transform:
+        translateY(-2px);
 
-    border-color:#d5e0ec;
-
-    box-shadow:var(--shadow);
+    box-shadow:
+        var(--shadow);
 }
 
 .additional-label{
-    color:#8996a8;
+    color:#8d99a8;
 
-    font-size:10px;
+    font-size:9px;
+
     font-weight:500;
 }
 
 .additional-value{
     margin-top:7px;
 
-    color:var(--primary-dark);
+    color:var(--navy);
 
-    font-size:14px;
-    font-weight:700;
+    font-family:
+        "Kanit",
+        "Inter",
+        sans-serif;
+
+    font-size:13px;
+
+    line-height:1.5;
+
+    font-weight:500;
 
     word-break:break-word;
 
@@ -915,30 +1228,35 @@ input{
 }
 
 
-/* =========================
+/* =================================
    FOOTER
-========================= */
+================================= */
 
 .footer{
-    padding:28px 20px;
+    padding:
+        28px 20px;
 
-    border-top:1px solid var(--border);
+    border-top:
+        1px solid
+        var(--border);
 
-    color:#8b98aa;
+    color:#9aa5b3;
 
     text-align:center;
 
-    font-size:11px;
+    font-size:10px;
 }
 
 .footer strong{
-    color:var(--primary-dark);
+    color:var(--navy);
+
+    font-weight:700;
 }
 
 
-/* =========================
+/* =================================
    ANIMATION
-========================= */
+================================= */
 
 @keyframes spin{
     to{
@@ -949,30 +1267,37 @@ input{
 @keyframes fadeUp{
     from{
         opacity:0;
-        transform:translateY(10px);
+
+        transform:
+            translateY(8px);
     }
 
     to{
         opacity:1;
-        transform:translateY(0);
+
+        transform:
+            translateY(0);
     }
 }
 
 .shipment-card,
 .info-card,
 .additional-card{
-    animation:fadeUp .45s ease both;
+    animation:
+        fadeUp .4s ease both;
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* =================================
+   TABLET
+================================= */
 
 @media(max-width:900px){
 
     .hero-grid{
         grid-template-columns:1fr;
+
+        gap:30px;
     }
 
     .hero-panel{
@@ -1000,14 +1325,35 @@ input{
 }
 
 
+/* =================================
+   MOBILE
+================================= */
+
 @media(max-width:600px){
 
     .container{
-        width:min(100% - 28px,1180px);
+        width:
+            calc(100% - 28px);
     }
 
     .topbar{
-        padding:0 16px;
+        height:68px;
+
+        padding:
+            0 15px;
+    }
+
+    .brand-logo{
+        width:37px;
+        height:37px;
+
+        border-radius:11px;
+
+        font-size:16px;
+    }
+
+    .brand-name{
+        font-size:15px;
     }
 
     .system-status{
@@ -1015,26 +1361,35 @@ input{
     }
 
     .hero{
-        padding:38px 0 20px;
+        padding:
+            40px 0 22px;
     }
 
     .hero h1{
         font-size:36px;
-        letter-spacing:-1.8px;
+
+        letter-spacing:-1.9px;
     }
 
     .hero-description{
-        font-size:13px;
+        margin-top:14px;
+
+        font-size:12px;
+
+        line-height:1.85;
     }
 
     .search-card{
         padding:18px;
+
         border-radius:16px;
     }
 
     .search-header{
         align-items:flex-start;
+
         flex-direction:column;
+
         gap:4px;
     }
 
@@ -1044,17 +1399,30 @@ input{
 
     .search-box button{
         width:100%;
-        height:52px;
+
+        height:51px;
     }
 
     .result-header-row{
         flex-direction:column;
+
         align-items:flex-start;
+
         gap:5px;
+    }
+
+    .result-header h2{
+        font-size:22px;
     }
 
     .shipment-card{
         grid-template-columns:1fr;
+
+        border-radius:17px;
+    }
+
+    .shipment-main{
+        grid-column:auto;
     }
 
     .shipment-item{
@@ -1062,11 +1430,7 @@ input{
 
         border-top:
             1px solid
-            rgba(255,255,255,.10);
-    }
-
-    .shipment-main{
-        grid-column:auto;
+            rgba(255,255,255,.09);
     }
 
     .info-grid,
@@ -1075,8 +1439,34 @@ input{
     }
 
     .section{
-        margin-top:24px;
+        margin-top:25px;
     }
+
+    .section-heading h3{
+        font-size:14px;
+    }
+
+}
+
+
+/* =================================
+   SMALL MOBILE
+================================= */
+
+@media(max-width:380px){
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .shipment-hbl{
+        font-size:20px;
+    }
+
+    .search-title{
+        font-size:12px;
+    }
+
 }
 
 </style>
@@ -1738,17 +2128,17 @@ input{
 <script>
 
 
-/* =========================
+/* =================================
    GOOGLE APPS SCRIPT
-========================= */
+================================= */
 
 const APPS_SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbwjX5Cl1wH6agUuXVZBJGC8J1EgxhzeZmlGJUp7gTAW89EZ60RsgUGsf2mtqoGZ5Q4/exec";
 
 
-/* =========================
+/* =================================
    ELEMENTS
-========================= */
+================================= */
 
 const input =
     document.getElementById("hbl");
@@ -1766,13 +2156,14 @@ const result =
     document.getElementById("result");
 
 
-/* =========================
+/* =================================
    MESSAGE
-========================= */
+================================= */
 
 function showMessage(text,type){
 
-    message.textContent = text;
+    message.textContent =
+        text;
 
     message.className =
         "message " + type;
@@ -1782,16 +2173,18 @@ function showMessage(text,type){
 
 function clearMessage(){
 
-    message.textContent = "";
+    message.textContent =
+        "";
 
-    message.className = "message";
+    message.className =
+        "message";
 
 }
 
 
-/* =========================
+/* =================================
    VALUE
-========================= */
+================================= */
 
 function value(data,names){
 
@@ -1815,9 +2208,9 @@ function value(data,names){
 }
 
 
-/* =========================
-   ESCAPE
-========================= */
+/* =================================
+   ESCAPE HTML
+================================= */
 
 function escapeHTML(value){
 
@@ -1831,9 +2224,9 @@ function escapeHTML(value){
 }
 
 
-/* =========================
+/* =================================
    STATUS
-========================= */
+================================= */
 
 function statusHTML(status){
 
@@ -1843,7 +2236,8 @@ function statusHTML(status){
     const lower =
         text.toLowerCase();
 
-    let type = "pending";
+    let type =
+        "pending";
 
 
     if(
@@ -1854,7 +2248,8 @@ function statusHTML(status){
         lower.includes("completed")
     ){
 
-        type = "success";
+        type =
+            "success";
 
     }
 
@@ -1865,7 +2260,8 @@ function statusHTML(status){
         lower.includes("error")
     ){
 
-        type = "danger";
+        type =
+            "danger";
 
     }
 
@@ -1880,9 +2276,9 @@ function statusHTML(status){
 }
 
 
-/* =========================
+/* =================================
    ADDITIONAL DATA
-========================= */
+================================= */
 
 function displayAdditionalData(data){
 
@@ -2004,9 +2400,11 @@ function displayAdditionalData(data){
 
     if(fields.length === 0){
 
-        section.style.display = "none";
+        section.style.display =
+            "none";
 
-        container.innerHTML = "";
+        container.innerHTML =
+            "";
 
         return;
 
@@ -2035,14 +2433,15 @@ function displayAdditionalData(data){
         }).join("");
 
 
-    section.style.display = "block";
+    section.style.display =
+        "block";
 
 }
 
 
-/* =========================
+/* =================================
    DISPLAY DATA
-========================= */
+================================= */
 
 function displayData(data){
 
@@ -2196,39 +2595,46 @@ function displayData(data){
 
     document.getElementById(
         "r-hbl"
-    ).textContent = hbl;
+    ).textContent =
+        hbl;
 
 
     document.getElementById(
         "r-customer"
-    ).textContent = customer;
+    ).textContent =
+        customer;
 
 
     document.getElementById(
         "r-location"
-    ).textContent = location;
+    ).textContent =
+        location;
 
 
     document.getElementById(
         "r-date"
-    ).textContent = date;
+    ).textContent =
+        date;
 
 
     /* DETAILS */
 
     document.getElementById(
         "d-customer"
-    ).textContent = customer;
+    ).textContent =
+        customer;
 
 
     document.getElementById(
         "d-location"
-    ).textContent = location;
+    ).textContent =
+        location;
 
 
     document.getElementById(
         "d-date"
-    ).textContent = date;
+    ).textContent =
+        date;
 
 
     document.getElementById(
@@ -2320,9 +2726,9 @@ function displayData(data){
 }
 
 
-/* =========================
+/* =================================
    SEARCH
-========================= */
+================================= */
 
 async function searchData(){
 
@@ -2347,7 +2753,8 @@ async function searchData(){
     }
 
 
-    button.disabled = true;
+    button.disabled =
+        true;
 
     button.textContent =
         "กำลังค้นหา...";
@@ -2411,7 +2818,8 @@ async function searchData(){
 
         if(Array.isArray(data)){
 
-            data = data[0];
+            data =
+                data[0];
 
         }
 
@@ -2421,7 +2829,8 @@ async function searchData(){
             Array.isArray(json.result)
         ){
 
-            data = json.result[0];
+            data =
+                json.result[0];
 
         }
 
@@ -2431,7 +2840,8 @@ async function searchData(){
             Array.isArray(json.results)
         ){
 
-            data = json.results[0];
+            data =
+                json.results[0];
 
         }
 
@@ -2485,9 +2895,9 @@ async function searchData(){
 }
 
 
-/* =========================
+/* =================================
    ENTER
-========================= */
+================================= */
 
 input.addEventListener(
     "keydown",
@@ -2505,9 +2915,9 @@ input.addEventListener(
 );
 
 
-/* =========================
+/* =================================
    URL HBL
-========================= */
+================================= */
 
 (function(){
 
