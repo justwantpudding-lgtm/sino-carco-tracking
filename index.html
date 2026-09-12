@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Sino Carco Tracking</title>
 
   <style>
@@ -10,149 +11,506 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --primary: #174a7e;
+      --primary-dark: #10385f;
+      --accent: #2f7de1;
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #172033;
+      --muted: #718096;
+      --border: #e4e9f0;
+      --success-bg: #e9f8ef;
+      --success-text: #198754;
+      --warning-bg: #fff7df;
+      --warning-text: #9a6a00;
+      --danger-bg: #fff0f1;
+      --danger-text: #d92d3a;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, "Noto Sans Thai", sans-serif;
-      background: #f5f7fb;
-      color: #333;
+      min-height: 100vh;
+      background:
+        radial-gradient(
+          circle at top left,
+          rgba(47, 125, 225, 0.08),
+          transparent 35%
+        ),
+        var(--bg);
+
+      font-family:
+        "Noto Sans Thai",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+      color: var(--text);
     }
 
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
+    /* =========================
+       MAIN CONTAINER
+    ========================= */
+
+    .page {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 55px 20px 70px;
     }
 
-    .card {
-      background: white;
-      border-radius: 16px;
-      padding: 30px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    }
+    /* =========================
+       HEADER
+    ========================= */
 
-    h1 {
+    .header {
       text-align: center;
-      margin-top: 0;
-      color: #1f4e79;
-    }
-
-    .subtitle {
-      text-align: center;
-      color: #777;
       margin-bottom: 30px;
     }
 
-    .search-box {
+    .logo {
+      width: 62px;
+      height: 62px;
+
+      margin: 0 auto 15px;
+
       display: flex;
-      gap: 10px;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 18px;
+
+      background: linear-gradient(
+        135deg,
+        #174a7e,
+        #2f7de1
+      );
+
+      color: white;
+
+      font-size: 30px;
+
+      box-shadow:
+        0 10px 30px rgba(23, 74, 126, 0.18);
+    }
+
+    .header h1 {
+      margin: 0;
+
+      color: var(--primary);
+
+      font-size: 34px;
+      font-weight: 750;
+
+      letter-spacing: -0.5px;
+    }
+
+    .header p {
+      margin: 9px 0 0;
+
+      color: var(--muted);
+
+      font-size: 15px;
+    }
+
+    /* =========================
+       SEARCH BOX
+    ========================= */
+
+    .search-card {
+      background: var(--card);
+
+      border: 1px solid rgba(228, 233, 240, 0.9);
+
+      border-radius: 22px;
+
+      padding: 28px;
+
+      box-shadow:
+        0 15px 45px rgba(28, 45, 70, 0.08);
+
       margin-bottom: 25px;
     }
 
-    input {
+    .search-title {
+      font-size: 16px;
+      font-weight: 650;
+
+      color: var(--text);
+
+      margin-bottom: 12px;
+    }
+
+    .search-row {
+      display: flex;
+      gap: 12px;
+    }
+
+    .search-input {
       flex: 1;
-      padding: 14px 16px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      font-size: 16px;
+
+      height: 54px;
+
+      border: 1px solid #d5dce6;
+
+      border-radius: 12px;
+
+      padding: 0 17px;
+
       outline: none;
-    }
 
-    input:focus {
-      border-color: #1f73e8;
-    }
-
-    button {
-      padding: 14px 25px;
-      border: none;
-      border-radius: 10px;
-      background: #1f73e8;
-      color: white;
       font-size: 16px;
+
+      color: var(--text);
+
+      background: #fff;
+
+      transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+    }
+
+    .search-input::placeholder {
+      color: #9aa5b5;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent);
+
+      box-shadow:
+        0 0 0 4px rgba(47, 125, 225, 0.10);
+    }
+
+    .search-button {
+      height: 54px;
+
+      min-width: 120px;
+
+      border: none;
+
+      border-radius: 12px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #174a7e,
+          #2f7de1
+        );
+
+      color: white;
+
+      font-size: 16px;
+      font-weight: 650;
+
       cursor: pointer;
+
+      padding: 0 25px;
+
+      box-shadow:
+        0 8px 20px rgba(47, 125, 225, 0.20);
+
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        opacity 0.2s;
     }
 
-    button:hover {
-      background: #155fc0;
+    .search-button:hover {
+      transform: translateY(-1px);
+
+      box-shadow:
+        0 12px 25px rgba(47, 125, 225, 0.28);
     }
 
-    #loading {
+    .search-button:active {
+      transform: translateY(0);
+    }
+
+    .search-button.loading {
+      opacity: 0.75;
+      pointer-events: none;
+    }
+
+    /* =========================
+       MESSAGE
+    ========================= */
+
+    .message {
       display: none;
+
+      padding: 15px 18px;
+
+      border-radius: 12px;
+
+      margin-top: 18px;
+
+      font-size: 15px;
+
       text-align: center;
-      padding: 20px;
-      color: #666;
     }
 
-    #message {
-      text-align: center;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 10px;
-      display: none;
+    .message.error {
+      display: block;
+
+      background: var(--danger-bg);
+
+      color: var(--danger-text);
+
+      border: 1px solid #ffd5d8;
     }
 
-    .success {
-      background: #e8f5e9;
-      color: #2e7d32;
+    .message.success {
+      display: block;
+
+      background: var(--success-bg);
+
+      color: var(--success-text);
+
+      border: 1px solid #c9ecd7;
     }
 
-    .error {
-      background: #ffebee;
-      color: #c62828;
-    }
+    /* =========================
+       RESULT
+    ========================= */
 
     .result {
       display: none;
     }
 
+    .result.show {
+      display: block;
+    }
+
+    .result-header {
+      display: flex;
+
+      justify-content: space-between;
+      align-items: center;
+
+      margin: 28px 0 15px;
+    }
+
+    .result-title {
+      margin: 0;
+
+      font-size: 21px;
+
+      color: var(--primary);
+
+      font-weight: 700;
+    }
+
+    .result-subtitle {
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+    /* =========================
+       CARDS
+    ========================= */
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 14px;
     }
 
-    .item {
-      background: #f8f9fc;
-      padding: 15px;
-      border-radius: 10px;
+    .info-card {
+      background: rgba(255,255,255,0.96);
+
+      border: 1px solid var(--border);
+
+      border-radius: 16px;
+
+      padding: 18px 20px;
+
+      min-height: 88px;
+
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
     }
 
-    .label {
+    .info-card:hover {
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 10px 25px rgba(30, 50, 80, 0.07);
+    }
+
+    .info-label {
+      color: var(--muted);
+
       font-size: 13px;
-      color: #777;
-      margin-bottom: 5px;
+
+      margin-bottom: 6px;
     }
 
-    .value {
+    .info-value {
+      color: var(--text);
+
       font-size: 16px;
-      font-weight: bold;
-      color: #333;
+
+      font-weight: 650;
+
       word-break: break-word;
     }
 
-    .status {
-      display: inline-block;
-      padding: 6px 12px;
-      border-radius: 20px;
-      background: #fff3cd;
-      color: #856404;
+    .hbl-card {
+      grid-column: span 2;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f8fbff,
+          #ffffff
+        );
+
+      border-color: #d9e6f5;
     }
 
-    @media (max-width: 600px) {
-      .container {
-        margin: 10px auto;
-        padding: 10px;
+    .hbl-card .info-value {
+      font-size: 21px;
+
+      color: var(--primary);
+
+      letter-spacing: 0.3px;
+    }
+
+    /* =========================
+       STATUS
+    ========================= */
+
+    .status {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      padding: 6px 13px;
+
+      border-radius: 999px;
+
+      background: var(--warning-bg);
+
+      color: var(--warning-text);
+
+      font-size: 14px;
+
+      font-weight: 650;
+    }
+
+    .status::before {
+      content: "";
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: currentColor;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .footer {
+      text-align: center;
+
+      color: #98a2b3;
+
+      font-size: 12px;
+
+      margin-top: 40px;
+    }
+
+    /* =========================
+       LOADING
+    ========================= */
+
+    .spinner {
+      display: inline-block;
+
+      width: 17px;
+      height: 17px;
+
+      border: 2px solid rgba(255,255,255,0.4);
+
+      border-top-color: white;
+
+      border-radius: 50%;
+
+      animation: spin 0.7s linear infinite;
+
+      vertical-align: middle;
+
+      margin-right: 7px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 700px) {
+
+      .page {
+        padding:
+          30px
+          14px
+          50px;
       }
 
-      .card {
+      .header h1 {
+        font-size: 27px;
+      }
+
+      .logo {
+        width: 55px;
+        height: 55px;
+
+        font-size: 26px;
+      }
+
+      .search-card {
         padding: 20px;
+
+        border-radius: 18px;
       }
 
-      .search-box {
+      .search-row {
         flex-direction: column;
+      }
+
+      .search-button {
+        width: 100%;
       }
 
       .grid {
         grid-template-columns: 1fr;
+      }
+
+      .hbl-card {
+        grid-column: span 1;
+      }
+
+      .result-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 4px;
       }
     }
   </style>
@@ -160,227 +518,748 @@
 
 <body>
 
-<div class="container">
-  <div class="card">
+  <div class="page">
 
-    <h1>🚚 Sino Carco Tracking</h1>
-    <div class="subtitle">
-      ระบบติดตามสถานะการขนส่งสินค้า
-    </div>
+    <!-- HEADER -->
+    <header class="header">
 
-    <div class="search-box">
-      <input
-        type="text"
-        id="hbl"
-        placeholder="กรอกเลข HBL เช่น LCH0260003A"
-        onkeydown="if(event.key==='Enter') searchData()"
-      >
-      <button onclick="searchData()">ค้นหา</button>
-    </div>
+      <div class="logo">
+        🚚
+      </div>
 
-    <div id="loading">
-      กำลังค้นหาข้อมูล...
-    </div>
+      <h1>
+        Sino Carco Tracking
+      </h1>
 
-    <div id="message"></div>
+      <p>
+        ระบบติดตามสถานะการขนส่งสินค้า
+      </p>
 
-    <div id="result" class="result">
+    </header>
 
-      <div class="grid">
 
-        <div class="item">
-          <div class="label">HBL No.</div>
-          <div class="value" id="hblNo"></div>
-        </div>
+    <!-- SEARCH -->
+    <section class="search-card">
 
-        <div class="item">
-          <div class="label">Customer</div>
-          <div class="value" id="customer"></div>
-        </div>
+      <div class="search-title">
+        ค้นหาสถานะการขนส่ง
+      </div>
 
-        <div class="item">
-          <div class="label">Location</div>
-          <div class="value" id="location"></div>
-        </div>
+      <div class="search-row">
 
-        <div class="item">
-          <div class="label">Date</div>
-          <div class="value" id="date"></div>
-        </div>
+        <input
+          id="hbl"
+          class="search-input"
+          type="text"
+          autocomplete="off"
+          placeholder="กรุณากรอก HBL No."
+        >
 
-        <div class="item">
-          <div class="label">Time In</div>
-          <div class="value" id="timeIn"></div>
-        </div>
+        <button
+          id="searchButton"
+          class="search-button"
+          onclick="searchData()"
+        >
+          ค้นหา
+        </button>
 
-        <div class="item">
-          <div class="label">Time Out</div>
-          <div class="value" id="timeOut"></div>
-        </div>
+      </div>
 
-        <div class="item">
-          <div class="label">Loading Start</div>
-          <div class="value" id="loadingStart"></div>
-        </div>
+      <div
+        id="message"
+        class="message"
+      ></div>
 
-        <div class="item">
-          <div class="label">Loading Finish</div>
-          <div class="value" id="loadingFinish"></div>
-        </div>
+    </section>
 
-        <div class="item">
-          <div class="label">Status</div>
-          <div class="value">
-            <span class="status" id="status"></span>
+
+    <!-- RESULT -->
+    <section
+      id="result"
+      class="result"
+    >
+
+      <div class="result-header">
+
+        <div>
+          <h2 class="result-title">
+            รายละเอียดการขนส่ง
+          </h2>
+
+          <div class="result-subtitle">
+            ข้อมูลจากระบบติดตามสินค้า
           </div>
         </div>
 
-        <div class="item">
-          <div class="label">Company</div>
-          <div class="value" id="company"></div>
+      </div>
+
+
+      <div class="grid">
+
+        <!-- HBL -->
+        <div class="info-card hbl-card">
+
+          <div class="info-label">
+            HBL No.
+          </div>
+
+          <div
+            id="hblNo"
+            class="info-value"
+          >
+            -
+          </div>
+
         </div>
 
-        <div class="item">
-          <div class="label">Driver</div>
-          <div class="value" id="driver"></div>
+
+        <!-- CUSTOMER -->
+        <div class="info-card">
+
+          <div class="info-label">
+            Customer
+          </div>
+
+          <div
+            id="customer"
+            class="info-value"
+          >
+            -
+          </div>
+
         </div>
 
-        <div class="item">
-          <div class="label">Tel.</div>
-          <div class="value" id="tel"></div>
+
+        <!-- LOCATION -->
+        <div class="info-card">
+
+          <div class="info-label">
+            Location
+          </div>
+
+          <div
+            id="location"
+            class="info-value"
+          >
+            -
+          </div>
+
         </div>
 
-        <div class="item">
-          <div class="label">Plate</div>
-          <div class="value" id="plate"></div>
+
+        <!-- DATE -->
+        <div class="info-card">
+
+          <div class="info-label">
+            Date
+          </div>
+
+          <div
+            id="date"
+            class="info-value"
+          >
+            -
+          </div>
+
         </div>
 
-        <div class="item">
-          <div class="label">Truck</div>
-          <div class="value" id="truck"></div>
+
+        <!-- TIME IN -->
+        <div class="info-card">
+
+          <div class="info-label">
+            Time In
+          </div>
+
+          <div
+            id="timeIn"
+            class="info-value"
+          >
+            -
+          </div>
+
         </div>
 
-        <div class="item">
-          <div class="label">Booking No.</div>
-          <div class="value" id="bookingNo"></div>
+
+        <!-- TIME OUT -->
+        <div class="info-card">
+
+          <div class="info-label">
+            Time Out
+          </div>
+
+          <div
+            id="timeOut"
+            class="info-value"
+          >
+            -
+          </div>
+
         </div>
 
-        <div class="item">
-          <div class="label">Quantity</div>
-          <div class="value" id="qty"></div>
+
+        <!-- LOADING START -->
+        <div class="info-card">
+
+          <div class="info-label">
+            Loading Start
+          </div>
+
+          <div
+            id="loadingStart"
+            class="info-value"
+          >
+            -
+          </div>
+
         </div>
 
-        <div class="item">
-          <div class="label">Remark</div>
-          <div class="value" id="remark"></div>
+
+        <!-- LOADING FINISH -->
+        <div class="info-card">
+
+          <div class="info-label">
+            Loading Finish
+          </div>
+
+          <div
+            id="loadingFinish"
+            class="info-value"
+          >
+            -
+          </div>
+
+        </div>
+
+
+        <!-- STATUS -->
+        <div class="info-card">
+
+          <div class="info-label">
+            Status
+          </div>
+
+          <div id="status">
+            -
+          </div>
+
+        </div>
+
+
+        <!-- COMPANY -->
+        <div class="info-card">
+
+          <div class="info-label">
+            Company
+          </div>
+
+          <div
+            id="company"
+            class="info-value"
+          >
+            -
+          </div>
+
+        </div>
+
+
+        <!-- DRIVER -->
+        <div class="info-card">
+
+          <div class="info-label">
+            Driver
+          </div>
+
+          <div
+            id="driver"
+            class="info-value"
+          >
+            -
+          </div>
+
+        </div>
+
+
+        <!-- TEL -->
+        <div class="info-card">
+
+          <div class="info-label">
+            Tel.
+          </div>
+
+          <div
+            id="tel"
+            class="info-value"
+          >
+            -
+          </div>
+
+        </div>
+
+
+        <!-- PLATE -->
+        <div class="info-card">
+
+          <div class="info-label">
+            Plate
+          </div>
+
+          <div
+            id="plate"
+            class="info-value"
+          >
+            -
+          </div>
+
+        </div>
+
+
+        <!-- TRUCK -->
+        <div class="info-card">
+
+          <div class="info-label">
+            Truck
+          </div>
+
+          <div
+            id="truck"
+            class="info-value"
+          >
+            -
+          </div>
+
+        </div>
+
+
+        <!-- BOOKING -->
+        <div class="info-card">
+
+          <div class="info-label">
+            Booking No.
+          </div>
+
+          <div
+            id="bookingNo"
+            class="info-value"
+          >
+            -
+          </div>
+
+        </div>
+
+
+        <!-- QTY -->
+        <div class="info-card">
+
+          <div class="info-label">
+            Quantity
+          </div>
+
+          <div
+            id="qty"
+            class="info-value"
+          >
+            -
+          </div>
+
+        </div>
+
+
+        <!-- REMARK -->
+        <div class="info-card">
+
+          <div class="info-label">
+            Remark
+          </div>
+
+          <div
+            id="remark"
+            class="info-value"
+          >
+            -
+          </div>
+
         </div>
 
       </div>
+
+    </section>
+
+
+    <div class="footer">
+      Sino Carco Tracking System
     </div>
 
   </div>
-</div>
-
-<script>
-
-  // Google Apps Script Web App
-  const API_URL =
-    "https://script.google.com/macros/s/AKfycbwjX5Cl1wH6agUuXVZBJGC8J1EgxhzeZmlGJUp7gTAW89EZ60RsgUGsf2mtqoGZ5Q4/exec";
 
 
-  async function searchData() {
+  <script>
 
-    const hbl = document.getElementById("hbl").value.trim();
+    /*
+    =====================================================
+    GOOGLE APPS SCRIPT URL
+    =====================================================
 
-    if (!hbl) {
-      showMessage("กรุณากรอกเลข HBL", "error");
-      return;
-    }
+    ใส่ URL Web App ของ Google Apps Script ตรงนี้
 
-    document.getElementById("result").style.display = "none";
-    document.getElementById("message").style.display = "none";
-    document.getElementById("loading").style.display = "block";
+    ตัวอย่างรูปแบบ:
 
-    try {
+    https://script.google.com/macros/s/XXXXXXXXXXXX/exec
 
-      const url =
-        API_URL + "?hbl=" + encodeURIComponent(hbl);
+    =====================================================
+    */
 
-      const response = await fetch(url);
+    const APPS_SCRIPT_URL =
+      "ใส่ URL GOOGLE APPS SCRIPT ของคุณตรงนี้";
 
-      if (!response.ok) {
-        throw new Error("ไม่สามารถเชื่อมต่อระบบได้");
-      }
 
-      const result = await response.json();
+    /*
+    =====================================================
+    SEARCH
+    =====================================================
+    */
 
-      document.getElementById("loading").style.display = "none";
+    async function searchData() {
 
-      if (!result.success) {
+      const input =
+        document.getElementById("hbl");
+
+      const button =
+        document.getElementById("searchButton");
+
+      const message =
+        document.getElementById("message");
+
+      const result =
+        document.getElementById("result");
+
+
+      const hbl =
+        input.value.trim();
+
+
+      // ซ่อนผลเดิม
+      result.classList.remove("show");
+
+      message.className = "message";
+      message.textContent = "";
+
+
+      // ตรวจสอบช่องว่าง
+      if (!hbl) {
+
         showMessage(
-          result.message || "ไม่พบข้อมูล",
+          "กรุณาระบุ HBL No.",
           "error"
         );
+
+        input.focus();
+
         return;
       }
 
-      const data = result.data;
 
-      setText("hblNo", data.hblNo);
-      setText("customer", data.customer);
-      setText("location", data.location);
-      setText("date", data.date);
-      setText("timeIn", data.timeIn);
-      setText("timeOut", data.timeOut);
-      setText("loadingStart", data.loadingStart);
-      setText("loadingFinish", data.loadingFinish);
-      setText("status", data.status);
-      setText("company", data.company);
-      setText("driver", data.driver);
-      setText("tel", data.tel);
-      setText("plate", data.plate);
-      setText("truck", data.truck);
-      setText("bookingNo", data.bookingNo);
-      setText("qty", data.qty);
-      setText("remark", data.remark);
+      // ตรวจสอบ URL
+      if (
+        !APPS_SCRIPT_URL ||
+        APPS_SCRIPT_URL.includes(
+          "ใส่ URL GOOGLE"
+        )
+      ) {
 
-      document.getElementById("result").style.display = "block";
+        showMessage(
+          "ยังไม่ได้ตั้งค่า Google Apps Script URL",
+          "error"
+        );
 
-    } catch (error) {
+        return;
+      }
 
-      document.getElementById("loading").style.display = "none";
 
-      showMessage(
-        "เกิดข้อผิดพลาดในการเชื่อมต่อ Google Sheet",
-        "error"
+      // Loading
+      button.classList.add("loading");
+
+      button.innerHTML =
+        '<span class="spinner"></span>กำลังค้นหา';
+
+
+      try {
+
+        const url =
+          APPS_SCRIPT_URL +
+          "?hbl=" +
+          encodeURIComponent(hbl);
+
+
+        const response =
+          await fetch(url);
+
+
+        if (!response.ok) {
+          throw new Error(
+            "HTTP " + response.status
+          );
+        }
+
+
+        const data =
+          await response.json();
+
+
+        if (
+          !data ||
+          data.success !== true
+        ) {
+
+          showMessage(
+            data?.message ||
+            "ไม่พบข้อมูล HBL No. นี้",
+            "error"
+          );
+
+          return;
+        }
+
+
+        displayData(data.data);
+
+      }
+      catch (error) {
+
+        console.error(error);
+
+        showMessage(
+          "ไม่สามารถเชื่อมต่อระบบข้อมูลได้ กรุณาลองใหม่อีกครั้ง",
+          "error"
+        );
+
+      }
+      finally {
+
+        button.classList.remove("loading");
+
+        button.textContent =
+          "ค้นหา";
+      }
+    }
+
+
+    /*
+    =====================================================
+    DISPLAY DATA
+    =====================================================
+    */
+
+    function displayData(data) {
+
+      const result =
+        document.getElementById("result");
+
+
+      setValue(
+        "hblNo",
+        data.hblNo
       );
 
-      console.error(error);
+      setValue(
+        "customer",
+        data.customer
+      );
+
+      setValue(
+        "location",
+        data.location
+      );
+
+      setValue(
+        "date",
+        data.date
+      );
+
+      setValue(
+        "timeIn",
+        data.timeIn
+      );
+
+      setValue(
+        "timeOut",
+        data.timeOut
+      );
+
+      setValue(
+        "loadingStart",
+        data.loadingStart
+      );
+
+      setValue(
+        "loadingFinish",
+        data.loadingFinish
+      );
+
+      setValue(
+        "company",
+        data.company
+      );
+
+      setValue(
+        "driver",
+        data.driver
+      );
+
+      setValue(
+        "tel",
+        data.tel
+      );
+
+      setValue(
+        "plate",
+        data.plate
+      );
+
+      setValue(
+        "truck",
+        data.truck
+      );
+
+      setValue(
+        "bookingNo",
+        data.bookingNo
+      );
+
+      setValue(
+        "qty",
+        data.qty
+      );
+
+      setValue(
+        "remark",
+        data.remark
+      );
+
+
+      /*
+      STATUS
+      */
+
+      const status =
+        document.getElementById("status");
+
+      status.innerHTML = "";
+
+      const statusElement =
+        document.createElement("span");
+
+      statusElement.className =
+        "status";
+
+      statusElement.textContent =
+        data.status || "-";
+
+      status.appendChild(
+        statusElement
+      );
+
+
+      /*
+      SHOW RESULT
+      */
+
+      result.classList.add("show");
+
+
+      /*
+      เลื่อนลงไปดูข้อมูล
+      */
+
+      setTimeout(() => {
+
+        result.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+      }, 100);
+
     }
-  }
 
 
-  function setText(id, value) {
+    /*
+    =====================================================
+    SET VALUE
+    =====================================================
+    */
 
-    document.getElementById(id).textContent =
-      value === undefined ||
-      value === null ||
-      value === ""
-        ? "-"
-        : value;
-  }
+    function setValue(
+      id,
+      value
+    ) {
+
+      const element =
+        document.getElementById(id);
+
+      if (!element) {
+        return;
+      }
+
+      const text =
+        value === null ||
+        value === undefined ||
+        String(value).trim() === ""
+          ? "-"
+          : String(value);
+
+      element.textContent =
+        text;
+    }
 
 
-  function showMessage(text, type) {
+    /*
+    =====================================================
+    MESSAGE
+    =====================================================
+    */
 
-    const message = document.getElementById("message");
+    function showMessage(
+      text,
+      type
+    ) {
 
-    message.textContent = text;
-    message.className = type;
-    message.style.display = "block";
-  }
+      const message =
+        document.getElementById("message");
 
-</script>
+      message.textContent =
+        text;
+
+      message.className =
+        "message " + type;
+    }
+
+
+    /*
+    =====================================================
+    ENTER KEY
+    =====================================================
+    */
+
+    document
+      .getElementById("hbl")
+      .addEventListener(
+        "keydown",
+        function(event) {
+
+          if (
+            event.key === "Enter"
+          ) {
+
+            event.preventDefault();
+
+            searchData();
+          }
+
+        }
+      );
+
+  </script>
 
 </body>
 </html>
