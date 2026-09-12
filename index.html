@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -42,11 +41,8 @@
 
     --radius:18px;
 
-    --shadow:
-        0 10px 30px rgba(16,35,63,.06);
-
-    --shadow-lg:
-        0 20px 55px rgba(16,35,63,.10);
+    --shadow:0 10px 30px rgba(16,35,63,.06);
+    --shadow-lg:0 20px 55px rgba(16,35,63,.10);
 }
 
 
@@ -64,6 +60,7 @@ html{
 
 body{
     margin:0;
+    min-height:100vh;
 
     background:
         radial-gradient(
@@ -83,8 +80,6 @@ body{
         "Inter",
         "Kanit",
         sans-serif;
-
-    min-height:100vh;
 }
 
 button,
@@ -94,7 +89,7 @@ input{
 
 
 /* =========================================================
-   TOP NAV
+   HEADER
 ========================================================= */
 
 .topbar{
@@ -102,18 +97,17 @@ input{
 
     position:sticky;
     top:0;
-
     z-index:100;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
-    padding:0 max(24px, calc((100vw - 1180px)/2));
+    padding:0 max(24px,calc((100vw - 1180px)/2));
 
-    background:rgba(255,255,255,.88);
+    background:rgba(255,255,255,.90);
 
-    border-bottom:1px solid rgba(229,235,242,.85);
+    border-bottom:1px solid rgba(229,235,242,.9);
 
     backdrop-filter:blur(18px);
 }
@@ -194,12 +188,11 @@ input{
 
 
 /* =========================================================
-   MAIN
+   CONTAINER
 ========================================================= */
 
 .container{
-    width:min(1180px, calc(100% - 40px));
-
+    width:min(1180px,calc(100% - 40px));
     margin:auto;
 }
 
@@ -214,13 +207,8 @@ input{
 
 .hero-grid{
     display:grid;
-
-    grid-template-columns:
-        1.2fr
-        .8fr;
-
+    grid-template-columns:1.2fr .8fr;
     align-items:center;
-
     gap:50px;
 }
 
@@ -234,7 +222,6 @@ input{
     border-radius:999px;
 
     color:var(--primary);
-
     background:var(--primary-soft);
 
     font-size:11px;
@@ -248,7 +235,6 @@ input{
     height:6px;
 
     border-radius:50%;
-
     background:var(--primary);
 }
 
@@ -260,9 +246,7 @@ input{
     font-size:clamp(38px,5vw,58px);
 
     line-height:1.04;
-
     letter-spacing:-2.8px;
-
     font-weight:800;
 }
 
@@ -278,18 +262,18 @@ input{
     color:var(--muted);
 
     font-size:15px;
-
     line-height:1.8;
 }
 
 
-/* Hero side */
+/* =========================================================
+   HERO PANEL
+========================================================= */
 
 .hero-panel{
     padding:25px;
 
     border:1px solid var(--border);
-
     border-radius:22px;
 
     background:
@@ -335,15 +319,12 @@ input{
     height:6px;
 
     border-radius:50%;
-
     background:currentColor;
 }
 
 .hero-stats{
     display:grid;
-
     grid-template-columns:repeat(2,1fr);
-
     gap:10px;
 }
 
@@ -351,15 +332,13 @@ input{
     padding:15px;
 
     border:1px solid var(--border);
-
     border-radius:14px;
 
-    background:white;
+    background:#fff;
 }
 
 .mini-stat-label{
     color:var(--muted);
-
     font-size:10px;
 }
 
@@ -381,11 +360,9 @@ input{
     position:relative;
 
     margin-bottom:40px;
-
     padding:24px;
 
     border:1px solid var(--border);
-
     border-radius:20px;
 
     background:rgba(255,255,255,.96);
@@ -410,19 +387,16 @@ input{
 
 .search-hint{
     color:#9aa6b6;
-
     font-size:11px;
 }
 
 .search-box{
     display:flex;
-
     gap:10px;
 }
 
 .input-wrap{
     position:relative;
-
     flex:1;
 }
 
@@ -436,7 +410,7 @@ input{
 
     color:#8a98aa;
 
-    font-size:16px;
+    font-size:18px;
 }
 
 .search-box input{
@@ -446,13 +420,11 @@ input{
     padding:0 18px 0 47px;
 
     border:1px solid #d9e2ec;
-
     border-radius:13px;
 
     outline:none;
 
     color:var(--text);
-
     background:#fbfcfe;
 
     font-size:15px;
@@ -466,7 +438,6 @@ input{
 
 .search-box input:focus{
     border-color:var(--primary);
-
     background:white;
 
     box-shadow:
@@ -474,13 +445,12 @@ input{
 }
 
 .search-box button{
-    width:145px;
+    width:150px;
 
     border:0;
-
     border-radius:13px;
 
-    color:white;
+    color:#fff;
 
     background:
         linear-gradient(
@@ -509,9 +479,7 @@ input{
 
 .search-box button:disabled{
     opacity:.65;
-
     cursor:wait;
-
     transform:none;
 }
 
@@ -524,13 +492,11 @@ input{
     display:none;
 
     margin-top:13px;
-
     padding:12px 15px;
 
     border-radius:10px;
 
     font-size:13px;
-
     text-align:center;
 }
 
@@ -538,7 +504,6 @@ input{
     display:block;
 
     color:var(--danger);
-
     background:var(--danger-soft);
 
     border:1px solid #ffd2d6;
@@ -548,7 +513,6 @@ input{
     display:block;
 
     color:var(--success);
-
     background:var(--success-soft);
 
     border:1px solid #cceede;
@@ -579,7 +543,6 @@ input{
     height:19px;
 
     border:3px solid #dce5ef;
-
     border-top-color:var(--primary);
 
     border-radius:50%;
@@ -589,7 +552,7 @@ input{
 
 
 /* =========================================================
-   RESULT HEADER
+   RESULT
 ========================================================= */
 
 #result{
@@ -607,7 +570,6 @@ input{
     font-weight:800;
 
     letter-spacing:1.5px;
-
     text-transform:uppercase;
 }
 
@@ -627,7 +589,6 @@ input{
     color:var(--primary-dark);
 
     font-size:27px;
-
     letter-spacing:-.8px;
 }
 
@@ -641,13 +602,12 @@ input{
 
 .last-updated{
     color:#8996a8;
-
     font-size:11px;
 }
 
 
 /* =========================================================
-   SHIPMENT HERO CARD
+   SHIPMENT SUMMARY
 ========================================================= */
 
 .shipment-card{
@@ -665,7 +625,7 @@ input{
 
     border-radius:20px;
 
-    color:white;
+    color:#fff;
 
     background:
         linear-gradient(
@@ -707,9 +667,7 @@ input{
     opacity:.6;
 
     font-size:10px;
-
     letter-spacing:1.3px;
-
     text-transform:uppercase;
 }
 
@@ -718,8 +676,9 @@ input{
 
     font-size:25px;
     font-weight:800;
-
     letter-spacing:.4px;
+
+    word-break:break-word;
 }
 
 .shipment-caption{
@@ -742,9 +701,7 @@ input{
     color:rgba(255,255,255,.58);
 
     font-size:10px;
-
     text-transform:uppercase;
-
     letter-spacing:1px;
 }
 
@@ -786,7 +743,6 @@ input{
     border-radius:10px;
 
     color:var(--primary);
-
     background:var(--primary-soft);
 
     font-size:14px;
@@ -810,17 +766,16 @@ input{
 
 
 /* =========================================================
-   TRACKING PROGRESS
+   TIMELINE
 ========================================================= */
 
 .timeline-card{
     padding:28px;
 
     border:1px solid var(--border);
-
     border-radius:19px;
 
-    background:white;
+    background:#fff;
 
     box-shadow:var(--shadow);
 }
@@ -838,7 +793,6 @@ input{
     position:absolute;
 
     top:17px;
-
     left:9%;
     right:9%;
 
@@ -851,7 +805,6 @@ input{
 
 .timeline-step{
     position:relative;
-
     z-index:1;
 
     width:20%;
@@ -870,11 +823,9 @@ input{
     justify-content:center;
 
     border:4px solid white;
-
     border-radius:50%;
 
     background:#eef2f6;
-
     color:#9aa6b6;
 
     box-shadow:
@@ -885,7 +836,6 @@ input{
 
 .timeline-step.completed .timeline-circle{
     color:white;
-
     background:var(--success);
 
     box-shadow:
@@ -894,12 +844,19 @@ input{
 
 .timeline-step.active .timeline-circle{
     color:white;
-
     background:var(--primary);
 
     box-shadow:
         0 0 0 1px var(--primary),
         0 5px 15px rgba(23,105,209,.25);
+}
+
+.timeline-step.cancelled .timeline-circle{
+    color:#fff;
+    background:var(--danger);
+
+    box-shadow:
+        0 0 0 1px var(--danger);
 }
 
 .timeline-title{
@@ -919,7 +876,7 @@ input{
 
 
 /* =========================================================
-   INFO CARDS
+   INFO
 ========================================================= */
 
 .info-grid{
@@ -937,10 +894,9 @@ input{
     padding:17px;
 
     border:1px solid var(--border);
-
     border-radius:15px;
 
-    background:white;
+    background:#fff;
 
     box-shadow:
         0 4px 18px rgba(16,35,63,.035);
@@ -960,7 +916,6 @@ input{
     color:#8996a8;
 
     font-size:10px;
-
     font-weight:500;
 }
 
@@ -977,7 +932,7 @@ input{
 
 
 /* =========================================================
-   STATUS BADGE
+   STATUS
 ========================================================= */
 
 .status-badge{
@@ -998,26 +953,84 @@ input{
     height:6px;
 
     border-radius:50%;
-
     background:currentColor;
 }
 
 .status-badge.pending{
     color:var(--warning);
-
     background:var(--warning-soft);
 }
 
 .status-badge.success{
     color:var(--success);
-
     background:var(--success-soft);
 }
 
 .status-badge.danger{
     color:var(--danger);
-
     background:var(--danger-soft);
+}
+
+
+/* =========================================================
+   ADDITIONAL DATA
+========================================================= */
+
+#additionalSection{
+    display:none;
+}
+
+.additional-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:12px;
+}
+
+.additional-card{
+    min-height:92px;
+
+    padding:17px;
+
+    border:1px solid var(--border);
+    border-radius:15px;
+
+    background:#fff;
+
+    box-shadow:
+        0 4px 18px rgba(16,35,63,.035);
+
+    transition:.2s;
+}
+
+.additional-card:hover{
+    transform:translateY(-2px);
+
+    border-color:#d5e0ec;
+
+    box-shadow:var(--shadow);
+}
+
+.additional-label{
+    color:#8996a8;
+
+    font-size:10px;
+    font-weight:500;
+}
+
+.additional-value{
+    margin-top:7px;
+
+    color:var(--primary-dark);
+
+    font-size:14px;
+    font-weight:700;
+
+    word-break:break-word;
+
+    white-space:pre-wrap;
 }
 
 
@@ -1064,9 +1077,10 @@ input{
     }
 }
 
-.info-card,
 .shipment-card,
-.timeline-card{
+.timeline-card,
+.info-card,
+.additional-card{
     animation:fadeUp .45s ease both;
 }
 
@@ -1098,7 +1112,8 @@ input{
         border-left:0;
     }
 
-    .info-grid{
+    .info-grid,
+    .additional-grid{
         grid-template-columns:
             repeat(2,1fr);
     }
@@ -1125,7 +1140,6 @@ input{
 
     .hero h1{
         font-size:36px;
-
         letter-spacing:-1.8px;
     }
 
@@ -1135,15 +1149,12 @@ input{
 
     .search-card{
         padding:18px;
-
         border-radius:16px;
     }
 
     .search-header{
         align-items:flex-start;
-
         flex-direction:column;
-
         gap:4px;
     }
 
@@ -1159,7 +1170,6 @@ input{
     .result-header-row{
         flex-direction:column;
         align-items:flex-start;
-
         gap:5px;
     }
 
@@ -1179,13 +1189,13 @@ input{
         grid-column:auto;
     }
 
-    .info-grid{
+    .info-grid,
+    .additional-grid{
         grid-template-columns:1fr;
     }
 
     .timeline-card{
         overflow-x:auto;
-
         padding:22px 18px;
     }
 
@@ -1242,10 +1252,6 @@ input{
 
 </header>
 
-
-<!-- =========================================================
-     MAIN
-========================================================= -->
 
 <div class="container">
 
@@ -1379,6 +1385,7 @@ input{
 
         <button
             id="searchButton"
+            type="button"
             onclick="searchData()">
 
             ค้นหา Shipment
@@ -1454,11 +1461,10 @@ input{
 
 
     <!-- =====================================================
-         SHIPMENT SUMMARY
+         SUMMARY
     ===================================================== -->
 
     <div class="shipment-card">
-
 
         <div class="shipment-main">
 
@@ -1527,7 +1533,7 @@ input{
 
 
     <!-- =====================================================
-         TRACKING PROGRESS
+         TRACKING
     ===================================================== -->
 
     <section class="section">
@@ -1555,15 +1561,19 @@ input{
 
         <div class="timeline-card">
 
-            <div class="timeline">
+            <div
+                class="timeline"
+                id="timeline">
 
                 <div class="timeline-line"></div>
 
 
-                <div class="timeline-step completed">
+                <div
+                    class="timeline-step"
+                    id="step-booking">
 
                     <div class="timeline-circle">
-                        ✓
+                        1
                     </div>
 
                     <div class="timeline-title">
@@ -1579,10 +1589,12 @@ input{
                 </div>
 
 
-                <div class="timeline-step completed">
+                <div
+                    class="timeline-step"
+                    id="step-arrival">
 
                     <div class="timeline-circle">
-                        ✓
+                        2
                     </div>
 
                     <div class="timeline-title">
@@ -1598,10 +1610,12 @@ input{
                 </div>
 
 
-                <div class="timeline-step active">
+                <div
+                    class="timeline-step"
+                    id="step-loading">
 
                     <div class="timeline-circle">
-                        ●
+                        3
                     </div>
 
                     <div class="timeline-title">
@@ -1617,10 +1631,12 @@ input{
                 </div>
 
 
-                <div class="timeline-step">
+                <div
+                    class="timeline-step"
+                    id="step-departure">
 
                     <div class="timeline-circle">
-                        ○
+                        4
                     </div>
 
                     <div class="timeline-title">
@@ -1636,17 +1652,21 @@ input{
                 </div>
 
 
-                <div class="timeline-step">
+                <div
+                    class="timeline-step"
+                    id="step-completed">
 
                     <div class="timeline-circle">
-                        ○
+                        5
                     </div>
 
                     <div class="timeline-title">
                         Completed
                     </div>
 
-                    <div class="timeline-time">
+                    <div
+                        class="timeline-time"
+                        id="t-completed">
                         -
                     </div>
 
@@ -1688,94 +1708,34 @@ input{
 
         <div class="info-grid">
 
-
             <div class="info-card">
-
-                <div class="info-label">
-                    Customer
-                </div>
-
-                <div
-                    class="info-value"
-                    id="d-customer">
-                    -
-                </div>
-
+                <div class="info-label">Customer</div>
+                <div class="info-value" id="d-customer">-</div>
             </div>
 
-
             <div class="info-card">
-
-                <div class="info-label">
-                    Location
-                </div>
-
-                <div
-                    class="info-value"
-                    id="d-location">
-                    -
-                </div>
-
+                <div class="info-label">Location</div>
+                <div class="info-value" id="d-location">-</div>
             </div>
 
-
             <div class="info-card">
-
-                <div class="info-label">
-                    Date
-                </div>
-
-                <div
-                    class="info-value"
-                    id="d-date">
-                    -
-                </div>
-
+                <div class="info-label">Date</div>
+                <div class="info-value" id="d-date">-</div>
             </div>
 
-
             <div class="info-card">
-
-                <div class="info-label">
-                    Time In
-                </div>
-
-                <div
-                    class="info-value"
-                    id="d-time-in">
-                    -
-                </div>
-
+                <div class="info-label">Time In</div>
+                <div class="info-value" id="d-time-in">-</div>
             </div>
 
-
             <div class="info-card">
-
-                <div class="info-label">
-                    Time Out
-                </div>
-
-                <div
-                    class="info-value"
-                    id="d-time-out">
-                    -
-                </div>
-
+                <div class="info-label">Time Out</div>
+                <div class="info-value" id="d-time-out">-</div>
             </div>
 
-
             <div class="info-card">
-
-                <div class="info-label">
-                    Status
-                </div>
-
-                <div
-                    class="info-value"
-                    id="d-status">
-                    -
-                </div>
-
+                <div class="info-label">Status</div>
+                <div class="info-value" id="d-status">-</div>
             </div>
 
         </div>
@@ -1812,94 +1772,34 @@ input{
 
         <div class="info-grid">
 
-
             <div class="info-card">
-
-                <div class="info-label">
-                    Loading Start
-                </div>
-
-                <div
-                    class="info-value"
-                    id="d-loading-start">
-                    -
-                </div>
-
+                <div class="info-label">Loading Start</div>
+                <div class="info-value" id="d-loading-start">-</div>
             </div>
 
-
             <div class="info-card">
-
-                <div class="info-label">
-                    Loading Finish
-                </div>
-
-                <div
-                    class="info-value"
-                    id="d-loading-finish">
-                    -
-                </div>
-
+                <div class="info-label">Loading Finish</div>
+                <div class="info-value" id="d-loading-finish">-</div>
             </div>
 
-
             <div class="info-card">
-
-                <div class="info-label">
-                    Company
-                </div>
-
-                <div
-                    class="info-value"
-                    id="d-company">
-                    -
-                </div>
-
+                <div class="info-label">Company</div>
+                <div class="info-value" id="d-company">-</div>
             </div>
 
-
             <div class="info-card">
-
-                <div class="info-label">
-                    Driver
-                </div>
-
-                <div
-                    class="info-value"
-                    id="d-driver">
-                    -
-                </div>
-
+                <div class="info-label">Driver</div>
+                <div class="info-value" id="d-driver">-</div>
             </div>
 
-
             <div class="info-card">
-
-                <div class="info-label">
-                    Telephone
-                </div>
-
-                <div
-                    class="info-value"
-                    id="d-tel">
-                    -
-                </div>
-
+                <div class="info-label">Telephone</div>
+                <div class="info-value" id="d-tel">-</div>
             </div>
 
-
             <div class="info-card">
-
-                <div class="info-label">
-                    Truck
-                </div>
-
-                <div
-                    class="info-value"
-                    id="d-truck">
-                    -
-                </div>
-
+                <div class="info-label">Truck</div>
+                <div class="info-value" id="d-truck">-</div>
             </div>
 
         </div>
@@ -1936,69 +1836,67 @@ input{
 
         <div class="info-grid">
 
-
             <div class="info-card">
-
-                <div class="info-label">
-                    License Plate
-                </div>
-
-                <div
-                    class="info-value"
-                    id="d-plate">
-                    -
-                </div>
-
+                <div class="info-label">License Plate</div>
+                <div class="info-value" id="d-plate">-</div>
             </div>
 
-
             <div class="info-card">
-
-                <div class="info-label">
-                    Booking No.
-                </div>
-
-                <div
-                    class="info-value"
-                    id="d-booking">
-                    -
-                </div>
-
+                <div class="info-label">Booking No.</div>
+                <div class="info-value" id="d-booking">-</div>
             </div>
 
-
             <div class="info-card">
-
-                <div class="info-label">
-                    Quantity
-                </div>
-
-                <div
-                    class="info-value"
-                    id="d-quantity">
-                    -
-                </div>
-
+                <div class="info-label">Quantity</div>
+                <div class="info-value" id="d-quantity">-</div>
             </div>
 
-
             <div class="info-card">
-
-                <div class="info-label">
-                    Remark
-                </div>
-
-                <div
-                    class="info-value"
-                    id="d-remark">
-                    -
-                </div>
-
+                <div class="info-label">Remark</div>
+                <div class="info-value" id="d-remark">-</div>
             </div>
 
         </div>
 
     </section>
+
+
+    <!-- =====================================================
+         ADDITIONAL INFORMATION
+    ===================================================== -->
+
+    <section
+        class="section"
+        id="additionalSection">
+
+        <div class="section-heading">
+
+            <div class="section-icon">
+                ▤
+            </div>
+
+            <div>
+
+                <h3>
+                    Additional Shipment Information
+                </h3>
+
+                <p>
+                    ข้อมูลเพิ่มเติมจาก Google Sheet
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="additional-grid"
+            id="additionalData">
+        </div>
+
+    </section>
+
 
 </main>
 
@@ -2056,25 +1954,28 @@ const result =
 
 function showMessage(text,type){
 
-    message.textContent=text;
+    message.textContent =
+        text;
 
-    message.className=
-        "message "+type;
+    message.className =
+        "message " + type;
 
 }
 
 
 function clearMessage(){
 
-    message.textContent="";
+    message.textContent =
+        "";
 
-    message.className="message";
+    message.className =
+        "message";
 
 }
 
 
 /* =========================================================
-   SAFE VALUE
+   VALUE
 ========================================================= */
 
 function value(data,names){
@@ -2085,16 +1986,32 @@ function value(data,names){
             data &&
             data[name] !== undefined &&
             data[name] !== null &&
-            data[name] !== ""
+            String(data[name]).trim() !== ""
         ){
 
-            return data[name];
+            return String(data[name]);
 
         }
 
     }
 
     return "-";
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(value){
+
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
 }
 
@@ -2108,20 +2025,23 @@ function statusHTML(status){
     const text =
         String(status || "-");
 
-    let type="pending";
-
-    const lower=
+    const lower =
         text.toLowerCase();
+
+    let type =
+        "pending";
 
 
     if(
         lower.includes("เสร็จ") ||
         lower.includes("complete") ||
         lower.includes("success") ||
-        lower.includes("ส่งแล้ว")
+        lower.includes("ส่งแล้ว") ||
+        lower.includes("completed")
     ){
 
-        type="success";
+        type =
+            "success";
 
     }
 
@@ -2132,7 +2052,8 @@ function statusHTML(status){
         lower.includes("error")
     ){
 
-        type="danger";
+        type =
+            "danger";
 
     }
 
@@ -2140,9 +2061,369 @@ function statusHTML(status){
     return `
         <span class="status-badge ${type}">
             <span class="dot"></span>
-            ${text}
+            ${escapeHTML(text)}
         </span>
     `;
+
+}
+
+
+/* =========================================================
+   TIMELINE
+========================================================= */
+
+function updateTimeline(data){
+
+    const booking =
+        value(data,[
+            "Booking No.",
+            "Booking No",
+            "Booking",
+            "booking",
+            "bookingNo"
+        ]);
+
+    const timeIn =
+        value(data,[
+            "Time In",
+            "timeIn",
+            "เวลาเข้า"
+        ]);
+
+    const loadingStart =
+        value(data,[
+            "Loading Start",
+            "loadingStart",
+            "เวลาเริ่มโหลดสินค้า"
+        ]);
+
+    const loadingFinish =
+        value(data,[
+            "Loading Finish",
+            "loadingFinish",
+            "เวลาโหลดสินค้าเสร็จ"
+        ]);
+
+    const timeOut =
+        value(data,[
+            "Time Out",
+            "timeOut",
+            "เวลาออก"
+        ]);
+
+    const status =
+        value(data,[
+            "Status",
+            "status",
+            "สถานะ",
+            "ลักษณะงาน"
+        ]);
+
+
+    document.getElementById("t-booking").textContent =
+        booking !== "-" ? "Confirmed" : "-";
+
+    document.getElementById("t-in").textContent =
+        timeIn;
+
+    document.getElementById("t-loading").textContent =
+        loadingFinish !== "-" ?
+        loadingFinish :
+        loadingStart;
+
+    document.getElementById("t-out").textContent =
+        timeOut;
+
+
+    const bookingStep =
+        document.getElementById("step-booking");
+
+    const arrivalStep =
+        document.getElementById("step-arrival");
+
+    const loadingStep =
+        document.getElementById("step-loading");
+
+    const departureStep =
+        document.getElementById("step-departure");
+
+    const completedStep =
+        document.getElementById("step-completed");
+
+
+    [
+        bookingStep,
+        arrivalStep,
+        loadingStep,
+        departureStep,
+        completedStep
+    ].forEach(step => {
+
+        step.classList.remove(
+            "completed",
+            "active",
+            "cancelled"
+        );
+
+    });
+
+
+    const lower =
+        status.toLowerCase();
+
+
+    if(
+        lower.includes("ยกเลิก") ||
+        lower.includes("cancel")
+    ){
+
+        loadingStep.classList.add("cancelled");
+
+        return;
+
+    }
+
+
+    if(booking !== "-"){
+
+        bookingStep.classList.add("completed");
+
+    }
+
+
+    if(timeIn !== "-"){
+
+        arrivalStep.classList.add("completed");
+
+    }
+
+
+    if(
+        loadingStart !== "-" ||
+        loadingFinish !== "-"
+    ){
+
+        loadingStep.classList.add("completed");
+
+    }
+
+
+    if(timeOut !== "-"){
+
+        departureStep.classList.add("completed");
+
+    }
+
+
+    if(
+        lower.includes("เสร็จ") ||
+        lower.includes("complete") ||
+        lower.includes("success") ||
+        lower.includes("ส่งแล้ว")
+    ){
+
+        completedStep.classList.add("completed");
+
+        document.getElementById(
+            "t-completed"
+        ).textContent =
+            status;
+
+    }
+    else if(
+        loadingStart !== "-" ||
+        loadingFinish !== "-"
+    ){
+
+        departureStep.classList.add("active");
+
+    }
+    else if(timeIn !== "-"){
+
+        loadingStep.classList.add("active");
+
+    }
+    else if(booking !== "-"){
+
+        arrivalStep.classList.add("active");
+
+    }
+    else{
+
+        bookingStep.classList.add("active");
+
+    }
+
+}
+
+
+/* =========================================================
+   ADDITIONAL DATA
+========================================================= */
+
+function displayAdditionalData(data){
+
+    const section =
+        document.getElementById(
+            "additionalSection"
+        );
+
+    const container =
+        document.getElementById(
+            "additionalData"
+        );
+
+
+    if(
+        !section ||
+        !container ||
+        !data
+    ){
+
+        return;
+
+    }
+
+
+    const usedFields =
+        new Set([
+
+            "HBL No.",
+            "HBL No",
+            "HBL",
+            "hbl",
+            "hblNo",
+
+            "Customer",
+            "customer",
+            "ชื่อลูกค้า",
+
+            "Location",
+            "location",
+            "สถานที่โหลดสินค้า",
+
+            "Date",
+            "date",
+            "วันที่เข้า",
+
+            "Time In",
+            "timeIn",
+            "เวลาเข้า",
+
+            "Time Out",
+            "timeOut",
+            "เวลาออก",
+
+            "Loading Start",
+            "loadingStart",
+            "เวลาเริ่มโหลดสินค้า",
+
+            "Loading Finish",
+            "loadingFinish",
+            "เวลาโหลดสินค้าเสร็จ",
+
+            "Status",
+            "status",
+            "สถานะ",
+            "ลักษณะงาน",
+
+            "Company",
+            "company",
+            "ชื่อบริษัท",
+
+            "Driver",
+            "driver",
+            "ชื่อ พขร.",
+            "ชื่อ พขร",
+            "ชื่อ พชร.",
+            "ชื่อ พชร",
+
+            "TEL",
+            "Tel",
+            "tel",
+            "โทรศัพท์",
+            "เบอร์โทร",
+            "เบอร์โทรศัพท์",
+
+            "Plate",
+            "plate",
+            "ทะเบียนรถ",
+
+            "Truck",
+            "truck",
+            "ยี่ห้อรถ",
+
+            "Booking No.",
+            "Booking No",
+            "Booking",
+            "booking",
+            "bookingNo",
+
+            "QTY",
+            "Quantity",
+            "quantity",
+            "จำนวน",
+            "qty",
+
+            "REMARK",
+            "Remark",
+            "remark",
+            "หมายเหตุ"
+
+        ]);
+
+
+    const fields =
+        Object.entries(data)
+        .filter(([key,val]) => {
+
+            return (
+                !usedFields.has(key) &&
+                val !== null &&
+                val !== undefined &&
+                String(val).trim() !== ""
+            );
+
+        });
+
+
+    if(fields.length === 0){
+
+        section.style.display =
+            "none";
+
+        container.innerHTML =
+            "";
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        fields.map(([key,val]) => {
+
+            return `
+
+                <div class="additional-card">
+
+                    <div class="additional-label">
+                        ${escapeHTML(key)}
+                    </div>
+
+                    <div class="additional-value">
+                        ${escapeHTML(val)}
+                    </div>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+
+    section.style.display =
+        "block";
 
 }
 
@@ -2235,7 +2516,8 @@ function displayData(data){
         value(data,[
             "Status",
             "status",
-            "สถานะ"
+            "สถานะ",
+            "ลักษณะงาน"
         ]);
 
 
@@ -2252,7 +2534,9 @@ function displayData(data){
             "Driver",
             "driver",
             "ชื่อ พขร.",
-            "ชื่อ พขร"
+            "ชื่อ พขร",
+            "ชื่อ พชร.",
+            "ชื่อ พชร"
         ]);
 
 
@@ -2261,7 +2545,9 @@ function displayData(data){
             "TEL",
             "Tel",
             "tel",
-            "โทรศัพท์"
+            "โทรศัพท์",
+            "เบอร์โทร",
+            "เบอร์โทรศัพท์"
         ]);
 
 
@@ -2286,7 +2572,8 @@ function displayData(data){
             "Booking No.",
             "Booking No",
             "Booking",
-            "booking"
+            "booking",
+            "bookingNo"
         ]);
 
 
@@ -2294,7 +2581,9 @@ function displayData(data){
         value(data,[
             "QTY",
             "Quantity",
-            "quantity"
+            "quantity",
+            "จำนวน",
+            "qty"
         ]);
 
 
@@ -2302,102 +2591,137 @@ function displayData(data){
         value(data,[
             "REMARK",
             "Remark",
-            "remark"
+            "remark",
+            "หมายเหตุ"
         ]);
 
 
     /* SUMMARY */
 
-    document.getElementById("r-hbl").textContent =
+    document.getElementById(
+        "r-hbl"
+    ).textContent =
         hbl;
 
-    document.getElementById("r-customer").textContent =
+    document.getElementById(
+        "r-customer"
+    ).textContent =
         customer;
 
-    document.getElementById("r-location").textContent =
+    document.getElementById(
+        "r-location"
+    ).textContent =
         location;
 
-    document.getElementById("r-date").textContent =
+    document.getElementById(
+        "r-date"
+    ).textContent =
         date;
 
 
     /* DETAILS */
 
-    document.getElementById("d-customer").textContent =
+    document.getElementById(
+        "d-customer"
+    ).textContent =
         customer;
 
-    document.getElementById("d-location").textContent =
+    document.getElementById(
+        "d-location"
+    ).textContent =
         location;
 
-    document.getElementById("d-date").textContent =
+    document.getElementById(
+        "d-date"
+    ).textContent =
         date;
 
-    document.getElementById("d-time-in").textContent =
+    document.getElementById(
+        "d-time-in"
+    ).textContent =
         timeIn;
 
-    document.getElementById("d-time-out").textContent =
+    document.getElementById(
+        "d-time-out"
+    ).textContent =
         timeOut;
 
-    document.getElementById("d-status").innerHTML =
+    document.getElementById(
+        "d-status"
+    ).innerHTML =
         statusHTML(status);
 
 
     /* LOADING */
 
-    document.getElementById("d-loading-start").textContent =
+    document.getElementById(
+        "d-loading-start"
+    ).textContent =
         loadingStart;
 
-    document.getElementById("d-loading-finish").textContent =
+    document.getElementById(
+        "d-loading-finish"
+    ).textContent =
         loadingFinish;
 
-    document.getElementById("d-company").textContent =
+    document.getElementById(
+        "d-company"
+    ).textContent =
         company;
 
-    document.getElementById("d-driver").textContent =
+    document.getElementById(
+        "d-driver"
+    ).textContent =
         driver;
 
-    document.getElementById("d-tel").textContent =
+    document.getElementById(
+        "d-tel"
+    ).textContent =
         tel;
 
-    document.getElementById("d-truck").textContent =
+    document.getElementById(
+        "d-truck"
+    ).textContent =
         truck;
 
 
     /* VEHICLE */
 
-    document.getElementById("d-plate").textContent =
+    document.getElementById(
+        "d-plate"
+    ).textContent =
         plate;
 
-    document.getElementById("d-booking").textContent =
+    document.getElementById(
+        "d-booking"
+    ).textContent =
         booking;
 
-    document.getElementById("d-quantity").textContent =
+    document.getElementById(
+        "d-quantity"
+    ).textContent =
         quantity;
 
-    document.getElementById("d-remark").textContent =
+    document.getElementById(
+        "d-remark"
+    ).textContent =
         remark;
 
 
     /* TIMELINE */
 
-    document.getElementById("t-booking").textContent =
-        booking !== "-" ?
-        "Confirmed" :
-        "-";
+    updateTimeline(data);
 
-    document.getElementById("t-in").textContent =
-        timeIn;
 
-    document.getElementById("t-loading").textContent =
-        loadingStart;
+    /* ADDITIONAL */
 
-    document.getElementById("t-out").textContent =
-        timeOut;
+    displayAdditionalData(data);
 
 
     /* SHOW */
 
-    result.style.display="block";
+    result.style.display =
+        "block";
 
 
     result.scrollIntoView({
@@ -2435,16 +2759,17 @@ async function searchData(){
     }
 
 
-    button.disabled=true;
+    button.disabled =
+        true;
 
-    button.textContent=
+    button.textContent =
         "กำลังค้นหา...";
 
 
-    loading.style.display=
+    loading.style.display =
         "flex";
 
-    result.style.display=
+    result.style.display =
         "none";
 
 
@@ -2457,10 +2782,13 @@ async function searchData(){
 
 
         const response =
-            await fetch(url,{
-                method:"GET",
-                cache:"no-store"
-            });
+            await fetch(
+                url,
+                {
+                    method:"GET",
+                    cache:"no-store"
+                }
+            );
 
 
         if(!response.ok){
@@ -2476,19 +2804,28 @@ async function searchData(){
             await response.json();
 
 
-        let data=json;
+        if(
+            json.success === false
+        ){
 
-
-        if(json.data !== undefined){
-
-            data=json.data;
+            throw new Error(
+                json.message ||
+                "ไม่พบข้อมูล HBL นี้"
+            );
 
         }
 
 
+        let data =
+            json.data !== undefined ?
+            json.data :
+            json;
+
+
         if(Array.isArray(data)){
 
-            data=data[0];
+            data =
+                data[0];
 
         }
 
@@ -2498,7 +2835,8 @@ async function searchData(){
             Array.isArray(json.result)
         ){
 
-            data=json.result[0];
+            data =
+                json.result[0];
 
         }
 
@@ -2508,7 +2846,8 @@ async function searchData(){
             Array.isArray(json.results)
         ){
 
-            data=json.results[0];
+            data =
+                json.results[0];
 
         }
 
@@ -2536,6 +2875,9 @@ async function searchData(){
 
         console.error(error);
 
+        result.style.display =
+            "none";
+
         showMessage(
             error.message ||
             "เกิดข้อผิดพลาดในการค้นหา",
@@ -2545,13 +2887,13 @@ async function searchData(){
     }
     finally{
 
-        loading.style.display=
+        loading.style.display =
             "none";
 
-        button.disabled=
+        button.disabled =
             false;
 
-        button.textContent=
+        button.textContent =
             "ค้นหา Shipment";
 
     }
@@ -2560,14 +2902,14 @@ async function searchData(){
 
 
 /* =========================================================
-   ENTER KEY
+   ENTER
 ========================================================= */
 
 input.addEventListener(
     "keydown",
     function(event){
 
-        if(event.key==="Enter"){
+        if(event.key === "Enter"){
 
             event.preventDefault();
 
@@ -2578,8 +2920,39 @@ input.addEventListener(
     }
 );
 
+
+/* =========================================================
+   URL HBL
+========================================================= */
+
+(function(){
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const hblFromURL =
+        params.get("hbl");
+
+
+    if(hblFromURL){
+
+        input.value =
+            hblFromURL.trim();
+
+
+        setTimeout(
+            searchData,
+            300
+        );
+
+    }
+
+})();
+
 </script>
 
 </body>
 </html>
-```
