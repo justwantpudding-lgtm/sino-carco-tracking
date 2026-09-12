@@ -1,947 +1,1200 @@
+```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sino Carco Tracking</title>
+<title>Sino Carco | Shipment Tracking</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-:root {
-    --navy: #0b2850;
-    --navy-2: #123d73;
-    --blue: #1769d1;
-    --blue-light: #eaf3ff;
+/* =========================================================
+   ROOT
+========================================================= */
 
-    --bg: #f4f7fb;
-    --white: #ffffff;
+:root{
+    --primary:#1769d1;
+    --primary-dark:#0b2850;
+    --primary-soft:#edf5ff;
 
-    --text: #10233f;
-    --muted: #718096;
+    --bg:#f5f7fb;
+    --surface:#ffffff;
+    --surface-2:#f9fbfd;
 
-    --border: #e3eaf3;
+    --text:#10233f;
+    --muted:#738197;
+    --border:#e5ebf2;
 
-    --success-bg: #eaf8f0;
-    --success: #198754;
+    --success:#15966a;
+    --success-soft:#eaf8f2;
 
-    --warning-bg: #fff6dc;
-    --warning: #a87500;
+    --warning:#b27a00;
+    --warning-soft:#fff7df;
 
-    --danger-bg: #fff0f0;
-    --danger: #d92d3a;
+    --danger:#d93644;
+    --danger-soft:#fff0f1;
+
+    --radius:18px;
 
     --shadow:
-        0 10px 35px rgba(15, 39, 70, 0.07);
+        0 10px 30px rgba(16,35,63,.06);
 
-    --shadow-hover:
-        0 18px 45px rgba(15, 39, 70, 0.12);
+    --shadow-lg:
+        0 20px 55px rgba(16,35,63,.10);
 }
 
-* {
-    box-sizing: border-box;
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    margin: 0;
+body{
+    margin:0;
+
     background:
         radial-gradient(
-            circle at 10% 0%,
-            rgba(23,105,209,.08),
-            transparent 28%
+            circle at 10% -10%,
+            rgba(23,105,209,.10),
+            transparent 30%
         ),
-        var(--bg);
+        linear-gradient(
+            180deg,
+            #f7f9fc 0%,
+            #f4f7fb 100%
+        );
 
-    color: var(--text);
+    color:var(--text);
 
     font-family:
         "Inter",
         "Kanit",
-        Arial,
         sans-serif;
 
-    min-height: 100vh;
+    min-height:100vh;
 }
 
-/* =========================
-   HEADER
-========================= */
-
-.topbar {
-    height: 72px;
-    background: rgba(255,255,255,.94);
-
-    border-bottom: 1px solid var(--border);
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 6%;
-
-    position: sticky;
-    top: 0;
-    z-index: 100;
-
-    backdrop-filter: blur(12px);
+button,
+input{
+    font-family:inherit;
 }
 
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 13px;
+
+/* =========================================================
+   TOP NAV
+========================================================= */
+
+.topbar{
+    height:72px;
+
+    position:sticky;
+    top:0;
+
+    z-index:100;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 max(24px, calc((100vw - 1180px)/2));
+
+    background:rgba(255,255,255,.88);
+
+    border-bottom:1px solid rgba(229,235,242,.85);
+
+    backdrop-filter:blur(18px);
 }
 
-.brand-logo {
-    width: 42px;
-    height: 42px;
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
 
-    border-radius: 12px;
+.brand-logo{
+    width:42px;
+    height:42px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:13px;
+
+    color:#fff;
+
+    font-size:20px;
 
     background:
         linear-gradient(
             135deg,
-            var(--navy),
-            var(--blue)
+            #0b2850,
+            #1769d1
         );
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    box-shadow:
+        0 8px 22px rgba(23,105,209,.25);
+}
 
-    font-size: 22px;
+.brand-name{
+    color:var(--primary-dark);
+
+    font-size:17px;
+    font-weight:800;
+
+    letter-spacing:-.4px;
+}
+
+.brand-sub{
+    margin-top:1px;
+
+    color:#8b98aa;
+
+    font-size:9px;
+    font-weight:600;
+
+    letter-spacing:1.6px;
+}
+
+.system-status{
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    color:#6f7d90;
+
+    font-size:12px;
+    font-weight:500;
+}
+
+.status-dot{
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#1baa72;
 
     box-shadow:
-        0 7px 18px rgba(23,105,209,.20);
+        0 0 0 5px rgba(27,170,114,.10);
 }
 
-.brand-text {
-    display: flex;
-    flex-direction: column;
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.container{
+    width:min(1180px, calc(100% - 40px));
+
+    margin:auto;
 }
 
-.brand-name {
-    font-size: 18px;
-    font-weight: 800;
-    letter-spacing: -.3px;
-    color: var(--navy);
-}
 
-.brand-sub {
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-}
-
-.system-status {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    color: #607087;
-    font-size: 13px;
-}
-
-.status-dot {
-    width: 8px;
-    height: 8px;
-
-    border-radius: 50%;
-
-    background: #22a66f;
-
-    box-shadow:
-        0 0 0 4px rgba(34,166,111,.12);
-}
-
-/* =========================
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
-.hero {
-    max-width: 1180px;
-    margin: 0 auto;
-
-    padding:
-        65px 24px
-        38px;
+.hero{
+    padding:58px 0 28px;
 }
 
-.hero-content {
-    max-width: 780px;
+.hero-grid{
+    display:grid;
+
+    grid-template-columns:
+        1.2fr
+        .8fr;
+
+    align-items:center;
+
+    gap:50px;
 }
 
-.eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
 
-    font-size: 12px;
-    font-weight: 700;
+    padding:7px 11px;
 
-    color: var(--blue);
+    border-radius:999px;
 
-    background: var(--blue-light);
+    color:var(--primary);
 
-    padding: 8px 13px;
+    background:var(--primary-soft);
 
-    border-radius: 999px;
+    font-size:11px;
+    font-weight:700;
 
-    margin-bottom: 18px;
+    letter-spacing:.7px;
 }
 
-.hero h1 {
-    margin: 0;
+.eyebrow span{
+    width:6px;
+    height:6px;
 
-    font-size: clamp(34px, 5vw, 56px);
+    border-radius:50%;
 
-    line-height: 1.05;
-
-    letter-spacing: -2px;
-
-    color: var(--navy);
-
-    font-weight: 800;
+    background:var(--primary);
 }
 
-.hero h1 span {
-    color: var(--blue);
+.hero h1{
+    margin:17px 0 0;
+
+    color:var(--primary-dark);
+
+    font-size:clamp(38px,5vw,58px);
+
+    line-height:1.04;
+
+    letter-spacing:-2.8px;
+
+    font-weight:800;
 }
 
-.hero-description {
-    margin-top: 18px;
-
-    font-size: 16px;
-
-    color: var(--muted);
-
-    line-height: 1.7;
-
-    max-width: 650px;
+.hero h1 span{
+    color:var(--primary);
 }
 
-/* =========================
+.hero-description{
+    max-width:610px;
+
+    margin:17px 0 0;
+
+    color:var(--muted);
+
+    font-size:15px;
+
+    line-height:1.8;
+}
+
+
+/* Hero side */
+
+.hero-panel{
+    padding:25px;
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f8fbff
+        );
+
+    box-shadow:var(--shadow);
+}
+
+.hero-panel-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:22px;
+}
+
+.hero-panel-title{
+    color:var(--primary-dark);
+
+    font-size:13px;
+    font-weight:700;
+}
+
+.live{
+    display:flex;
+    align-items:center;
+    gap:6px;
+
+    color:var(--success);
+
+    font-size:11px;
+    font-weight:700;
+}
+
+.live::before{
+    content:"";
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:currentColor;
+}
+
+.hero-stats{
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:10px;
+}
+
+.mini-stat{
+    padding:15px;
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    background:white;
+}
+
+.mini-stat-label{
+    color:var(--muted);
+
+    font-size:10px;
+}
+
+.mini-stat-value{
+    margin-top:5px;
+
+    color:var(--primary-dark);
+
+    font-size:19px;
+    font-weight:800;
+}
+
+
+/* =========================================================
    SEARCH
-========================= */
+========================================================= */
 
-.search-card {
-    max-width: 1180px;
+.search-card{
+    position:relative;
 
-    margin:
-        0 auto
-        30px;
+    margin-bottom:40px;
 
-    padding: 28px;
+    padding:24px;
 
-    background: var(--white);
+    border:1px solid var(--border);
 
-    border:
-        1px solid var(--border);
+    border-radius:20px;
 
-    border-radius: 20px;
+    background:rgba(255,255,255,.96);
 
-    box-shadow: var(--shadow);
-
-    animation: fadeUp .6s ease;
+    box-shadow:var(--shadow-lg);
 }
 
-.search-title {
-    font-size: 16px;
+.search-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
-    font-weight: 700;
-
-    color: var(--navy);
-
-    margin-bottom: 15px;
+    margin-bottom:14px;
 }
 
-.search-box {
-    display: flex;
-    gap: 12px;
+.search-title{
+    color:var(--primary-dark);
+
+    font-size:14px;
+    font-weight:700;
 }
 
-.search-box input {
-    flex: 1;
+.search-hint{
+    color:#9aa6b6;
 
-    height: 58px;
-
-    border:
-        1px solid #d6e0ec;
-
-    border-radius: 13px;
-
-    padding:
-        0 18px;
-
-    font-size: 16px;
-
-    color: var(--text);
-
-    background: #fbfcfe;
-
-    outline: none;
-
-    transition: .2s;
+    font-size:11px;
 }
 
-.search-box input:focus {
-    border-color: var(--blue);
+.search-box{
+    display:flex;
 
-    background: white;
+    gap:10px;
+}
+
+.input-wrap{
+    position:relative;
+
+    flex:1;
+}
+
+.input-icon{
+    position:absolute;
+
+    left:17px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#8a98aa;
+
+    font-size:16px;
+}
+
+.search-box input{
+    width:100%;
+    height:58px;
+
+    padding:0 18px 0 47px;
+
+    border:1px solid #d9e2ec;
+
+    border-radius:13px;
+
+    outline:none;
+
+    color:var(--text);
+
+    background:#fbfcfe;
+
+    font-size:15px;
+
+    transition:.2s;
+}
+
+.search-box input::placeholder{
+    color:#9aa6b6;
+}
+
+.search-box input:focus{
+    border-color:var(--primary);
+
+    background:white;
 
     box-shadow:
         0 0 0 4px rgba(23,105,209,.08);
 }
 
-.search-box button {
-    width: 145px;
+.search-box button{
+    width:145px;
 
-    border: 0;
+    border:0;
 
-    border-radius: 13px;
+    border-radius:13px;
+
+    color:white;
 
     background:
         linear-gradient(
             135deg,
-            var(--navy),
-            var(--blue)
+            #0b2850,
+            #1769d1
         );
 
-    color: white;
+    font-size:14px;
+    font-weight:700;
 
-    font-family: inherit;
-
-    font-size: 15px;
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-    transition: .25s;
+    cursor:pointer;
 
     box-shadow:
-        0 8px 20px rgba(23,105,209,.20);
+        0 8px 20px rgba(23,105,209,.22);
+
+    transition:.25s;
 }
 
-.search-box button:hover {
-    transform: translateY(-2px);
+.search-box button:hover{
+    transform:translateY(-2px);
 
     box-shadow:
         0 13px 28px rgba(23,105,209,.28);
 }
 
-.search-box button:disabled {
-    opacity: .65;
-    cursor: wait;
-    transform: none;
+.search-box button:disabled{
+    opacity:.65;
+
+    cursor:wait;
+
+    transform:none;
 }
 
-/* =========================
+
+/* =========================================================
    MESSAGE
-========================= */
+========================================================= */
 
-.message {
-    display: none;
+.message{
+    display:none;
 
-    margin-top: 15px;
+    margin-top:13px;
 
-    padding: 13px 16px;
+    padding:12px 15px;
 
-    border-radius: 10px;
+    border-radius:10px;
 
-    font-size: 14px;
+    font-size:13px;
 
-    text-align: center;
+    text-align:center;
 }
 
-.message.error {
-    display: block;
+.message.error{
+    display:block;
 
-    color: var(--danger);
+    color:var(--danger);
 
-    background: var(--danger-bg);
+    background:var(--danger-soft);
 
-    border: 1px solid #ffd1d1;
+    border:1px solid #ffd2d6;
 }
 
-.message.success {
-    display: block;
+.message.success{
+    display:block;
 
-    color: var(--success);
+    color:var(--success);
 
-    background: var(--success-bg);
+    background:var(--success-soft);
 
-    border: 1px solid #ccefdc;
+    border:1px solid #cceede;
 }
 
-/* =========================
-   RESULT
-========================= */
 
-#result {
-    max-width: 1180px;
+/* =========================================================
+   LOADING
+========================================================= */
 
-    margin:
-        0 auto
-        80px;
+.loading{
+    display:none;
 
-    padding: 0 0;
+    align-items:center;
+    justify-content:center;
+
+    gap:10px;
+
+    padding:30px;
+
+    color:var(--muted);
+
+    font-size:13px;
 }
 
-/* =========================
+.spinner{
+    width:19px;
+    height:19px;
+
+    border:3px solid #dce5ef;
+
+    border-top-color:var(--primary);
+
+    border-radius:50%;
+
+    animation:spin .7s linear infinite;
+}
+
+
+/* =========================================================
    RESULT HEADER
-========================= */
+========================================================= */
 
-.result-header {
-    margin-bottom: 22px;
+#result{
+    margin-bottom:80px;
 }
 
-.result-label {
-    color: var(--blue);
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    letter-spacing: 1.2px;
-
-    text-transform: uppercase;
+.result-header{
+    margin-bottom:20px;
 }
 
-.result-header h2 {
-    margin:
-        5px 0 5px;
+.result-label{
+    color:var(--primary);
 
-    color: var(--navy);
+    font-size:10px;
+    font-weight:800;
 
-    font-size: 28px;
+    letter-spacing:1.5px;
 
-    letter-spacing: -.6px;
+    text-transform:uppercase;
 }
 
-.result-header p {
-    margin: 0;
+.result-header-row{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
 
-    color: var(--muted);
+    gap:20px;
 
-    font-size: 14px;
+    margin-top:5px;
 }
 
-/* =========================
-   OVERVIEW
-========================= */
+.result-header h2{
+    margin:0;
 
-.overview {
-    display: grid;
+    color:var(--primary-dark);
+
+    font-size:27px;
+
+    letter-spacing:-.8px;
+}
+
+.result-header p{
+    margin:5px 0 0;
+
+    color:var(--muted);
+
+    font-size:13px;
+}
+
+.last-updated{
+    color:#8996a8;
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   SHIPMENT HERO CARD
+========================================================= */
+
+.shipment-card{
+    display:grid;
 
     grid-template-columns:
-        1.5fr
+        1.35fr
         1fr
         1fr
         1fr;
 
+    overflow:hidden;
+
+    margin-bottom:24px;
+
+    border-radius:20px;
+
+    color:white;
+
     background:
         linear-gradient(
-            135deg,
-            var(--navy),
-            var(--navy-2)
+            125deg,
+            #091f3e,
+            #0f3970 65%,
+            #1769d1
         );
 
-    border-radius: 20px;
-
-    overflow: hidden;
-
-    color: white;
-
-    margin-bottom: 25px;
-
     box-shadow:
-        0 15px 40px rgba(11,40,80,.15);
+        0 18px 45px rgba(11,40,80,.18);
 }
 
-.overview-item {
-    padding: 24px;
+.shipment-main{
+    position:relative;
 
-    border-right:
+    padding:26px;
+
+    overflow:hidden;
+}
+
+.shipment-main::after{
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    right:-80px;
+    top:-80px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.05);
+}
+
+.shipment-label{
+    opacity:.6;
+
+    font-size:10px;
+
+    letter-spacing:1.3px;
+
+    text-transform:uppercase;
+}
+
+.shipment-hbl{
+    margin-top:6px;
+
+    font-size:25px;
+    font-weight:800;
+
+    letter-spacing:.4px;
+}
+
+.shipment-caption{
+    margin-top:5px;
+
+    color:rgba(255,255,255,.62);
+
+    font-size:11px;
+}
+
+.shipment-item{
+    padding:25px;
+
+    border-left:
         1px solid
-        rgba(255,255,255,.12);
+        rgba(255,255,255,.10);
 }
 
-.overview-item:last-child {
-    border-right: 0;
+.shipment-item-label{
+    color:rgba(255,255,255,.58);
+
+    font-size:10px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
 }
 
-.overview-label {
-    font-size: 11px;
+.shipment-item-value{
+    margin-top:8px;
 
-    text-transform: uppercase;
+    font-size:15px;
+    font-weight:700;
 
-    letter-spacing: 1px;
-
-    opacity: .65;
-
-    margin-bottom: 8px;
+    word-break:break-word;
 }
 
-.overview-value {
-    font-size: 19px;
 
-    font-weight: 700;
-}
-
-.overview-main .overview-value {
-    font-size: 24px;
-
-    letter-spacing: .5px;
-}
-
-/* =========================
+/* =========================================================
    SECTION
-========================= */
+========================================================= */
 
-.section {
-    margin-top: 30px;
+.section{
+    margin-top:28px;
 }
 
-.section-title {
-    display: flex;
+.section-heading{
+    display:flex;
+    align-items:center;
 
-    align-items: center;
+    gap:11px;
 
-    gap: 10px;
-
-    margin-bottom: 15px;
+    margin-bottom:13px;
 }
 
-.section-title-icon {
-    width: 34px;
-    height: 34px;
+.section-icon{
+    width:34px;
+    height:34px;
 
-    display: flex;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    align-items: center;
-    justify-content: center;
+    border-radius:10px;
 
-    border-radius: 9px;
+    color:var(--primary);
 
-    background: var(--blue-light);
+    background:var(--primary-soft);
 
-    color: var(--blue);
+    font-size:14px;
 }
 
-.section-title h3 {
-    margin: 0;
+.section-heading h3{
+    margin:0;
 
-    font-size: 18px;
+    color:var(--primary-dark);
 
-    color: var(--navy);
+    font-size:16px;
 }
 
-.section-title p {
-    margin: 2px 0 0;
+.section-heading p{
+    margin:2px 0 0;
 
-    color: var(--muted);
+    color:var(--muted);
 
-    font-size: 12px;
+    font-size:11px;
 }
 
-/* =========================
-   INFO GRID
-========================= */
 
-.info-grid {
-    display: grid;
+/* =========================================================
+   TRACKING PROGRESS
+========================================================= */
 
-    grid-template-columns:
-        repeat(3, 1fr);
+.timeline-card{
+    padding:28px;
 
-    gap: 15px;
+    border:1px solid var(--border);
+
+    border-radius:19px;
+
+    background:white;
+
+    box-shadow:var(--shadow);
 }
 
-.info-card {
-    background: white;
+.timeline{
+    position:relative;
 
-    border:
-        1px solid var(--border);
+    display:flex;
+    justify-content:space-between;
 
-    border-radius: 15px;
+    gap:10px;
+}
 
-    padding: 20px;
+.timeline-line{
+    position:absolute;
 
-    min-height: 105px;
+    top:17px;
+
+    left:9%;
+    right:9%;
+
+    height:3px;
+
+    background:#e8edf3;
+
+    z-index:0;
+}
+
+.timeline-step{
+    position:relative;
+
+    z-index:1;
+
+    width:20%;
+
+    text-align:center;
+}
+
+.timeline-circle{
+    width:36px;
+    height:36px;
+
+    margin:0 auto 10px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:4px solid white;
+
+    border-radius:50%;
+
+    background:#eef2f6;
+
+    color:#9aa6b6;
 
     box-shadow:
-        0 5px 20px rgba(15,39,70,.035);
+        0 0 0 1px #dce4ed;
 
-    transition: .25s;
-
-    animation: fadeUp .5s ease both;
+    font-size:12px;
 }
 
-.info-card:hover {
-    transform: translateY(-3px);
+.timeline-step.completed .timeline-circle{
+    color:white;
 
-    box-shadow: var(--shadow-hover);
-}
-
-.info-label {
-    color: var(--muted);
-
-    font-size: 12px;
-
-    margin-bottom: 8px;
-}
-
-.info-value {
-    color: var(--navy);
-
-    font-size: 16px;
-
-    font-weight: 700;
-
-    word-break: break-word;
-}
-
-/* =========================
-   STATUS
-========================= */
-
-.status-badge {
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 7px;
-
-    padding:
-        7px 12px;
-
-    border-radius: 999px;
-
-    font-size: 13px;
-
-    font-weight: 700;
-}
-
-.status-badge.pending {
-    background: var(--warning-bg);
-    color: var(--warning);
-}
-
-.status-badge.success {
-    background: var(--success-bg);
-    color: var(--success);
-}
-
-.status-badge.danger {
-    background: var(--danger-bg);
-    color: var(--danger);
-}
-
-.status-badge .dot {
-    width: 7px;
-    height: 7px;
-
-    border-radius: 50%;
-
-    background: currentColor;
-}
-
-/* =========================
-   TIMELINE
-========================= */
-
-.timeline-card {
-    background: white;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 18px;
-
-    padding: 28px;
-
-    box-shadow: var(--shadow);
-}
-
-.timeline {
-    display: flex;
-
-    align-items: flex-start;
-
-    justify-content: space-between;
-
-    position: relative;
-}
-
-.timeline-line {
-    position: absolute;
-
-    top: 17px;
-
-    left: 9%;
-
-    right: 9%;
-
-    height: 3px;
-
-    background: #e5ebf3;
-
-    z-index: 0;
-}
-
-.timeline-step {
-    position: relative;
-
-    z-index: 1;
-
-    text-align: center;
-
-    width: 20%;
-}
-
-.timeline-circle {
-    width: 36px;
-    height: 36px;
-
-    margin: 0 auto 10px;
-
-    border-radius: 50%;
-
-    background: #eef2f7;
-
-    border:
-        4px solid white;
-
-    box-shadow:
-        0 0 0 1px #dfe6ef;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    color: #91a0b4;
-
-    font-size: 13px;
-}
-
-.timeline-step.active .timeline-circle {
-    background: var(--blue);
-
-    color: white;
-
-    box-shadow:
-        0 0 0 1px var(--blue),
-        0 5px 15px rgba(23,105,209,.25);
-}
-
-.timeline-step.completed .timeline-circle {
-    background: var(--success);
-
-    color: white;
+    background:var(--success);
 
     box-shadow:
         0 0 0 1px var(--success);
 }
 
-.timeline-title {
-    font-size: 12px;
+.timeline-step.active .timeline-circle{
+    color:white;
 
-    font-weight: 700;
+    background:var(--primary);
 
-    color: var(--navy);
+    box-shadow:
+        0 0 0 1px var(--primary),
+        0 5px 15px rgba(23,105,209,.25);
 }
 
-.timeline-time {
-    font-size: 11px;
+.timeline-title{
+    color:var(--primary-dark);
 
-    color: var(--muted);
-
-    margin-top: 3px;
+    font-size:11px;
+    font-weight:700;
 }
 
-/* =========================
+.timeline-time{
+    margin-top:4px;
+
+    color:var(--muted);
+
+    font-size:10px;
+}
+
+
+/* =========================================================
+   INFO CARDS
+========================================================= */
+
+.info-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:12px;
+}
+
+.info-card{
+    min-height:92px;
+
+    padding:17px;
+
+    border:1px solid var(--border);
+
+    border-radius:15px;
+
+    background:white;
+
+    box-shadow:
+        0 4px 18px rgba(16,35,63,.035);
+
+    transition:.2s;
+}
+
+.info-card:hover{
+    transform:translateY(-2px);
+
+    border-color:#d5e0ec;
+
+    box-shadow:var(--shadow);
+}
+
+.info-label{
+    color:#8996a8;
+
+    font-size:10px;
+
+    font-weight:500;
+}
+
+.info-value{
+    margin-top:7px;
+
+    color:var(--primary-dark);
+
+    font-size:14px;
+    font-weight:700;
+
+    word-break:break-word;
+}
+
+
+/* =========================================================
+   STATUS BADGE
+========================================================= */
+
+.status-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+
+    padding:6px 10px;
+
+    border-radius:999px;
+
+    font-size:11px;
+    font-weight:700;
+}
+
+.status-badge .dot{
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:currentColor;
+}
+
+.status-badge.pending{
+    color:var(--warning);
+
+    background:var(--warning-soft);
+}
+
+.status-badge.success{
+    color:var(--success);
+
+    background:var(--success-soft);
+}
+
+.status-badge.danger{
+    color:var(--danger);
+
+    background:var(--danger-soft);
+}
+
+
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
-.footer {
-    border-top:
-        1px solid var(--border);
+.footer{
+    padding:28px 20px;
 
-    padding:
-        28px 20px;
+    border-top:1px solid var(--border);
 
-    text-align: center;
+    color:#8b98aa;
 
-    color: #8a98aa;
+    text-align:center;
 
-    font-size: 12px;
+    font-size:11px;
 }
 
-.footer strong {
-    color: var(--navy);
+.footer strong{
+    color:var(--primary-dark);
 }
 
-/* =========================
-   LOADING
-========================= */
 
-.loading {
-    display: none;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 10px;
-
-    padding: 35px;
-
-    color: var(--muted);
-}
-
-.spinner {
-    width: 20px;
-    height: 20px;
-
-    border:
-        3px solid #dce5ef;
-
-    border-top-color: var(--blue);
-
-    border-radius: 50%;
-
-    animation: spin .7s linear infinite;
-}
-
-/* =========================
+/* =========================================================
    ANIMATION
-========================= */
+========================================================= */
 
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
     }
 }
 
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(10px);
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    to{
+        opacity:1;
+        transform:translateY(0);
     }
 }
 
-/* =========================
+.info-card,
+.shipment-card,
+.timeline-card{
+    animation:fadeUp .45s ease both;
+}
+
+
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
-@media (max-width: 850px) {
+@media(max-width:900px){
 
-    .topbar {
-        padding: 0 20px;
+    .hero-grid{
+        grid-template-columns:1fr;
     }
 
-    .system-status {
-        display: none;
+    .hero-panel{
+        display:none;
     }
 
-    .hero {
-        padding:
-            40px 20px
-            25px;
-    }
-
-    .hero h1 {
-        font-size: 38px;
-    }
-
-    .search-card {
-        margin:
-            0 20px
-            25px;
-
-        padding: 20px;
-    }
-
-    .search-box {
-        flex-direction: column;
-    }
-
-    .search-box button {
-        width: 100%;
-        height: 55px;
-    }
-
-    #result {
-        padding: 0 20px;
-    }
-
-    .overview {
+    .shipment-card{
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
     }
 
-    .overview-item {
-        border-bottom:
-            1px solid
-            rgba(255,255,255,.12);
+    .shipment-main{
+        grid-column:1/-1;
     }
 
-    .info-grid {
+    .shipment-item:nth-child(3){
+        border-left:0;
+    }
+
+    .info-grid{
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
     }
 }
 
-@media (max-width: 560px) {
 
-    .brand-name {
-        font-size: 16px;
+@media(max-width:600px){
+
+    .container{
+        width:min(100% - 28px,1180px);
     }
 
-    .hero h1 {
-        font-size: 32px;
-
-        letter-spacing: -1px;
+    .topbar{
+        padding:0 16px;
     }
 
-    .hero-description {
-        font-size: 14px;
+    .system-status{
+        display:none;
     }
 
-    .overview {
-        grid-template-columns: 1fr;
+    .hero{
+        padding:38px 0 20px;
     }
 
-    .overview-item {
-        border-right: 0;
+    .hero h1{
+        font-size:36px;
+
+        letter-spacing:-1.8px;
     }
 
-    .info-grid {
-        grid-template-columns: 1fr;
+    .hero-description{
+        font-size:13px;
     }
 
-    .timeline-card {
-        overflow-x: auto;
+    .search-card{
+        padding:18px;
+
+        border-radius:16px;
     }
 
-    .timeline {
-        min-width: 550px;
+    .search-header{
+        align-items:flex-start;
+
+        flex-direction:column;
+
+        gap:4px;
+    }
+
+    .search-box{
+        flex-direction:column;
+    }
+
+    .search-box button{
+        width:100%;
+        height:52px;
+    }
+
+    .result-header-row{
+        flex-direction:column;
+        align-items:flex-start;
+
+        gap:5px;
+    }
+
+    .shipment-card{
+        grid-template-columns:1fr;
+    }
+
+    .shipment-item{
+        border-left:0;
+
+        border-top:
+            1px solid
+            rgba(255,255,255,.10);
+    }
+
+    .shipment-main{
+        grid-column:auto;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .timeline-card{
+        overflow-x:auto;
+
+        padding:22px 18px;
+    }
+
+    .timeline{
+        min-width:550px;
+    }
+
+    .section{
+        margin-top:24px;
     }
 }
 
@@ -951,9 +1204,10 @@ body {
 
 <body>
 
-<!-- =========================
-     TOP BAR
-========================= -->
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
 <header class="topbar">
 
@@ -963,14 +1217,14 @@ body {
             🚚
         </div>
 
-        <div class="brand-text">
+        <div>
 
             <div class="brand-name">
                 Sino Carco
             </div>
 
             <div class="brand-sub">
-                Logistics Tracking
+                LOGISTICS TRACKING
             </div>
 
         </div>
@@ -989,61 +1243,150 @@ body {
 </header>
 
 
-<!-- =========================
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<div class="container">
+
+
+<!-- =========================================================
      HERO
-========================= -->
+========================================================= -->
 
 <section class="hero">
 
-    <div class="hero-content">
+    <div class="hero-grid">
 
-        <div class="eyebrow">
-            ● SHIPMENT TRACKING
+        <div>
+
+            <div class="eyebrow">
+
+                <span></span>
+
+                SHIPMENT TRACKING
+
+            </div>
+
+
+            <h1>
+
+                Track Your
+                <span>Shipment</span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                ตรวจสอบสถานะการขนส่งสินค้า
+                รายละเอียด Shipment
+                และข้อมูลการจัดส่งของคุณ
+                ได้อย่างรวดเร็วและง่ายดาย
+
+            </p>
+
         </div>
 
-        <h1>
-            Sino Carco
-            <span>Tracking</span>
-        </h1>
 
-        <p class="hero-description">
-            ระบบติดตามสถานะการขนส่งสินค้า
-            ตรวจสอบรายละเอียด Shipment
-            และสถานะการจัดส่งได้อย่างรวดเร็ว
-        </p>
+        <div class="hero-panel">
+
+            <div class="hero-panel-top">
+
+                <div class="hero-panel-title">
+                    Tracking System
+                </div>
+
+                <div class="live">
+                    LIVE
+                </div>
+
+            </div>
+
+
+            <div class="hero-stats">
+
+                <div class="mini-stat">
+
+                    <div class="mini-stat-label">
+                        System
+                    </div>
+
+                    <div class="mini-stat-value">
+                        Online
+                    </div>
+
+                </div>
+
+
+                <div class="mini-stat">
+
+                    <div class="mini-stat-label">
+                        Tracking
+                    </div>
+
+                    <div class="mini-stat-value">
+                        24/7
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      SEARCH
-========================= -->
+========================================================= -->
 
 <section class="search-card">
 
-    <div class="search-title">
-        ค้นหาสถานะการขนส่ง
+    <div class="search-header">
+
+        <div class="search-title">
+            ค้นหา Shipment
+        </div>
+
+        <div class="search-hint">
+            Search by HBL Number
+        </div>
+
     </div>
+
 
     <div class="search-box">
 
-        <input
-            type="text"
-            id="hbl"
-            autocomplete="off"
-            placeholder="กรอกเลข HBL"
-        >
+        <div class="input-wrap">
+
+            <div class="input-icon">
+                ⌕
+            </div>
+
+            <input
+                type="text"
+                id="hbl"
+                autocomplete="off"
+                placeholder="กรอกเลข HBL เช่น HBL123456"
+            >
+
+        </div>
+
 
         <button
             id="searchButton"
-            onclick="searchData()"
-        >
-            ค้นหา
+            onclick="searchData()">
+
+            ค้นหา Shipment
+
         </button>
 
     </div>
+
 
     <div
         id="message"
@@ -1053,9 +1396,9 @@ body {
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      LOADING
-========================= -->
+========================================================= -->
 
 <div
     id="loading"
@@ -1070,56 +1413,80 @@ body {
 </div>
 
 
-<!-- =========================
+<!-- =========================================================
      RESULT
-========================= -->
+========================================================= -->
 
-<main id="result" style="display:none;">
+<main
+    id="result"
+    style="display:none;">
+
 
     <div class="result-header">
 
         <div class="result-label">
-            Shipment Information
+            Shipment Result
         </div>
 
-        <h2>
-            รายละเอียดการขนส่ง
-        </h2>
 
-        <p>
-            ข้อมูลล่าสุดจากระบบติดตามสินค้า
-        </p>
+        <div class="result-header-row">
+
+            <div>
+
+                <h2>
+                    รายละเอียดการขนส่ง
+                </h2>
+
+                <p>
+                    ข้อมูลล่าสุดจากระบบ Tracking
+                </p>
+
+            </div>
+
+
+            <div class="last-updated">
+                ● Live Tracking
+            </div>
+
+        </div>
 
     </div>
 
 
-    <!-- OVERVIEW -->
+    <!-- =====================================================
+         SHIPMENT SUMMARY
+    ===================================================== -->
 
-    <div class="overview">
+    <div class="shipment-card">
 
-        <div class="overview-item overview-main">
 
-            <div class="overview-label">
+        <div class="shipment-main">
+
+            <div class="shipment-label">
                 HBL Number
             </div>
 
             <div
-                class="overview-value"
+                class="shipment-hbl"
                 id="r-hbl">
                 -
+            </div>
+
+            <div class="shipment-caption">
+                Shipment Reference
             </div>
 
         </div>
 
 
-        <div class="overview-item">
+        <div class="shipment-item">
 
-            <div class="overview-label">
+            <div class="shipment-item-label">
                 Customer
             </div>
 
             <div
-                class="overview-value"
+                class="shipment-item-value"
                 id="r-customer">
                 -
             </div>
@@ -1127,14 +1494,14 @@ body {
         </div>
 
 
-        <div class="overview-item">
+        <div class="shipment-item">
 
-            <div class="overview-label">
+            <div class="shipment-item-label">
                 Location
             </div>
 
             <div
-                class="overview-value"
+                class="shipment-item-value"
                 id="r-location">
                 -
             </div>
@@ -1142,14 +1509,14 @@ body {
         </div>
 
 
-        <div class="overview-item">
+        <div class="shipment-item">
 
-            <div class="overview-label">
+            <div class="shipment-item-label">
                 Date
             </div>
 
             <div
-                class="overview-value"
+                class="shipment-item-value"
                 id="r-date">
                 -
             </div>
@@ -1159,24 +1526,28 @@ body {
     </div>
 
 
-    <!-- TIMELINE -->
+    <!-- =====================================================
+         TRACKING PROGRESS
+    ===================================================== -->
 
     <section class="section">
 
-        <div class="section-title">
+        <div class="section-heading">
 
-            <div class="section-title-icon">
+            <div class="section-icon">
                 ◉
             </div>
 
             <div>
+
                 <h3>
-                    Shipment Overview
+                    Tracking Progress
                 </h3>
 
                 <p>
-                    สถานะการดำเนินงาน
+                    ความคืบหน้าการดำเนินงาน
                 </p>
+
             </div>
 
         </div>
@@ -1288,13 +1659,15 @@ body {
     </section>
 
 
-    <!-- BASIC INFORMATION -->
+    <!-- =====================================================
+         SHIPMENT DETAILS
+    ===================================================== -->
 
     <section class="section">
 
-        <div class="section-title">
+        <div class="section-heading">
 
-            <div class="section-title-icon">
+            <div class="section-icon">
                 ◫
             </div>
 
@@ -1305,7 +1678,7 @@ body {
                 </h3>
 
                 <p>
-                    ข้อมูลหลักของการขนส่ง
+                    ข้อมูลหลักของ Shipment
                 </p>
 
             </div>
@@ -1314,6 +1687,7 @@ body {
 
 
         <div class="info-grid">
+
 
             <div class="info-card">
 
@@ -1409,13 +1783,15 @@ body {
     </section>
 
 
-    <!-- LOADING INFORMATION -->
+    <!-- =====================================================
+         LOADING INFORMATION
+    ===================================================== -->
 
     <section class="section">
 
-        <div class="section-title">
+        <div class="section-heading">
 
-            <div class="section-title-icon">
+            <div class="section-icon">
                 ◈
             </div>
 
@@ -1435,6 +1811,7 @@ body {
 
 
         <div class="info-grid">
+
 
             <div class="info-card">
 
@@ -1530,13 +1907,15 @@ body {
     </section>
 
 
-    <!-- VEHICLE INFORMATION -->
+    <!-- =====================================================
+         VEHICLE
+    ===================================================== -->
 
     <section class="section">
 
-        <div class="section-title">
+        <div class="section-heading">
 
-            <div class="section-title-icon">
+            <div class="section-icon">
                 ▣
             </div>
 
@@ -1556,6 +1935,7 @@ body {
 
 
         <div class="info-grid">
+
 
             <div class="info-card">
 
@@ -1622,31 +2002,37 @@ body {
 
 </main>
 
+</div>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
 <footer class="footer">
 
     <strong>Sino Carco Tracking</strong>
 
-    &nbsp; | &nbsp;
+    &nbsp; • &nbsp;
 
-    Shipment Tracking System
+    Secure Shipment Tracking System
 
 </footer>
 
 
 <script>
 
-/* =====================================================
+/* =========================================================
    GOOGLE APPS SCRIPT
-===================================================== */
+========================================================= */
 
 const APPS_SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbwjX5Cl1wH6agUuXVZBJGC8J1EgxhzeZmlGJUp7gTAW89EZ60RsgUGsf2mtqoGZ5Q4/exec";
 
 
-/* =====================================================
+/* =========================================================
    ELEMENTS
-===================================================== */
+========================================================= */
 
 const input =
     document.getElementById("hbl");
@@ -1664,44 +2050,43 @@ const result =
     document.getElementById("result");
 
 
-/* =====================================================
+/* =========================================================
    MESSAGE
-===================================================== */
+========================================================= */
 
-function showMessage(text, type) {
+function showMessage(text,type){
 
-    message.textContent = text;
+    message.textContent=text;
 
-    message.className =
-        "message " + type;
-
-}
-
-
-function clearMessage() {
-
-    message.textContent = "";
-
-    message.className =
-        "message";
+    message.className=
+        "message "+type;
 
 }
 
 
-/* =====================================================
+function clearMessage(){
+
+    message.textContent="";
+
+    message.className="message";
+
+}
+
+
+/* =========================================================
    SAFE VALUE
-===================================================== */
+========================================================= */
 
-function value(data, names) {
+function value(data,names){
 
-    for (const name of names) {
+    for(const name of names){
 
-        if (
+        if(
             data &&
             data[name] !== undefined &&
             data[name] !== null &&
             data[name] !== ""
-        ) {
+        ){
 
             return data[name];
 
@@ -1714,40 +2099,43 @@ function value(data, names) {
 }
 
 
-/* =====================================================
+/* =========================================================
    STATUS
-===================================================== */
+========================================================= */
 
-function statusHTML(status) {
+function statusHTML(status){
 
     const text =
         String(status || "-");
 
-    let type = "pending";
+    let type="pending";
 
-    const lower =
+    const lower=
         text.toLowerCase();
 
-    if (
+
+    if(
         lower.includes("เสร็จ") ||
         lower.includes("complete") ||
         lower.includes("success") ||
         lower.includes("ส่งแล้ว")
-    ) {
+    ){
 
-        type = "success";
+        type="success";
 
     }
 
-    if (
+
+    if(
         lower.includes("ยกเลิก") ||
         lower.includes("cancel") ||
         lower.includes("error")
-    ) {
+    ){
 
-        type = "danger";
+        type="danger";
 
     }
+
 
     return `
         <span class="status-badge ${type}">
@@ -1759,13 +2147,13 @@ function statusHTML(status) {
 }
 
 
-/* =====================================================
+/* =========================================================
    DISPLAY DATA
-===================================================== */
+========================================================= */
 
-function displayData(data) {
+function displayData(data){
 
-    if (!data) {
+    if(!data){
 
         showMessage(
             "ไม่พบข้อมูล Shipment",
@@ -1777,10 +2165,8 @@ function displayData(data) {
     }
 
 
-    /* HBL */
-
     const hbl =
-        value(data, [
+        value(data,[
             "HBL No.",
             "HBL No",
             "HBL",
@@ -1789,40 +2175,32 @@ function displayData(data) {
         ]);
 
 
-    /* Customer */
-
     const customer =
-        value(data, [
+        value(data,[
             "Customer",
             "customer",
             "ชื่อลูกค้า"
         ]);
 
 
-    /* Location */
-
     const location =
-        value(data, [
+        value(data,[
             "Location",
             "location",
             "สถานที่โหลดสินค้า"
         ]);
 
 
-    /* Date */
-
     const date =
-        value(data, [
+        value(data,[
             "Date",
             "date",
             "วันที่เข้า"
         ]);
 
 
-    /* Time */
-
     const timeIn =
-        value(data, [
+        value(data,[
             "Time In",
             "timeIn",
             "เวลาเข้า"
@@ -1830,17 +2208,15 @@ function displayData(data) {
 
 
     const timeOut =
-        value(data, [
+        value(data,[
             "Time Out",
             "timeOut",
             "เวลาออก"
         ]);
 
 
-    /* Loading */
-
     const loadingStart =
-        value(data, [
+        value(data,[
             "Loading Start",
             "loadingStart",
             "เวลาเริ่มโหลดสินค้า"
@@ -1848,37 +2224,31 @@ function displayData(data) {
 
 
     const loadingFinish =
-        value(data, [
+        value(data,[
             "Loading Finish",
             "loadingFinish",
             "เวลาโหลดสินค้าเสร็จ"
         ]);
 
 
-    /* Status */
-
     const status =
-        value(data, [
+        value(data,[
             "Status",
             "status",
             "สถานะ"
         ]);
 
 
-    /* Company */
-
     const company =
-        value(data, [
+        value(data,[
             "Company",
             "company",
             "ชื่อบริษัท"
         ]);
 
 
-    /* Driver */
-
     const driver =
-        value(data, [
+        value(data,[
             "Driver",
             "driver",
             "ชื่อ พขร.",
@@ -1886,10 +2256,8 @@ function displayData(data) {
         ]);
 
 
-    /* Tel */
-
     const tel =
-        value(data, [
+        value(data,[
             "TEL",
             "Tel",
             "tel",
@@ -1897,30 +2265,24 @@ function displayData(data) {
         ]);
 
 
-    /* Plate */
-
     const plate =
-        value(data, [
+        value(data,[
             "Plate",
             "plate",
             "ทะเบียนรถ"
         ]);
 
 
-    /* Truck */
-
     const truck =
-        value(data, [
+        value(data,[
             "Truck",
             "truck",
             "ยี่ห้อรถ"
         ]);
 
 
-    /* Booking */
-
     const booking =
-        value(data, [
+        value(data,[
             "Booking No.",
             "Booking No",
             "Booking",
@@ -1928,29 +2290,23 @@ function displayData(data) {
         ]);
 
 
-    /* Quantity */
-
     const quantity =
-        value(data, [
+        value(data,[
             "QTY",
             "Quantity",
             "quantity"
         ]);
 
 
-    /* Remark */
-
     const remark =
-        value(data, [
+        value(data,[
             "REMARK",
             "Remark",
             "remark"
         ]);
 
 
-    /* =====================
-       OVERVIEW
-    ===================== */
+    /* SUMMARY */
 
     document.getElementById("r-hbl").textContent =
         hbl;
@@ -1965,9 +2321,7 @@ function displayData(data) {
         date;
 
 
-    /* =====================
-       DETAILS
-    ===================== */
+    /* DETAILS */
 
     document.getElementById("d-customer").textContent =
         customer;
@@ -1988,9 +2342,7 @@ function displayData(data) {
         statusHTML(status);
 
 
-    /* =====================
-       LOADING
-    ===================== */
+    /* LOADING */
 
     document.getElementById("d-loading-start").textContent =
         loadingStart;
@@ -2011,9 +2363,7 @@ function displayData(data) {
         truck;
 
 
-    /* =====================
-       VEHICLE
-    ===================== */
+    /* VEHICLE */
 
     document.getElementById("d-plate").textContent =
         plate;
@@ -2028,12 +2378,12 @@ function displayData(data) {
         remark;
 
 
-    /* =====================
-       TIMELINE
-    ===================== */
+    /* TIMELINE */
 
     document.getElementById("t-booking").textContent =
-        booking !== "-" ? "Confirmed" : "-";
+        booking !== "-" ?
+        "Confirmed" :
+        "-";
 
     document.getElementById("t-in").textContent =
         timeIn;
@@ -2047,22 +2397,22 @@ function displayData(data) {
 
     /* SHOW */
 
-    result.style.display =
-        "block";
+    result.style.display="block";
+
 
     result.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
+        behavior:"smooth",
+        block:"start"
     });
 
 }
 
 
-/* =====================================================
+/* =========================================================
    SEARCH
-===================================================== */
+========================================================= */
 
-async function searchData() {
+async function searchData(){
 
     const hbl =
         input.value.trim();
@@ -2071,7 +2421,7 @@ async function searchData() {
     clearMessage();
 
 
-    if (!hbl) {
+    if(!hbl){
 
         showMessage(
             "กรุณากรอกเลข HBL",
@@ -2085,19 +2435,20 @@ async function searchData() {
     }
 
 
-    button.disabled = true;
+    button.disabled=true;
 
-    button.textContent =
+    button.textContent=
         "กำลังค้นหา...";
 
-    loading.style.display =
+
+    loading.style.display=
         "flex";
 
-    result.style.display =
+    result.style.display=
         "none";
 
 
-    try {
+    try{
 
         const url =
             APPS_SCRIPT_URL +
@@ -2106,13 +2457,13 @@ async function searchData() {
 
 
         const response =
-            await fetch(url, {
-                method: "GET",
-                cache: "no-store"
+            await fetch(url,{
+                method:"GET",
+                cache:"no-store"
             });
 
 
-        if (!response.ok) {
+        if(!response.ok){
 
             throw new Error(
                 "ไม่สามารถเชื่อมต่อระบบได้"
@@ -2125,51 +2476,44 @@ async function searchData() {
             await response.json();
 
 
-        let data =
-            json;
+        let data=json;
 
 
-        /*
-         รองรับ API หลายรูปแบบ
-        */
+        if(json.data !== undefined){
 
-        if (json.data !== undefined) {
-
-            data = json.data;
+            data=json.data;
 
         }
 
 
-        if (
-            Array.isArray(data)
-        ) {
+        if(Array.isArray(data)){
 
-            data = data[0];
+            data=data[0];
 
         }
 
 
-        if (
+        if(
             json.result &&
             Array.isArray(json.result)
-        ) {
+        ){
 
-            data = json.result[0];
+            data=json.result[0];
 
         }
 
 
-        if (
+        if(
             json.results &&
             Array.isArray(json.results)
-        ) {
+        ){
 
-            data = json.results[0];
+            data=json.results[0];
 
         }
 
 
-        if (!data) {
+        if(!data){
 
             throw new Error(
                 "ไม่พบข้อมูล HBL นี้"
@@ -2187,7 +2531,8 @@ async function searchData() {
         );
 
 
-    } catch (error) {
+    }
+    catch(error){
 
         console.error(error);
 
@@ -2197,33 +2542,32 @@ async function searchData() {
             "error"
         );
 
-    } finally {
+    }
+    finally{
 
-        loading.style.display =
+        loading.style.display=
             "none";
 
-        button.disabled =
+        button.disabled=
             false;
 
-        button.textContent =
-            "ค้นหา";
+        button.textContent=
+            "ค้นหา Shipment";
 
     }
 
 }
 
 
-/* =====================================================
+/* =========================================================
    ENTER KEY
-===================================================== */
+========================================================= */
 
 input.addEventListener(
     "keydown",
-    function(event) {
+    function(event){
 
-        if (
-            event.key === "Enter"
-        ) {
+        if(event.key==="Enter"){
 
             event.preventDefault();
 
@@ -2238,3 +2582,4 @@ input.addEventListener(
 
 </body>
 </html>
+```
