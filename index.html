@@ -13,10 +13,6 @@
 
 <style>
 
-/* =========================================================
-   ROOT
-========================================================= */
-
 :root{
     --primary:#1769d1;
     --primary-dark:#0b2850;
@@ -24,8 +20,6 @@
 
     --bg:#f5f7fb;
     --surface:#ffffff;
-    --surface-2:#f9fbfd;
-
     --text:#10233f;
     --muted:#738197;
     --border:#e5ebf2;
@@ -44,11 +38,6 @@
     --shadow:0 10px 30px rgba(16,35,63,.06);
     --shadow-lg:0 20px 55px rgba(16,35,63,.10);
 }
-
-
-/* =========================================================
-   RESET
-========================================================= */
 
 *{
     box-sizing:border-box;
@@ -88,9 +77,9 @@ input{
 }
 
 
-/* =========================================================
+/* =========================
    HEADER
-========================================================= */
+========================= */
 
 .topbar{
     height:72px;
@@ -105,7 +94,7 @@ input{
 
     padding:0 max(24px,calc((100vw - 1180px)/2));
 
-    background:rgba(255,255,255,.90);
+    background:rgba(255,255,255,.92);
 
     border-bottom:1px solid rgba(229,235,242,.9);
 
@@ -187,9 +176,9 @@ input{
 }
 
 
-/* =========================================================
+/* =========================
    CONTAINER
-========================================================= */
+========================= */
 
 .container{
     width:min(1180px,calc(100% - 40px));
@@ -197,9 +186,9 @@ input{
 }
 
 
-/* =========================================================
+/* =========================
    HERO
-========================================================= */
+========================= */
 
 .hero{
     padding:58px 0 28px;
@@ -266,9 +255,9 @@ input{
 }
 
 
-/* =========================================================
+/* =========================
    HERO PANEL
-========================================================= */
+========================= */
 
 .hero-panel{
     padding:25px;
@@ -352,9 +341,9 @@ input{
 }
 
 
-/* =========================================================
+/* =========================
    SEARCH
-========================================================= */
+========================= */
 
 .search-card{
     position:relative;
@@ -484,9 +473,9 @@ input{
 }
 
 
-/* =========================================================
+/* =========================
    MESSAGE
-========================================================= */
+========================= */
 
 .message{
     display:none;
@@ -519,9 +508,9 @@ input{
 }
 
 
-/* =========================================================
+/* =========================
    LOADING
-========================================================= */
+========================= */
 
 .loading{
     display:none;
@@ -551,9 +540,9 @@ input{
 }
 
 
-/* =========================================================
+/* =========================
    RESULT
-========================================================= */
+========================= */
 
 #result{
     margin-bottom:80px;
@@ -606,9 +595,9 @@ input{
 }
 
 
-/* =========================================================
+/* =========================
    SHIPMENT SUMMARY
-========================================================= */
+========================= */
 
 .shipment-card{
     display:grid;
@@ -715,9 +704,9 @@ input{
 }
 
 
-/* =========================================================
+/* =========================
    SECTION
-========================================================= */
+========================= */
 
 .section{
     margin-top:28px;
@@ -765,119 +754,9 @@ input{
 }
 
 
-/* =========================================================
-   TIMELINE
-========================================================= */
-
-.timeline-card{
-    padding:28px;
-
-    border:1px solid var(--border);
-    border-radius:19px;
-
-    background:#fff;
-
-    box-shadow:var(--shadow);
-}
-
-.timeline{
-    position:relative;
-
-    display:flex;
-    justify-content:space-between;
-
-    gap:10px;
-}
-
-.timeline-line{
-    position:absolute;
-
-    top:17px;
-    left:9%;
-    right:9%;
-
-    height:3px;
-
-    background:#e8edf3;
-
-    z-index:0;
-}
-
-.timeline-step{
-    position:relative;
-    z-index:1;
-
-    width:20%;
-
-    text-align:center;
-}
-
-.timeline-circle{
-    width:36px;
-    height:36px;
-
-    margin:0 auto 10px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border:4px solid white;
-    border-radius:50%;
-
-    background:#eef2f6;
-    color:#9aa6b6;
-
-    box-shadow:
-        0 0 0 1px #dce4ed;
-
-    font-size:12px;
-}
-
-.timeline-step.completed .timeline-circle{
-    color:white;
-    background:var(--success);
-
-    box-shadow:
-        0 0 0 1px var(--success);
-}
-
-.timeline-step.active .timeline-circle{
-    color:white;
-    background:var(--primary);
-
-    box-shadow:
-        0 0 0 1px var(--primary),
-        0 5px 15px rgba(23,105,209,.25);
-}
-
-.timeline-step.cancelled .timeline-circle{
-    color:#fff;
-    background:var(--danger);
-
-    box-shadow:
-        0 0 0 1px var(--danger);
-}
-
-.timeline-title{
-    color:var(--primary-dark);
-
-    font-size:11px;
-    font-weight:700;
-}
-
-.timeline-time{
-    margin-top:4px;
-
-    color:var(--muted);
-
-    font-size:10px;
-}
-
-
-/* =========================================================
+/* =========================
    INFO
-========================================================= */
+========================= */
 
 .info-grid{
     display:grid;
@@ -928,12 +807,14 @@ input{
     font-weight:700;
 
     word-break:break-word;
+
+    white-space:pre-wrap;
 }
 
 
-/* =========================================================
+/* =========================
    STATUS
-========================================================= */
+========================= */
 
 .status-badge{
     display:inline-flex;
@@ -972,9 +853,9 @@ input{
 }
 
 
-/* =========================================================
-   ADDITIONAL DATA
-========================================================= */
+/* =========================
+   ADDITIONAL
+========================= */
 
 #additionalSection{
     display:none;
@@ -1034,9 +915,9 @@ input{
 }
 
 
-/* =========================================================
+/* =========================
    FOOTER
-========================================================= */
+========================= */
 
 .footer{
     padding:28px 20px;
@@ -1055,9 +936,9 @@ input{
 }
 
 
-/* =========================================================
+/* =========================
    ANIMATION
-========================================================= */
+========================= */
 
 @keyframes spin{
     to{
@@ -1078,16 +959,15 @@ input{
 }
 
 .shipment-card,
-.timeline-card,
 .info-card,
 .additional-card{
     animation:fadeUp .45s ease both;
 }
 
 
-/* =========================================================
+/* =========================
    MOBILE
-========================================================= */
+========================= */
 
 @media(max-width:900px){
 
@@ -1194,15 +1074,6 @@ input{
         grid-template-columns:1fr;
     }
 
-    .timeline-card{
-        overflow-x:auto;
-        padding:22px 18px;
-    }
-
-    .timeline{
-        min-width:550px;
-    }
-
     .section{
         margin-top:24px;
     }
@@ -1214,10 +1085,6 @@ input{
 
 <body>
 
-
-<!-- =========================================================
-     HEADER
-========================================================= -->
 
 <header class="topbar">
 
@@ -1255,10 +1122,6 @@ input{
 
 <div class="container">
 
-
-<!-- =========================================================
-     HERO
-========================================================= -->
 
 <section class="hero">
 
@@ -1346,10 +1209,6 @@ input{
 </section>
 
 
-<!-- =========================================================
-     SEARCH
-========================================================= -->
-
 <section class="search-card">
 
     <div class="search-header">
@@ -1403,10 +1262,6 @@ input{
 </section>
 
 
-<!-- =========================================================
-     LOADING
-========================================================= -->
-
 <div
     id="loading"
     class="loading">
@@ -1419,10 +1274,6 @@ input{
 
 </div>
 
-
-<!-- =========================================================
-     RESULT
-========================================================= -->
 
 <main
     id="result"
@@ -1460,9 +1311,7 @@ input{
     </div>
 
 
-    <!-- =====================================================
-         SUMMARY
-    ===================================================== -->
+    <!-- SUMMARY -->
 
     <div class="shipment-card">
 
@@ -1532,156 +1381,7 @@ input{
     </div>
 
 
-    <!-- =====================================================
-         TRACKING
-    ===================================================== -->
-
-    <section class="section">
-
-        <div class="section-heading">
-
-            <div class="section-icon">
-                ◉
-            </div>
-
-            <div>
-
-                <h3>
-                    Tracking Progress
-                </h3>
-
-                <p>
-                    ความคืบหน้าการดำเนินงาน
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="timeline-card">
-
-            <div
-                class="timeline"
-                id="timeline">
-
-                <div class="timeline-line"></div>
-
-
-                <div
-                    class="timeline-step"
-                    id="step-booking">
-
-                    <div class="timeline-circle">
-                        1
-                    </div>
-
-                    <div class="timeline-title">
-                        Booking
-                    </div>
-
-                    <div
-                        class="timeline-time"
-                        id="t-booking">
-                        -
-                    </div>
-
-                </div>
-
-
-                <div
-                    class="timeline-step"
-                    id="step-arrival">
-
-                    <div class="timeline-circle">
-                        2
-                    </div>
-
-                    <div class="timeline-title">
-                        Arrival
-                    </div>
-
-                    <div
-                        class="timeline-time"
-                        id="t-in">
-                        -
-                    </div>
-
-                </div>
-
-
-                <div
-                    class="timeline-step"
-                    id="step-loading">
-
-                    <div class="timeline-circle">
-                        3
-                    </div>
-
-                    <div class="timeline-title">
-                        Loading
-                    </div>
-
-                    <div
-                        class="timeline-time"
-                        id="t-loading">
-                        -
-                    </div>
-
-                </div>
-
-
-                <div
-                    class="timeline-step"
-                    id="step-departure">
-
-                    <div class="timeline-circle">
-                        4
-                    </div>
-
-                    <div class="timeline-title">
-                        Departure
-                    </div>
-
-                    <div
-                        class="timeline-time"
-                        id="t-out">
-                        -
-                    </div>
-
-                </div>
-
-
-                <div
-                    class="timeline-step"
-                    id="step-completed">
-
-                    <div class="timeline-circle">
-                        5
-                    </div>
-
-                    <div class="timeline-title">
-                        Completed
-                    </div>
-
-                    <div
-                        class="timeline-time"
-                        id="t-completed">
-                        -
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         SHIPMENT DETAILS
-    ===================================================== -->
+    <!-- SHIPMENT DETAILS -->
 
     <section class="section">
 
@@ -1709,33 +1409,62 @@ input{
         <div class="info-grid">
 
             <div class="info-card">
-                <div class="info-label">Customer</div>
-                <div class="info-value" id="d-customer">-</div>
+
+                <div class="info-label">
+                    Customer
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-customer">
+                    -
+                </div>
+
             </div>
 
-            <div class="info-card">
-                <div class="info-label">Location</div>
-                <div class="info-value" id="d-location">-</div>
-            </div>
 
             <div class="info-card">
-                <div class="info-label">Date</div>
-                <div class="info-value" id="d-date">-</div>
+
+                <div class="info-label">
+                    Location
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-location">
+                    -
+                </div>
+
             </div>
 
-            <div class="info-card">
-                <div class="info-label">Time In</div>
-                <div class="info-value" id="d-time-in">-</div>
-            </div>
 
             <div class="info-card">
-                <div class="info-label">Time Out</div>
-                <div class="info-value" id="d-time-out">-</div>
+
+                <div class="info-label">
+                    Date
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-date">
+                    -
+                </div>
+
             </div>
 
+
             <div class="info-card">
-                <div class="info-label">Status</div>
-                <div class="info-value" id="d-status">-</div>
+
+                <div class="info-label">
+                    Status
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-status">
+                    -
+                </div>
+
             </div>
 
         </div>
@@ -1743,9 +1472,7 @@ input{
     </section>
 
 
-    <!-- =====================================================
-         LOADING INFORMATION
-    ===================================================== -->
+    <!-- LOADING INFORMATION -->
 
     <section class="section">
 
@@ -1773,33 +1500,92 @@ input{
         <div class="info-grid">
 
             <div class="info-card">
-                <div class="info-label">Loading Start</div>
-                <div class="info-value" id="d-loading-start">-</div>
+
+                <div class="info-label">
+                    Loading Start
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-loading-start">
+                    -
+                </div>
+
             </div>
 
-            <div class="info-card">
-                <div class="info-label">Loading Finish</div>
-                <div class="info-value" id="d-loading-finish">-</div>
-            </div>
 
             <div class="info-card">
-                <div class="info-label">Company</div>
-                <div class="info-value" id="d-company">-</div>
+
+                <div class="info-label">
+                    Loading Finish
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-loading-finish">
+                    -
+                </div>
+
             </div>
 
-            <div class="info-card">
-                <div class="info-label">Driver</div>
-                <div class="info-value" id="d-driver">-</div>
-            </div>
 
             <div class="info-card">
-                <div class="info-label">Telephone</div>
-                <div class="info-value" id="d-tel">-</div>
+
+                <div class="info-label">
+                    Company
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-company">
+                    -
+                </div>
+
             </div>
 
+
             <div class="info-card">
-                <div class="info-label">Truck</div>
-                <div class="info-value" id="d-truck">-</div>
+
+                <div class="info-label">
+                    Driver
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-driver">
+                    -
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-label">
+                    Telephone
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-tel">
+                    -
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-label">
+                    Truck
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-truck">
+                    -
+                </div>
+
             </div>
 
         </div>
@@ -1807,9 +1593,7 @@ input{
     </section>
 
 
-    <!-- =====================================================
-         VEHICLE
-    ===================================================== -->
+    <!-- VEHICLE & BOOKING -->
 
     <section class="section">
 
@@ -1837,23 +1621,62 @@ input{
         <div class="info-grid">
 
             <div class="info-card">
-                <div class="info-label">License Plate</div>
-                <div class="info-value" id="d-plate">-</div>
+
+                <div class="info-label">
+                    License Plate
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-plate">
+                    -
+                </div>
+
             </div>
 
-            <div class="info-card">
-                <div class="info-label">Booking No.</div>
-                <div class="info-value" id="d-booking">-</div>
-            </div>
 
             <div class="info-card">
-                <div class="info-label">Quantity</div>
-                <div class="info-value" id="d-quantity">-</div>
+
+                <div class="info-label">
+                    Booking No.
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-booking">
+                    -
+                </div>
+
             </div>
 
+
             <div class="info-card">
-                <div class="info-label">Remark</div>
-                <div class="info-value" id="d-remark">-</div>
+
+                <div class="info-label">
+                    Quantity
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-quantity">
+                    -
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-label">
+                    Remark
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-remark">
+                    -
+                </div>
+
             </div>
 
         </div>
@@ -1861,9 +1684,7 @@ input{
     </section>
 
 
-    <!-- =====================================================
-         ADDITIONAL INFORMATION
-    ===================================================== -->
+    <!-- ADDITIONAL INFORMATION -->
 
     <section
         class="section"
@@ -1903,10 +1724,6 @@ input{
 </div>
 
 
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
 <footer class="footer">
 
     <strong>Sino Carco Tracking</strong>
@@ -1920,17 +1737,18 @@ input{
 
 <script>
 
-/* =========================================================
+
+/* =========================
    GOOGLE APPS SCRIPT
-========================================================= */
+========================= */
 
 const APPS_SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbwjX5Cl1wH6agUuXVZBJGC8J1EgxhzeZmlGJUp7gTAW89EZ60RsgUGsf2mtqoGZ5Q4/exec";
 
 
-/* =========================================================
+/* =========================
    ELEMENTS
-========================================================= */
+========================= */
 
 const input =
     document.getElementById("hbl");
@@ -1948,14 +1766,13 @@ const result =
     document.getElementById("result");
 
 
-/* =========================================================
+/* =========================
    MESSAGE
-========================================================= */
+========================= */
 
 function showMessage(text,type){
 
-    message.textContent =
-        text;
+    message.textContent = text;
 
     message.className =
         "message " + type;
@@ -1965,18 +1782,16 @@ function showMessage(text,type){
 
 function clearMessage(){
 
-    message.textContent =
-        "";
+    message.textContent = "";
 
-    message.className =
-        "message";
+    message.className = "message";
 
 }
 
 
-/* =========================================================
+/* =========================
    VALUE
-========================================================= */
+========================= */
 
 function value(data,names){
 
@@ -2000,9 +1815,9 @@ function value(data,names){
 }
 
 
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
+/* =========================
+   ESCAPE
+========================= */
 
 function escapeHTML(value){
 
@@ -2016,9 +1831,9 @@ function escapeHTML(value){
 }
 
 
-/* =========================================================
+/* =========================
    STATUS
-========================================================= */
+========================= */
 
 function statusHTML(status){
 
@@ -2028,8 +1843,7 @@ function statusHTML(status){
     const lower =
         text.toLowerCase();
 
-    let type =
-        "pending";
+    let type = "pending";
 
 
     if(
@@ -2040,8 +1854,7 @@ function statusHTML(status){
         lower.includes("completed")
     ){
 
-        type =
-            "success";
+        type = "success";
 
     }
 
@@ -2052,8 +1865,7 @@ function statusHTML(status){
         lower.includes("error")
     ){
 
-        type =
-            "danger";
+        type = "danger";
 
     }
 
@@ -2068,198 +1880,9 @@ function statusHTML(status){
 }
 
 
-/* =========================================================
-   TIMELINE
-========================================================= */
-
-function updateTimeline(data){
-
-    const booking =
-        value(data,[
-            "Booking No.",
-            "Booking No",
-            "Booking",
-            "booking",
-            "bookingNo"
-        ]);
-
-    const timeIn =
-        value(data,[
-            "Time In",
-            "timeIn",
-            "เวลาเข้า"
-        ]);
-
-    const loadingStart =
-        value(data,[
-            "Loading Start",
-            "loadingStart",
-            "เวลาเริ่มโหลดสินค้า"
-        ]);
-
-    const loadingFinish =
-        value(data,[
-            "Loading Finish",
-            "loadingFinish",
-            "เวลาโหลดสินค้าเสร็จ"
-        ]);
-
-    const timeOut =
-        value(data,[
-            "Time Out",
-            "timeOut",
-            "เวลาออก"
-        ]);
-
-    const status =
-        value(data,[
-            "Status",
-            "status",
-            "สถานะ",
-            "ลักษณะงาน"
-        ]);
-
-
-    document.getElementById("t-booking").textContent =
-        booking !== "-" ? "Confirmed" : "-";
-
-    document.getElementById("t-in").textContent =
-        timeIn;
-
-    document.getElementById("t-loading").textContent =
-        loadingFinish !== "-" ?
-        loadingFinish :
-        loadingStart;
-
-    document.getElementById("t-out").textContent =
-        timeOut;
-
-
-    const bookingStep =
-        document.getElementById("step-booking");
-
-    const arrivalStep =
-        document.getElementById("step-arrival");
-
-    const loadingStep =
-        document.getElementById("step-loading");
-
-    const departureStep =
-        document.getElementById("step-departure");
-
-    const completedStep =
-        document.getElementById("step-completed");
-
-
-    [
-        bookingStep,
-        arrivalStep,
-        loadingStep,
-        departureStep,
-        completedStep
-    ].forEach(step => {
-
-        step.classList.remove(
-            "completed",
-            "active",
-            "cancelled"
-        );
-
-    });
-
-
-    const lower =
-        status.toLowerCase();
-
-
-    if(
-        lower.includes("ยกเลิก") ||
-        lower.includes("cancel")
-    ){
-
-        loadingStep.classList.add("cancelled");
-
-        return;
-
-    }
-
-
-    if(booking !== "-"){
-
-        bookingStep.classList.add("completed");
-
-    }
-
-
-    if(timeIn !== "-"){
-
-        arrivalStep.classList.add("completed");
-
-    }
-
-
-    if(
-        loadingStart !== "-" ||
-        loadingFinish !== "-"
-    ){
-
-        loadingStep.classList.add("completed");
-
-    }
-
-
-    if(timeOut !== "-"){
-
-        departureStep.classList.add("completed");
-
-    }
-
-
-    if(
-        lower.includes("เสร็จ") ||
-        lower.includes("complete") ||
-        lower.includes("success") ||
-        lower.includes("ส่งแล้ว")
-    ){
-
-        completedStep.classList.add("completed");
-
-        document.getElementById(
-            "t-completed"
-        ).textContent =
-            status;
-
-    }
-    else if(
-        loadingStart !== "-" ||
-        loadingFinish !== "-"
-    ){
-
-        departureStep.classList.add("active");
-
-    }
-    else if(timeIn !== "-"){
-
-        loadingStep.classList.add("active");
-
-    }
-    else if(booking !== "-"){
-
-        arrivalStep.classList.add("active");
-
-    }
-    else{
-
-        bookingStep.classList.add("active");
-
-    }
-
-}
-
-
-/* =========================================================
+/* =========================
    ADDITIONAL DATA
-========================================================= */
+========================= */
 
 function displayAdditionalData(data){
 
@@ -2305,22 +1928,6 @@ function displayAdditionalData(data){
             "Date",
             "date",
             "วันที่เข้า",
-
-            "Time In",
-            "timeIn",
-            "เวลาเข้า",
-
-            "Time Out",
-            "timeOut",
-            "เวลาออก",
-
-            "Loading Start",
-            "loadingStart",
-            "เวลาเริ่มโหลดสินค้า",
-
-            "Loading Finish",
-            "loadingFinish",
-            "เวลาโหลดสินค้าเสร็จ",
 
             "Status",
             "status",
@@ -2368,7 +1975,15 @@ function displayAdditionalData(data){
             "REMARK",
             "Remark",
             "remark",
-            "หมายเหตุ"
+            "หมายเหตุ",
+
+            "Loading Start",
+            "loadingStart",
+            "เวลาเริ่มโหลดสินค้า",
+
+            "Loading Finish",
+            "loadingFinish",
+            "เวลาโหลดสินค้าเสร็จ"
 
         ]);
 
@@ -2389,11 +2004,9 @@ function displayAdditionalData(data){
 
     if(fields.length === 0){
 
-        section.style.display =
-            "none";
+        section.style.display = "none";
 
-        container.innerHTML =
-            "";
+        container.innerHTML = "";
 
         return;
 
@@ -2422,15 +2035,14 @@ function displayAdditionalData(data){
         }).join("");
 
 
-    section.style.display =
-        "block";
+    section.style.display = "block";
 
 }
 
 
-/* =========================================================
+/* =========================
    DISPLAY DATA
-========================================================= */
+========================= */
 
 function displayData(data){
 
@@ -2480,19 +2092,12 @@ function displayData(data){
         ]);
 
 
-    const timeIn =
+    const status =
         value(data,[
-            "Time In",
-            "timeIn",
-            "เวลาเข้า"
-        ]);
-
-
-    const timeOut =
-        value(data,[
-            "Time Out",
-            "timeOut",
-            "เวลาออก"
+            "Status",
+            "status",
+            "สถานะ",
+            "ลักษณะงาน"
         ]);
 
 
@@ -2509,15 +2114,6 @@ function displayData(data){
             "Loading Finish",
             "loadingFinish",
             "เวลาโหลดสินค้าเสร็จ"
-        ]);
-
-
-    const status =
-        value(data,[
-            "Status",
-            "status",
-            "สถานะ",
-            "ลักษณะงาน"
         ]);
 
 
@@ -2600,51 +2196,40 @@ function displayData(data){
 
     document.getElementById(
         "r-hbl"
-    ).textContent =
-        hbl;
+    ).textContent = hbl;
+
 
     document.getElementById(
         "r-customer"
-    ).textContent =
-        customer;
+    ).textContent = customer;
+
 
     document.getElementById(
         "r-location"
-    ).textContent =
-        location;
+    ).textContent = location;
+
 
     document.getElementById(
         "r-date"
-    ).textContent =
-        date;
+    ).textContent = date;
 
 
     /* DETAILS */
 
     document.getElementById(
         "d-customer"
-    ).textContent =
-        customer;
+    ).textContent = customer;
+
 
     document.getElementById(
         "d-location"
-    ).textContent =
-        location;
+    ).textContent = location;
+
 
     document.getElementById(
         "d-date"
-    ).textContent =
-        date;
+    ).textContent = date;
 
-    document.getElementById(
-        "d-time-in"
-    ).textContent =
-        timeIn;
-
-    document.getElementById(
-        "d-time-out"
-    ).textContent =
-        timeOut;
 
     document.getElementById(
         "d-status"
@@ -2659,25 +2244,30 @@ function displayData(data){
     ).textContent =
         loadingStart;
 
+
     document.getElementById(
         "d-loading-finish"
     ).textContent =
         loadingFinish;
+
 
     document.getElementById(
         "d-company"
     ).textContent =
         company;
 
+
     document.getElementById(
         "d-driver"
     ).textContent =
         driver;
 
+
     document.getElementById(
         "d-tel"
     ).textContent =
         tel;
+
 
     document.getElementById(
         "d-truck"
@@ -2692,25 +2282,23 @@ function displayData(data){
     ).textContent =
         plate;
 
+
     document.getElementById(
         "d-booking"
     ).textContent =
         booking;
+
 
     document.getElementById(
         "d-quantity"
     ).textContent =
         quantity;
 
+
     document.getElementById(
         "d-remark"
     ).textContent =
         remark;
-
-
-    /* TIMELINE */
-
-    updateTimeline(data);
 
 
     /* ADDITIONAL */
@@ -2732,9 +2320,9 @@ function displayData(data){
 }
 
 
-/* =========================================================
+/* =========================
    SEARCH
-========================================================= */
+========================= */
 
 async function searchData(){
 
@@ -2759,8 +2347,7 @@ async function searchData(){
     }
 
 
-    button.disabled =
-        true;
+    button.disabled = true;
 
     button.textContent =
         "กำลังค้นหา...";
@@ -2817,15 +2404,14 @@ async function searchData(){
 
 
         let data =
-            json.data !== undefined ?
-            json.data :
-            json;
+            json.data !== undefined
+            ? json.data
+            : json;
 
 
         if(Array.isArray(data)){
 
-            data =
-                data[0];
+            data = data[0];
 
         }
 
@@ -2835,8 +2421,7 @@ async function searchData(){
             Array.isArray(json.result)
         ){
 
-            data =
-                json.result[0];
+            data = json.result[0];
 
         }
 
@@ -2846,8 +2431,7 @@ async function searchData(){
             Array.isArray(json.results)
         ){
 
-            data =
-                json.results[0];
+            data = json.results[0];
 
         }
 
@@ -2901,9 +2485,9 @@ async function searchData(){
 }
 
 
-/* =========================================================
+/* =========================
    ENTER
-========================================================= */
+========================= */
 
 input.addEventListener(
     "keydown",
@@ -2921,9 +2505,9 @@ input.addEventListener(
 );
 
 
-/* =========================================================
+/* =========================
    URL HBL
-========================================================= */
+========================= */
 
 (function(){
 
