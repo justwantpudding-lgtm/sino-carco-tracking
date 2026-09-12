@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sino Carco Tracking</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Noto Sans Thai", sans-serif;
+      background: #f5f7fb;
+      color: #333;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 0;
+      color: #1f4e79;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #777;
+      margin-bottom: 30px;
+    }
+
+    .search-box {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    input {
+      flex: 1;
+      padding: 14px 16px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #1f73e8;
+    }
+
+    button {
+      padding: 14px 25px;
+      border: none;
+      border-radius: 10px;
+      background: #1f73e8;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #155fc0;
+    }
+
+    #loading {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      color: #666;
+    }
+
+    #message {
+      text-align: center;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .success {
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    .error {
+      background: #ffebee;
+      color: #c62828;
+    }
+
+    .result {
+      display: none;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .item {
+      background: #f8f9fc;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    .label {
+      font-size: 13px;
+      color: #777;
+      margin-bottom: 5px;
+    }
+
+    .value {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      word-break: break-word;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: #fff3cd;
+      color: #856404;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 10px auto;
+        padding: 10px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .search-box {
+        flex-direction: column;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="card">
+
+    <h1>🚚 Sino Carco Tracking</h1>
+    <div class="subtitle">
+      ระบบติดตามสถานะการขนส่งสินค้า
+    </div>
+
+    <div class="search-box">
+      <input
+        type="text"
+        id="hbl"
+        placeholder="กรอกเลข HBL เช่น LCH0260003A"
+        onkeydown="if(event.key==='Enter') searchData()"
+      >
+      <button onclick="searchData()">ค้นหา</button>
+    </div>
+
+    <div id="loading">
+      กำลังค้นหาข้อมูล...
+    </div>
+
+    <div id="message"></div>
+
+    <div id="result" class="result">
+
+      <div class="grid">
+
+        <div class="item">
+          <div class="label">HBL No.</div>
+          <div class="value" id="hblNo"></div>
+        </div>
+
+        <div class="item">
+          <div class="label">Customer</div>
+          <div class="value" id="customer"></div>
+        </div>
+
+        <div class="item">
+          <div class="label">Location</div>
+          <div class="value" id="location"></div>
+        </div>
+
+        <div class="item">
+          <div class="label">Date</div>
+          <div class="value" id="date"></div>
+        </div>
+
+        <div class="item">
+          <div class="label">Time In</div>
+          <div class="value" id="timeIn"></div>
+        </div>
+
+        <div class="item">
+          <div class="label">Time Out</div>
+          <div class="value" id="timeOut"></div>
+        </div>
+
+        <div class="item">
+          <div class="label">Loading Start</div>
+          <div class="value" id="loadingStart"></div>
+        </div>
+
+        <div class="item">
+          <div class="label">Loading Finish</div>
+          <div class="value" id="loadingFinish"></div>
+        </div>
+
+        <div class="item">
+          <div class="label">Status</div>
+          <div class="value">
+            <span class="status" id="status"></span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="label">Company</div>
+          <div class="value" id="company"></div>
+        </div>
+
+        <div class="item">
+          <div class="label">Driver</div>
+          <div class="value" id="driver"></div>
+        </div>
+
+        <div class="item">
+          <div class="label">Tel.</div>
+          <div class="value" id="tel"></div>
+        </div>
+
+        <div class="item">
+          <div class="label">Plate</div>
+          <div class="value" id="plate"></div>
+        </div>
+
+        <div class="item">
+          <div class="label">Truck</div>
+          <div class="value" id="truck"></div>
+        </div>
+
+        <div class="item">
+          <div class="label">Booking No.</div>
+          <div class="value" id="bookingNo"></div>
+        </div>
+
+        <div class="item">
+          <div class="label">Quantity</div>
+          <div class="value" id="qty"></div>
+        </div>
+
+        <div class="item">
+          <div class="label">Remark</div>
+          <div class="value" id="remark"></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+
+  // Google Apps Script Web App
+  const API_URL =
+    "https://script.google.com/macros/s/AKfycbwjX5Cl1wH6agUuXVZBJGC8J1EgxhzeZmlGJUp7gTAW89EZ60RsgUGsf2mtqoGZ5Q4/exec";
+
+
+  async function searchData() {
+
+    const hbl = document.getElementById("hbl").value.trim();
+
+    if (!hbl) {
+      showMessage("กรุณากรอกเลข HBL", "error");
+      return;
+    }
+
+    document.getElementById("result").style.display = "none";
+    document.getElementById("message").style.display = "none";
+    document.getElementById("loading").style.display = "block";
+
+    try {
+
+      const url =
+        API_URL + "?hbl=" + encodeURIComponent(hbl);
+
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error("ไม่สามารถเชื่อมต่อระบบได้");
+      }
+
+      const result = await response.json();
+
+      document.getElementById("loading").style.display = "none";
+
+      if (!result.success) {
+        showMessage(
+          result.message || "ไม่พบข้อมูล",
+          "error"
+        );
+        return;
+      }
+
+      const data = result.data;
+
+      setText("hblNo", data.hblNo);
+      setText("customer", data.customer);
+      setText("location", data.location);
+      setText("date", data.date);
+      setText("timeIn", data.timeIn);
+      setText("timeOut", data.timeOut);
+      setText("loadingStart", data.loadingStart);
+      setText("loadingFinish", data.loadingFinish);
+      setText("status", data.status);
+      setText("company", data.company);
+      setText("driver", data.driver);
+      setText("tel", data.tel);
+      setText("plate", data.plate);
+      setText("truck", data.truck);
+      setText("bookingNo", data.bookingNo);
+      setText("qty", data.qty);
+      setText("remark", data.remark);
+
+      document.getElementById("result").style.display = "block";
+
+    } catch (error) {
+
+      document.getElementById("loading").style.display = "none";
+
+      showMessage(
+        "เกิดข้อผิดพลาดในการเชื่อมต่อ Google Sheet",
+        "error"
+      );
+
+      console.error(error);
+    }
+  }
+
+
+  function setText(id, value) {
+
+    document.getElementById(id).textContent =
+      value === undefined ||
+      value === null ||
+      value === ""
+        ? "-"
+        : value;
+  }
+
+
+  function showMessage(text, type) {
+
+    const message = document.getElementById("message");
+
+    message.textContent = text;
+    message.className = type;
+    message.style.display = "block";
+  }
+
+</script>
+
+</body>
+</html>
