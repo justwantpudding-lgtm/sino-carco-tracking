@@ -1,1265 +1,2240 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Sino Carco Tracking</title>
+<title>Sino Carco Tracking</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    :root {
-      --primary: #174a7e;
-      --primary-dark: #10385f;
-      --accent: #2f7de1;
-      --bg: #f4f7fb;
-      --card: #ffffff;
-      --text: #172033;
-      --muted: #718096;
-      --border: #e4e9f0;
-      --success-bg: #e9f8ef;
-      --success-text: #198754;
-      --warning-bg: #fff7df;
-      --warning-text: #9a6a00;
-      --danger-bg: #fff0f1;
-      --danger-text: #d92d3a;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background:
+<style>
+
+:root {
+    --navy: #0b2850;
+    --navy-2: #123d73;
+    --blue: #1769d1;
+    --blue-light: #eaf3ff;
+
+    --bg: #f4f7fb;
+    --white: #ffffff;
+
+    --text: #10233f;
+    --muted: #718096;
+
+    --border: #e3eaf3;
+
+    --success-bg: #eaf8f0;
+    --success: #198754;
+
+    --warning-bg: #fff6dc;
+    --warning: #a87500;
+
+    --danger-bg: #fff0f0;
+    --danger: #d92d3a;
+
+    --shadow:
+        0 10px 35px rgba(15, 39, 70, 0.07);
+
+    --shadow-hover:
+        0 18px 45px rgba(15, 39, 70, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background:
         radial-gradient(
-          circle at top left,
-          rgba(47, 125, 225, 0.08),
-          transparent 35%
+            circle at 10% 0%,
+            rgba(23,105,209,.08),
+            transparent 28%
         ),
         var(--bg);
 
-      font-family:
-        "Noto Sans Thai",
-        "Segoe UI",
+    color: var(--text);
+
+    font-family:
+        "Inter",
+        "Kanit",
         Arial,
         sans-serif;
 
-      color: var(--text);
+    min-height: 100vh;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.topbar {
+    height: 72px;
+    background: rgba(255,255,255,.94);
+
+    border-bottom: 1px solid var(--border);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    backdrop-filter: blur(12px);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.brand-logo {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--navy),
+            var(--blue)
+        );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+
+    box-shadow:
+        0 7px 18px rgba(23,105,209,.20);
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-name {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -.3px;
+    color: var(--navy);
+}
+
+.brand-sub {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.system-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #607087;
+    font-size: 13px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #22a66f;
+
+    box-shadow:
+        0 0 0 4px rgba(34,166,111,.12);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    max-width: 1180px;
+    margin: 0 auto;
+
+    padding:
+        65px 24px
+        38px;
+}
+
+.hero-content {
+    max-width: 780px;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    color: var(--blue);
+
+    background: var(--blue-light);
+
+    padding: 8px 13px;
+
+    border-radius: 999px;
+
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    margin: 0;
+
+    font-size: clamp(34px, 5vw, 56px);
+
+    line-height: 1.05;
+
+    letter-spacing: -2px;
+
+    color: var(--navy);
+
+    font-weight: 800;
+}
+
+.hero h1 span {
+    color: var(--blue);
+}
+
+.hero-description {
+    margin-top: 18px;
+
+    font-size: 16px;
+
+    color: var(--muted);
+
+    line-height: 1.7;
+
+    max-width: 650px;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-card {
+    max-width: 1180px;
+
+    margin:
+        0 auto
+        30px;
+
+    padding: 28px;
+
+    background: var(--white);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 20px;
+
+    box-shadow: var(--shadow);
+
+    animation: fadeUp .6s ease;
+}
+
+.search-title {
+    font-size: 16px;
+
+    font-weight: 700;
+
+    color: var(--navy);
+
+    margin-bottom: 15px;
+}
+
+.search-box {
+    display: flex;
+    gap: 12px;
+}
+
+.search-box input {
+    flex: 1;
+
+    height: 58px;
+
+    border:
+        1px solid #d6e0ec;
+
+    border-radius: 13px;
+
+    padding:
+        0 18px;
+
+    font-size: 16px;
+
+    color: var(--text);
+
+    background: #fbfcfe;
+
+    outline: none;
+
+    transition: .2s;
+}
+
+.search-box input:focus {
+    border-color: var(--blue);
+
+    background: white;
+
+    box-shadow:
+        0 0 0 4px rgba(23,105,209,.08);
+}
+
+.search-box button {
+    width: 145px;
+
+    border: 0;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--navy),
+            var(--blue)
+        );
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+    box-shadow:
+        0 8px 20px rgba(23,105,209,.20);
+}
+
+.search-box button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 13px 28px rgba(23,105,209,.28);
+}
+
+.search-box button:disabled {
+    opacity: .65;
+    cursor: wait;
+    transform: none;
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message {
+    display: none;
+
+    margin-top: 15px;
+
+    padding: 13px 16px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    text-align: center;
+}
+
+.message.error {
+    display: block;
+
+    color: var(--danger);
+
+    background: var(--danger-bg);
+
+    border: 1px solid #ffd1d1;
+}
+
+.message.success {
+    display: block;
+
+    color: var(--success);
+
+    background: var(--success-bg);
+
+    border: 1px solid #ccefdc;
+}
+
+/* =========================
+   RESULT
+========================= */
+
+#result {
+    max-width: 1180px;
+
+    margin:
+        0 auto
+        80px;
+
+    padding: 0 0;
+}
+
+/* =========================
+   RESULT HEADER
+========================= */
+
+.result-header {
+    margin-bottom: 22px;
+}
+
+.result-label {
+    color: var(--blue);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+
+    text-transform: uppercase;
+}
+
+.result-header h2 {
+    margin:
+        5px 0 5px;
+
+    color: var(--navy);
+
+    font-size: 28px;
+
+    letter-spacing: -.6px;
+}
+
+.result-header p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+/* =========================
+   OVERVIEW
+========================= */
+
+.overview {
+    display: grid;
+
+    grid-template-columns:
+        1.5fr
+        1fr
+        1fr
+        1fr;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--navy),
+            var(--navy-2)
+        );
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    color: white;
+
+    margin-bottom: 25px;
+
+    box-shadow:
+        0 15px 40px rgba(11,40,80,.15);
+}
+
+.overview-item {
+    padding: 24px;
+
+    border-right:
+        1px solid
+        rgba(255,255,255,.12);
+}
+
+.overview-item:last-child {
+    border-right: 0;
+}
+
+.overview-label {
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    opacity: .65;
+
+    margin-bottom: 8px;
+}
+
+.overview-value {
+    font-size: 19px;
+
+    font-weight: 700;
+}
+
+.overview-main .overview-value {
+    font-size: 24px;
+
+    letter-spacing: .5px;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.section {
+    margin-top: 30px;
+}
+
+.section-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 15px;
+}
+
+.section-title-icon {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: var(--blue-light);
+
+    color: var(--blue);
+}
+
+.section-title h3 {
+    margin: 0;
+
+    font-size: 18px;
+
+    color: var(--navy);
+}
+
+.section-title p {
+    margin: 2px 0 0;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+/* =========================
+   INFO GRID
+========================= */
+
+.info-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+.info-card {
+    background: white;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 15px;
+
+    padding: 20px;
+
+    min-height: 105px;
+
+    box-shadow:
+        0 5px 20px rgba(15,39,70,.035);
+
+    transition: .25s;
+
+    animation: fadeUp .5s ease both;
+}
+
+.info-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow: var(--shadow-hover);
+}
+
+.info-label {
+    color: var(--muted);
+
+    font-size: 12px;
+
+    margin-bottom: 8px;
+}
+
+.info-value {
+    color: var(--navy);
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    word-break: break-word;
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.status-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding:
+        7px 12px;
+
+    border-radius: 999px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+.status-badge.pending {
+    background: var(--warning-bg);
+    color: var(--warning);
+}
+
+.status-badge.success {
+    background: var(--success-bg);
+    color: var(--success);
+}
+
+.status-badge.danger {
+    background: var(--danger-bg);
+    color: var(--danger);
+}
+
+.status-badge .dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: currentColor;
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline-card {
+    background: white;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 18px;
+
+    padding: 28px;
+
+    box-shadow: var(--shadow);
+}
+
+.timeline {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    position: relative;
+}
+
+.timeline-line {
+    position: absolute;
+
+    top: 17px;
+
+    left: 9%;
+
+    right: 9%;
+
+    height: 3px;
+
+    background: #e5ebf3;
+
+    z-index: 0;
+}
+
+.timeline-step {
+    position: relative;
+
+    z-index: 1;
+
+    text-align: center;
+
+    width: 20%;
+}
+
+.timeline-circle {
+    width: 36px;
+    height: 36px;
+
+    margin: 0 auto 10px;
+
+    border-radius: 50%;
+
+    background: #eef2f7;
+
+    border:
+        4px solid white;
+
+    box-shadow:
+        0 0 0 1px #dfe6ef;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #91a0b4;
+
+    font-size: 13px;
+}
+
+.timeline-step.active .timeline-circle {
+    background: var(--blue);
+
+    color: white;
+
+    box-shadow:
+        0 0 0 1px var(--blue),
+        0 5px 15px rgba(23,105,209,.25);
+}
+
+.timeline-step.completed .timeline-circle {
+    background: var(--success);
+
+    color: white;
+
+    box-shadow:
+        0 0 0 1px var(--success);
+}
+
+.timeline-title {
+    font-size: 12px;
+
+    font-weight: 700;
+
+    color: var(--navy);
+}
+
+.timeline-time {
+    font-size: 11px;
+
+    color: var(--muted);
+
+    margin-top: 3px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    border-top:
+        1px solid var(--border);
+
+    padding:
+        28px 20px;
+
+    text-align: center;
+
+    color: #8a98aa;
+
+    font-size: 12px;
+}
+
+.footer strong {
+    color: var(--navy);
+}
+
+/* =========================
+   LOADING
+========================= */
+
+.loading {
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 35px;
+
+    color: var(--muted);
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+
+    border:
+        3px solid #dce5ef;
+
+    border-top-color: var(--blue);
+
+    border-radius: 50%;
+
+    animation: spin .7s linear infinite;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
     }
 
-    /* =========================
-       MAIN CONTAINER
-    ========================= */
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-    .page {
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 55px 20px 70px;
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    .topbar {
+        padding: 0 20px;
     }
 
-    /* =========================
-       HEADER
-    ========================= */
-
-    .header {
-      text-align: center;
-      margin-bottom: 30px;
+    .system-status {
+        display: none;
     }
 
-    .logo {
-      width: 62px;
-      height: 62px;
-
-      margin: 0 auto 15px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 18px;
-
-      background: linear-gradient(
-        135deg,
-        #174a7e,
-        #2f7de1
-      );
-
-      color: white;
-
-      font-size: 30px;
-
-      box-shadow:
-        0 10px 30px rgba(23, 74, 126, 0.18);
+    .hero {
+        padding:
+            40px 20px
+            25px;
     }
 
-    .header h1 {
-      margin: 0;
-
-      color: var(--primary);
-
-      font-size: 34px;
-      font-weight: 750;
-
-      letter-spacing: -0.5px;
+    .hero h1 {
+        font-size: 38px;
     }
-
-    .header p {
-      margin: 9px 0 0;
-
-      color: var(--muted);
-
-      font-size: 15px;
-    }
-
-    /* =========================
-       SEARCH BOX
-    ========================= */
 
     .search-card {
-      background: var(--card);
+        margin:
+            0 20px
+            25px;
 
-      border: 1px solid rgba(228, 233, 240, 0.9);
-
-      border-radius: 22px;
-
-      padding: 28px;
-
-      box-shadow:
-        0 15px 45px rgba(28, 45, 70, 0.08);
-
-      margin-bottom: 25px;
-    }
-
-    .search-title {
-      font-size: 16px;
-      font-weight: 650;
-
-      color: var(--text);
-
-      margin-bottom: 12px;
-    }
-
-    .search-row {
-      display: flex;
-      gap: 12px;
-    }
-
-    .search-input {
-      flex: 1;
-
-      height: 54px;
-
-      border: 1px solid #d5dce6;
-
-      border-radius: 12px;
-
-      padding: 0 17px;
-
-      outline: none;
-
-      font-size: 16px;
-
-      color: var(--text);
-
-      background: #fff;
-
-      transition:
-        border-color 0.2s,
-        box-shadow 0.2s;
-    }
-
-    .search-input::placeholder {
-      color: #9aa5b5;
-    }
-
-    .search-input:focus {
-      border-color: var(--accent);
-
-      box-shadow:
-        0 0 0 4px rgba(47, 125, 225, 0.10);
-    }
-
-    .search-button {
-      height: 54px;
-
-      min-width: 120px;
-
-      border: none;
-
-      border-radius: 12px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #174a7e,
-          #2f7de1
-        );
-
-      color: white;
-
-      font-size: 16px;
-      font-weight: 650;
-
-      cursor: pointer;
-
-      padding: 0 25px;
-
-      box-shadow:
-        0 8px 20px rgba(47, 125, 225, 0.20);
-
-      transition:
-        transform 0.2s,
-        box-shadow 0.2s,
-        opacity 0.2s;
-    }
-
-    .search-button:hover {
-      transform: translateY(-1px);
-
-      box-shadow:
-        0 12px 25px rgba(47, 125, 225, 0.28);
-    }
-
-    .search-button:active {
-      transform: translateY(0);
-    }
-
-    .search-button.loading {
-      opacity: 0.75;
-      pointer-events: none;
-    }
-
-    /* =========================
-       MESSAGE
-    ========================= */
-
-    .message {
-      display: none;
-
-      padding: 15px 18px;
-
-      border-radius: 12px;
-
-      margin-top: 18px;
-
-      font-size: 15px;
-
-      text-align: center;
-    }
-
-    .message.error {
-      display: block;
-
-      background: var(--danger-bg);
-
-      color: var(--danger-text);
-
-      border: 1px solid #ffd5d8;
-    }
-
-    .message.success {
-      display: block;
-
-      background: var(--success-bg);
-
-      color: var(--success-text);
-
-      border: 1px solid #c9ecd7;
-    }
-
-    /* =========================
-       RESULT
-    ========================= */
-
-    .result {
-      display: none;
-    }
-
-    .result.show {
-      display: block;
-    }
-
-    .result-header {
-      display: flex;
-
-      justify-content: space-between;
-      align-items: center;
-
-      margin: 28px 0 15px;
-    }
-
-    .result-title {
-      margin: 0;
-
-      font-size: 21px;
-
-      color: var(--primary);
-
-      font-weight: 700;
-    }
-
-    .result-subtitle {
-      color: var(--muted);
-
-      font-size: 13px;
-    }
-
-    /* =========================
-       CARDS
-    ========================= */
-
-    .grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-      gap: 14px;
-    }
-
-    .info-card {
-      background: rgba(255,255,255,0.96);
-
-      border: 1px solid var(--border);
-
-      border-radius: 16px;
-
-      padding: 18px 20px;
-
-      min-height: 88px;
-
-      transition:
-        transform 0.2s,
-        box-shadow 0.2s;
-    }
-
-    .info-card:hover {
-      transform: translateY(-2px);
-
-      box-shadow:
-        0 10px 25px rgba(30, 50, 80, 0.07);
-    }
-
-    .info-label {
-      color: var(--muted);
-
-      font-size: 13px;
-
-      margin-bottom: 6px;
-    }
-
-    .info-value {
-      color: var(--text);
-
-      font-size: 16px;
-
-      font-weight: 650;
-
-      word-break: break-word;
-    }
-
-    .hbl-card {
-      grid-column: span 2;
-
-      background:
-        linear-gradient(
-          135deg,
-          #f8fbff,
-          #ffffff
-        );
-
-      border-color: #d9e6f5;
-    }
-
-    .hbl-card .info-value {
-      font-size: 21px;
-
-      color: var(--primary);
-
-      letter-spacing: 0.3px;
-    }
-
-    /* =========================
-       STATUS
-    ========================= */
-
-    .status {
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 7px;
-
-      padding: 6px 13px;
-
-      border-radius: 999px;
-
-      background: var(--warning-bg);
-
-      color: var(--warning-text);
-
-      font-size: 14px;
-
-      font-weight: 650;
-    }
-
-    .status::before {
-      content: "";
-
-      width: 7px;
-      height: 7px;
-
-      border-radius: 50%;
-
-      background: currentColor;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    .footer {
-      text-align: center;
-
-      color: #98a2b3;
-
-      font-size: 12px;
-
-      margin-top: 40px;
-    }
-
-    /* =========================
-       LOADING
-    ========================= */
-
-    .spinner {
-      display: inline-block;
-
-      width: 17px;
-      height: 17px;
-
-      border: 2px solid rgba(255,255,255,0.4);
-
-      border-top-color: white;
-
-      border-radius: 50%;
-
-      animation: spin 0.7s linear infinite;
-
-      vertical-align: middle;
-
-      margin-right: 7px;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 700px) {
-
-      .page {
-        padding:
-          30px
-          14px
-          50px;
-      }
-
-      .header h1 {
-        font-size: 27px;
-      }
-
-      .logo {
-        width: 55px;
-        height: 55px;
-
-        font-size: 26px;
-      }
-
-      .search-card {
         padding: 20px;
-
-        border-radius: 18px;
-      }
-
-      .search-row {
-        flex-direction: column;
-      }
-
-      .search-button {
-        width: 100%;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hbl-card {
-        grid-column: span 1;
-      }
-
-      .result-header {
-        align-items: flex-start;
-
-        flex-direction: column;
-
-        gap: 4px;
-      }
     }
-  </style>
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .search-box button {
+        width: 100%;
+        height: 55px;
+    }
+
+    #result {
+        padding: 0 20px;
+    }
+
+    .overview {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .overview-item {
+        border-bottom:
+            1px solid
+            rgba(255,255,255,.12);
+    }
+
+    .info-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 560px) {
+
+    .brand-name {
+        font-size: 16px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+
+        letter-spacing: -1px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+    }
+
+    .overview {
+        grid-template-columns: 1fr;
+    }
+
+    .overview-item {
+        border-right: 0;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-card {
+        overflow-x: auto;
+    }
+
+    .timeline {
+        min-width: 550px;
+    }
+}
+
+</style>
 </head>
+
 
 <body>
 
-  <div class="page">
+<!-- =========================
+     TOP BAR
+========================= -->
 
-    <!-- HEADER -->
-    <header class="header">
+<header class="topbar">
 
-      <div class="logo">
-        🚚
-      </div>
+    <div class="brand">
 
-      <h1>
-        Sino Carco Tracking
-      </h1>
+        <div class="brand-logo">
+            🚚
+        </div>
 
-      <p>
-        ระบบติดตามสถานะการขนส่งสินค้า
-      </p>
+        <div class="brand-text">
 
-    </header>
+            <div class="brand-name">
+                Sino Carco
+            </div>
+
+            <div class="brand-sub">
+                Logistics Tracking
+            </div>
+
+        </div>
+
+    </div>
 
 
-    <!-- SEARCH -->
-    <section class="search-card">
+    <div class="system-status">
 
-      <div class="search-title">
+        <span class="status-dot"></span>
+
+        Tracking System Online
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            ● SHIPMENT TRACKING
+        </div>
+
+        <h1>
+            Sino Carco
+            <span>Tracking</span>
+        </h1>
+
+        <p class="hero-description">
+            ระบบติดตามสถานะการขนส่งสินค้า
+            ตรวจสอบรายละเอียด Shipment
+            และสถานะการจัดส่งได้อย่างรวดเร็ว
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SEARCH
+========================= -->
+
+<section class="search-card">
+
+    <div class="search-title">
         ค้นหาสถานะการขนส่ง
-      </div>
+    </div>
 
-      <div class="search-row">
+    <div class="search-box">
 
         <input
-          id="hbl"
-          class="search-input"
-          type="text"
-          autocomplete="off"
-          placeholder="กรุณากรอก HBL No."
+            type="text"
+            id="hbl"
+            autocomplete="off"
+            placeholder="กรอกเลข HBL"
         >
 
         <button
-          id="searchButton"
-          class="search-button"
-          onclick="searchData()"
+            id="searchButton"
+            onclick="searchData()"
         >
-          ค้นหา
+            ค้นหา
         </button>
 
-      </div>
-
-      <div
-        id="message"
-        class="message"
-      ></div>
-
-    </section>
-
-
-    <!-- RESULT -->
-    <section
-      id="result"
-      class="result"
-    >
-
-      <div class="result-header">
-
-        <div>
-          <h2 class="result-title">
-            รายละเอียดการขนส่ง
-          </h2>
-
-          <div class="result-subtitle">
-            ข้อมูลจากระบบติดตามสินค้า
-          </div>
-        </div>
-
-      </div>
-
-
-      <div class="grid">
-
-        <!-- HBL -->
-        <div class="info-card hbl-card">
-
-          <div class="info-label">
-            HBL No.
-          </div>
-
-          <div
-            id="hblNo"
-            class="info-value"
-          >
-            -
-          </div>
-
-        </div>
-
-
-        <!-- CUSTOMER -->
-        <div class="info-card">
-
-          <div class="info-label">
-            Customer
-          </div>
-
-          <div
-            id="customer"
-            class="info-value"
-          >
-            -
-          </div>
-
-        </div>
-
-
-        <!-- LOCATION -->
-        <div class="info-card">
-
-          <div class="info-label">
-            Location
-          </div>
-
-          <div
-            id="location"
-            class="info-value"
-          >
-            -
-          </div>
-
-        </div>
-
-
-        <!-- DATE -->
-        <div class="info-card">
-
-          <div class="info-label">
-            Date
-          </div>
-
-          <div
-            id="date"
-            class="info-value"
-          >
-            -
-          </div>
-
-        </div>
-
-
-        <!-- TIME IN -->
-        <div class="info-card">
-
-          <div class="info-label">
-            Time In
-          </div>
-
-          <div
-            id="timeIn"
-            class="info-value"
-          >
-            -
-          </div>
-
-        </div>
-
-
-        <!-- TIME OUT -->
-        <div class="info-card">
-
-          <div class="info-label">
-            Time Out
-          </div>
-
-          <div
-            id="timeOut"
-            class="info-value"
-          >
-            -
-          </div>
-
-        </div>
-
-
-        <!-- LOADING START -->
-        <div class="info-card">
-
-          <div class="info-label">
-            Loading Start
-          </div>
-
-          <div
-            id="loadingStart"
-            class="info-value"
-          >
-            -
-          </div>
-
-        </div>
-
-
-        <!-- LOADING FINISH -->
-        <div class="info-card">
-
-          <div class="info-label">
-            Loading Finish
-          </div>
-
-          <div
-            id="loadingFinish"
-            class="info-value"
-          >
-            -
-          </div>
-
-        </div>
-
-
-        <!-- STATUS -->
-        <div class="info-card">
-
-          <div class="info-label">
-            Status
-          </div>
-
-          <div id="status">
-            -
-          </div>
-
-        </div>
-
-
-        <!-- COMPANY -->
-        <div class="info-card">
-
-          <div class="info-label">
-            Company
-          </div>
-
-          <div
-            id="company"
-            class="info-value"
-          >
-            -
-          </div>
-
-        </div>
-
-
-        <!-- DRIVER -->
-        <div class="info-card">
-
-          <div class="info-label">
-            Driver
-          </div>
-
-          <div
-            id="driver"
-            class="info-value"
-          >
-            -
-          </div>
-
-        </div>
-
-
-        <!-- TEL -->
-        <div class="info-card">
-
-          <div class="info-label">
-            Tel.
-          </div>
-
-          <div
-            id="tel"
-            class="info-value"
-          >
-            -
-          </div>
-
-        </div>
-
-
-        <!-- PLATE -->
-        <div class="info-card">
-
-          <div class="info-label">
-            Plate
-          </div>
-
-          <div
-            id="plate"
-            class="info-value"
-          >
-            -
-          </div>
-
-        </div>
-
-
-        <!-- TRUCK -->
-        <div class="info-card">
-
-          <div class="info-label">
-            Truck
-          </div>
-
-          <div
-            id="truck"
-            class="info-value"
-          >
-            -
-          </div>
-
-        </div>
-
-
-        <!-- BOOKING -->
-        <div class="info-card">
-
-          <div class="info-label">
-            Booking No.
-          </div>
-
-          <div
-            id="bookingNo"
-            class="info-value"
-          >
-            -
-          </div>
-
-        </div>
-
-
-        <!-- QTY -->
-        <div class="info-card">
-
-          <div class="info-label">
-            Quantity
-          </div>
-
-          <div
-            id="qty"
-            class="info-value"
-          >
-            -
-          </div>
-
-        </div>
-
-
-        <!-- REMARK -->
-        <div class="info-card">
-
-          <div class="info-label">
-            Remark
-          </div>
-
-          <div
-            id="remark"
-            class="info-value"
-          >
-            -
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <div class="footer">
-      Sino Carco Tracking System
     </div>
 
-  </div>
+    <div
+        id="message"
+        class="message">
+    </div>
+
+</section>
 
 
-  <script>
+<!-- =========================
+     LOADING
+========================= -->
 
-    /*
-    =====================================================
-    GOOGLE APPS SCRIPT URL
-    =====================================================
+<div
+    id="loading"
+    class="loading">
 
-    ใส่ URL Web App ของ Google Apps Script ตรงนี้
+    <div class="spinner"></div>
 
-    ตัวอย่างรูปแบบ:
+    <span>
+        กำลังค้นหาข้อมูล Shipment...
+    </span>
 
-    https://script.google.com/macros/s/XXXXXXXXXXXX/exec
+</div>
 
-    =====================================================
-    */
+
+<!-- =========================
+     RESULT
+========================= -->
+
+<main id="result" style="display:none;">
+
+    <div class="result-header">
+
+        <div class="result-label">
+            Shipment Information
+        </div>
+
+        <h2>
+            รายละเอียดการขนส่ง
+        </h2>
+
+        <p>
+            ข้อมูลล่าสุดจากระบบติดตามสินค้า
+        </p>
+
+    </div>
+
+
+    <!-- OVERVIEW -->
+
+    <div class="overview">
+
+        <div class="overview-item overview-main">
+
+            <div class="overview-label">
+                HBL Number
+            </div>
+
+            <div
+                class="overview-value"
+                id="r-hbl">
+                -
+            </div>
+
+        </div>
+
+
+        <div class="overview-item">
+
+            <div class="overview-label">
+                Customer
+            </div>
+
+            <div
+                class="overview-value"
+                id="r-customer">
+                -
+            </div>
+
+        </div>
+
+
+        <div class="overview-item">
+
+            <div class="overview-label">
+                Location
+            </div>
+
+            <div
+                class="overview-value"
+                id="r-location">
+                -
+            </div>
+
+        </div>
+
+
+        <div class="overview-item">
+
+            <div class="overview-label">
+                Date
+            </div>
+
+            <div
+                class="overview-value"
+                id="r-date">
+                -
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- TIMELINE -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <div class="section-title-icon">
+                ◉
+            </div>
+
+            <div>
+                <h3>
+                    Shipment Overview
+                </h3>
+
+                <p>
+                    สถานะการดำเนินงาน
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="timeline-card">
+
+            <div class="timeline">
+
+                <div class="timeline-line"></div>
+
+
+                <div class="timeline-step completed">
+
+                    <div class="timeline-circle">
+                        ✓
+                    </div>
+
+                    <div class="timeline-title">
+                        Booking
+                    </div>
+
+                    <div
+                        class="timeline-time"
+                        id="t-booking">
+                        -
+                    </div>
+
+                </div>
+
+
+                <div class="timeline-step completed">
+
+                    <div class="timeline-circle">
+                        ✓
+                    </div>
+
+                    <div class="timeline-title">
+                        Arrival
+                    </div>
+
+                    <div
+                        class="timeline-time"
+                        id="t-in">
+                        -
+                    </div>
+
+                </div>
+
+
+                <div class="timeline-step active">
+
+                    <div class="timeline-circle">
+                        ●
+                    </div>
+
+                    <div class="timeline-title">
+                        Loading
+                    </div>
+
+                    <div
+                        class="timeline-time"
+                        id="t-loading">
+                        -
+                    </div>
+
+                </div>
+
+
+                <div class="timeline-step">
+
+                    <div class="timeline-circle">
+                        ○
+                    </div>
+
+                    <div class="timeline-title">
+                        Departure
+                    </div>
+
+                    <div
+                        class="timeline-time"
+                        id="t-out">
+                        -
+                    </div>
+
+                </div>
+
+
+                <div class="timeline-step">
+
+                    <div class="timeline-circle">
+                        ○
+                    </div>
+
+                    <div class="timeline-title">
+                        Completed
+                    </div>
+
+                    <div class="timeline-time">
+                        -
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- BASIC INFORMATION -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <div class="section-title-icon">
+                ◫
+            </div>
+
+            <div>
+
+                <h3>
+                    Shipment Details
+                </h3>
+
+                <p>
+                    ข้อมูลหลักของการขนส่ง
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="info-grid">
+
+            <div class="info-card">
+
+                <div class="info-label">
+                    Customer
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-customer">
+                    -
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-label">
+                    Location
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-location">
+                    -
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-label">
+                    Date
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-date">
+                    -
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-label">
+                    Time In
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-time-in">
+                    -
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-label">
+                    Time Out
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-time-out">
+                    -
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-label">
+                    Status
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-status">
+                    -
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LOADING INFORMATION -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <div class="section-title-icon">
+                ◈
+            </div>
+
+            <div>
+
+                <h3>
+                    Loading Information
+                </h3>
+
+                <p>
+                    รายละเอียดการโหลดสินค้า
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="info-grid">
+
+            <div class="info-card">
+
+                <div class="info-label">
+                    Loading Start
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-loading-start">
+                    -
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-label">
+                    Loading Finish
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-loading-finish">
+                    -
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-label">
+                    Company
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-company">
+                    -
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-label">
+                    Driver
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-driver">
+                    -
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-label">
+                    Telephone
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-tel">
+                    -
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-label">
+                    Truck
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-truck">
+                    -
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- VEHICLE INFORMATION -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <div class="section-title-icon">
+                ▣
+            </div>
+
+            <div>
+
+                <h3>
+                    Vehicle & Booking
+                </h3>
+
+                <p>
+                    ข้อมูลรถและ Booking
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="info-grid">
+
+            <div class="info-card">
+
+                <div class="info-label">
+                    License Plate
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-plate">
+                    -
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-label">
+                    Booking No.
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-booking">
+                    -
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-label">
+                    Quantity
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-quantity">
+                    -
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-label">
+                    Remark
+                </div>
+
+                <div
+                    class="info-value"
+                    id="d-remark">
+                    -
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+
+    <strong>Sino Carco Tracking</strong>
+
+    &nbsp; | &nbsp;
+
+    Shipment Tracking System
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   GOOGLE APPS SCRIPT
+===================================================== */
 
 const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwjX5Cl1wH6agUuXVZBJGC8J1EgxhzeZmlGJUp7gTAW89EZ60RsgUGsf2mtqoGZ5Q4/exec";
+"https://script.google.com/macros/s/AKfycbwjX5Cl1wH6agUuXVZBJGC8J1EgxhzeZmlGJUp7gTAW89EZ60RsgUGsf2mtqoGZ5Q4/exec";
 
 
-    /*
-    =====================================================
-    SEARCH
-    =====================================================
-    */
+/* =====================================================
+   ELEMENTS
+===================================================== */
 
-    async function searchData() {
+const input =
+    document.getElementById("hbl");
 
-      const input =
-        document.getElementById("hbl");
+const button =
+    document.getElementById("searchButton");
 
-      const button =
-        document.getElementById("searchButton");
+const message =
+    document.getElementById("message");
 
-      const message =
-        document.getElementById("message");
+const loading =
+    document.getElementById("loading");
 
-      const result =
-        document.getElementById("result");
+const result =
+    document.getElementById("result");
 
 
-      const hbl =
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+function showMessage(text, type) {
+
+    message.textContent = text;
+
+    message.className =
+        "message " + type;
+
+}
+
+
+function clearMessage() {
+
+    message.textContent = "";
+
+    message.className =
+        "message";
+
+}
+
+
+/* =====================================================
+   SAFE VALUE
+===================================================== */
+
+function value(data, names) {
+
+    for (const name of names) {
+
+        if (
+            data &&
+            data[name] !== undefined &&
+            data[name] !== null &&
+            data[name] !== ""
+        ) {
+
+            return data[name];
+
+        }
+
+    }
+
+    return "-";
+
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+function statusHTML(status) {
+
+    const text =
+        String(status || "-");
+
+    let type = "pending";
+
+    const lower =
+        text.toLowerCase();
+
+    if (
+        lower.includes("เสร็จ") ||
+        lower.includes("complete") ||
+        lower.includes("success") ||
+        lower.includes("ส่งแล้ว")
+    ) {
+
+        type = "success";
+
+    }
+
+    if (
+        lower.includes("ยกเลิก") ||
+        lower.includes("cancel") ||
+        lower.includes("error")
+    ) {
+
+        type = "danger";
+
+    }
+
+    return `
+        <span class="status-badge ${type}">
+            <span class="dot"></span>
+            ${text}
+        </span>
+    `;
+
+}
+
+
+/* =====================================================
+   DISPLAY DATA
+===================================================== */
+
+function displayData(data) {
+
+    if (!data) {
+
+        showMessage(
+            "ไม่พบข้อมูล Shipment",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    /* HBL */
+
+    const hbl =
+        value(data, [
+            "HBL No.",
+            "HBL No",
+            "HBL",
+            "hbl",
+            "hblNo"
+        ]);
+
+
+    /* Customer */
+
+    const customer =
+        value(data, [
+            "Customer",
+            "customer",
+            "ชื่อลูกค้า"
+        ]);
+
+
+    /* Location */
+
+    const location =
+        value(data, [
+            "Location",
+            "location",
+            "สถานที่โหลดสินค้า"
+        ]);
+
+
+    /* Date */
+
+    const date =
+        value(data, [
+            "Date",
+            "date",
+            "วันที่เข้า"
+        ]);
+
+
+    /* Time */
+
+    const timeIn =
+        value(data, [
+            "Time In",
+            "timeIn",
+            "เวลาเข้า"
+        ]);
+
+
+    const timeOut =
+        value(data, [
+            "Time Out",
+            "timeOut",
+            "เวลาออก"
+        ]);
+
+
+    /* Loading */
+
+    const loadingStart =
+        value(data, [
+            "Loading Start",
+            "loadingStart",
+            "เวลาเริ่มโหลดสินค้า"
+        ]);
+
+
+    const loadingFinish =
+        value(data, [
+            "Loading Finish",
+            "loadingFinish",
+            "เวลาโหลดสินค้าเสร็จ"
+        ]);
+
+
+    /* Status */
+
+    const status =
+        value(data, [
+            "Status",
+            "status",
+            "สถานะ"
+        ]);
+
+
+    /* Company */
+
+    const company =
+        value(data, [
+            "Company",
+            "company",
+            "ชื่อบริษัท"
+        ]);
+
+
+    /* Driver */
+
+    const driver =
+        value(data, [
+            "Driver",
+            "driver",
+            "ชื่อ พขร.",
+            "ชื่อ พขร"
+        ]);
+
+
+    /* Tel */
+
+    const tel =
+        value(data, [
+            "TEL",
+            "Tel",
+            "tel",
+            "โทรศัพท์"
+        ]);
+
+
+    /* Plate */
+
+    const plate =
+        value(data, [
+            "Plate",
+            "plate",
+            "ทะเบียนรถ"
+        ]);
+
+
+    /* Truck */
+
+    const truck =
+        value(data, [
+            "Truck",
+            "truck",
+            "ยี่ห้อรถ"
+        ]);
+
+
+    /* Booking */
+
+    const booking =
+        value(data, [
+            "Booking No.",
+            "Booking No",
+            "Booking",
+            "booking"
+        ]);
+
+
+    /* Quantity */
+
+    const quantity =
+        value(data, [
+            "QTY",
+            "Quantity",
+            "quantity"
+        ]);
+
+
+    /* Remark */
+
+    const remark =
+        value(data, [
+            "REMARK",
+            "Remark",
+            "remark"
+        ]);
+
+
+    /* =====================
+       OVERVIEW
+    ===================== */
+
+    document.getElementById("r-hbl").textContent =
+        hbl;
+
+    document.getElementById("r-customer").textContent =
+        customer;
+
+    document.getElementById("r-location").textContent =
+        location;
+
+    document.getElementById("r-date").textContent =
+        date;
+
+
+    /* =====================
+       DETAILS
+    ===================== */
+
+    document.getElementById("d-customer").textContent =
+        customer;
+
+    document.getElementById("d-location").textContent =
+        location;
+
+    document.getElementById("d-date").textContent =
+        date;
+
+    document.getElementById("d-time-in").textContent =
+        timeIn;
+
+    document.getElementById("d-time-out").textContent =
+        timeOut;
+
+    document.getElementById("d-status").innerHTML =
+        statusHTML(status);
+
+
+    /* =====================
+       LOADING
+    ===================== */
+
+    document.getElementById("d-loading-start").textContent =
+        loadingStart;
+
+    document.getElementById("d-loading-finish").textContent =
+        loadingFinish;
+
+    document.getElementById("d-company").textContent =
+        company;
+
+    document.getElementById("d-driver").textContent =
+        driver;
+
+    document.getElementById("d-tel").textContent =
+        tel;
+
+    document.getElementById("d-truck").textContent =
+        truck;
+
+
+    /* =====================
+       VEHICLE
+    ===================== */
+
+    document.getElementById("d-plate").textContent =
+        plate;
+
+    document.getElementById("d-booking").textContent =
+        booking;
+
+    document.getElementById("d-quantity").textContent =
+        quantity;
+
+    document.getElementById("d-remark").textContent =
+        remark;
+
+
+    /* =====================
+       TIMELINE
+    ===================== */
+
+    document.getElementById("t-booking").textContent =
+        booking !== "-" ? "Confirmed" : "-";
+
+    document.getElementById("t-in").textContent =
+        timeIn;
+
+    document.getElementById("t-loading").textContent =
+        loadingStart;
+
+    document.getElementById("t-out").textContent =
+        timeOut;
+
+
+    /* SHOW */
+
+    result.style.display =
+        "block";
+
+    result.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+async function searchData() {
+
+    const hbl =
         input.value.trim();
 
 
-      // ซ่อนผลเดิม
-      result.classList.remove("show");
-
-      message.className = "message";
-      message.textContent = "";
+    clearMessage();
 
 
-      // ตรวจสอบช่องว่าง
-      if (!hbl) {
+    if (!hbl) {
 
         showMessage(
-          "กรุณาระบุ HBL No.",
-          "error"
+            "กรุณากรอกเลข HBL",
+            "error"
         );
 
         input.focus();
 
         return;
-      }
+
+    }
 
 
-      // ตรวจสอบ URL
-      if (
-        !APPS_SCRIPT_URL ||
-        APPS_SCRIPT_URL.includes(
-          "ใส่ URL GOOGLE"
-        )
-      ) {
+    button.disabled = true;
 
-        showMessage(
-          "ยังไม่ได้ตั้งค่า Google Apps Script URL",
-          "error"
-        );
+    button.textContent =
+        "กำลังค้นหา...";
 
-        return;
-      }
+    loading.style.display =
+        "flex";
+
+    result.style.display =
+        "none";
 
 
-      // Loading
-      button.classList.add("loading");
-
-      button.innerHTML =
-        '<span class="spinner"></span>กำลังค้นหา';
-
-
-      try {
+    try {
 
         const url =
-          APPS_SCRIPT_URL +
-          "?hbl=" +
-          encodeURIComponent(hbl);
+            APPS_SCRIPT_URL +
+            "?hbl=" +
+            encodeURIComponent(hbl);
 
 
         const response =
-          await fetch(url);
+            await fetch(url, {
+                method: "GET",
+                cache: "no-store"
+            });
 
 
         if (!response.ok) {
-          throw new Error(
-            "HTTP " + response.status
-          );
+
+            throw new Error(
+                "ไม่สามารถเชื่อมต่อระบบได้"
+            );
+
         }
 
 
-        const data =
-          await response.json();
+        const json =
+            await response.json();
+
+
+        let data =
+            json;
+
+
+        /*
+         รองรับ API หลายรูปแบบ
+        */
+
+        if (json.data !== undefined) {
+
+            data = json.data;
+
+        }
 
 
         if (
-          !data ||
-          data.success !== true
+            Array.isArray(data)
         ) {
 
-          showMessage(
-            data?.message ||
-            "ไม่พบข้อมูล HBL No. นี้",
-            "error"
-          );
+            data = data[0];
 
-          return;
         }
 
 
-        displayData(data.data);
+        if (
+            json.result &&
+            Array.isArray(json.result)
+        ) {
 
-      }
-      catch (error) {
+            data = json.result[0];
+
+        }
+
+
+        if (
+            json.results &&
+            Array.isArray(json.results)
+        ) {
+
+            data = json.results[0];
+
+        }
+
+
+        if (!data) {
+
+            throw new Error(
+                "ไม่พบข้อมูล HBL นี้"
+            );
+
+        }
+
+
+        displayData(data);
+
+
+        showMessage(
+            "พบข้อมูล Shipment แล้ว",
+            "success"
+        );
+
+
+    } catch (error) {
 
         console.error(error);
 
         showMessage(
-          "ไม่สามารถเชื่อมต่อระบบข้อมูลได้ กรุณาลองใหม่อีกครั้ง",
-          "error"
+            error.message ||
+            "เกิดข้อผิดพลาดในการค้นหา",
+            "error"
         );
 
-      }
-      finally {
+    } finally {
 
-        button.classList.remove("loading");
+        loading.style.display =
+            "none";
+
+        button.disabled =
+            false;
 
         button.textContent =
-          "ค้นหา";
-      }
-    }
-
-
-    /*
-    =====================================================
-    DISPLAY DATA
-    =====================================================
-    */
-
-    function displayData(data) {
-
-      const result =
-        document.getElementById("result");
-
-
-      setValue(
-        "hblNo",
-        data.hblNo
-      );
-
-      setValue(
-        "customer",
-        data.customer
-      );
-
-      setValue(
-        "location",
-        data.location
-      );
-
-      setValue(
-        "date",
-        data.date
-      );
-
-      setValue(
-        "timeIn",
-        data.timeIn
-      );
-
-      setValue(
-        "timeOut",
-        data.timeOut
-      );
-
-      setValue(
-        "loadingStart",
-        data.loadingStart
-      );
-
-      setValue(
-        "loadingFinish",
-        data.loadingFinish
-      );
-
-      setValue(
-        "company",
-        data.company
-      );
-
-      setValue(
-        "driver",
-        data.driver
-      );
-
-      setValue(
-        "tel",
-        data.tel
-      );
-
-      setValue(
-        "plate",
-        data.plate
-      );
-
-      setValue(
-        "truck",
-        data.truck
-      );
-
-      setValue(
-        "bookingNo",
-        data.bookingNo
-      );
-
-      setValue(
-        "qty",
-        data.qty
-      );
-
-      setValue(
-        "remark",
-        data.remark
-      );
-
-
-      /*
-      STATUS
-      */
-
-      const status =
-        document.getElementById("status");
-
-      status.innerHTML = "";
-
-      const statusElement =
-        document.createElement("span");
-
-      statusElement.className =
-        "status";
-
-      statusElement.textContent =
-        data.status || "-";
-
-      status.appendChild(
-        statusElement
-      );
-
-
-      /*
-      SHOW RESULT
-      */
-
-      result.classList.add("show");
-
-
-      /*
-      เลื่อนลงไปดูข้อมูล
-      */
-
-      setTimeout(() => {
-
-        result.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-
-      }, 100);
+            "ค้นหา";
 
     }
 
-
-    /*
-    =====================================================
-    SET VALUE
-    =====================================================
-    */
-
-    function setValue(
-      id,
-      value
-    ) {
-
-      const element =
-        document.getElementById(id);
-
-      if (!element) {
-        return;
-      }
-
-      const text =
-        value === null ||
-        value === undefined ||
-        String(value).trim() === ""
-          ? "-"
-          : String(value);
-
-      element.textContent =
-        text;
-    }
+}
 
 
-    /*
-    =====================================================
-    MESSAGE
-    =====================================================
-    */
+/* =====================================================
+   ENTER KEY
+===================================================== */
 
-    function showMessage(
-      text,
-      type
-    ) {
+input.addEventListener(
+    "keydown",
+    function(event) {
 
-      const message =
-        document.getElementById("message");
-
-      message.textContent =
-        text;
-
-      message.className =
-        "message " + type;
-    }
-
-
-    /*
-    =====================================================
-    ENTER KEY
-    =====================================================
-    */
-
-    document
-      .getElementById("hbl")
-      .addEventListener(
-        "keydown",
-        function(event) {
-
-          if (
+        if (
             event.key === "Enter"
-          ) {
+        ) {
 
             event.preventDefault();
 
             searchData();
-          }
 
         }
-      );
 
-  </script>
+    }
+);
+
+</script>
 
 </body>
 </html>
